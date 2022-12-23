@@ -1,0 +1,19 @@
+.header {
+  background-color: #282c34;
+  min-height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: calc(0.5rem + 2vmin);
+  font-weight: 400;
+  color: white;
+}
+
+.user-profile {
+  display: flex;
+  list-style: none;
+}
+
+.user-account {
+  margin: 1rem;
+}
