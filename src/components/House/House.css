@@ -8,9 +8,42 @@
 .house-price {
   font-size: 17.5px;
 }
+.fs-fluid {
+  font-size: 14px;
+}
 .house-bb-rooms {
   display: flex;
+  justify-content: space-between;
+}
+.img-descp {
+  font-size: 19px;
 }
 .house-rooms {
-  font-size: 14px;
+  display: flex;
+}
+
+@media only screen and (min-width: 850px) {
+  .img-descp {
+    font-size: 22px;
+  }
+  .fs-fluid {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .img-descp {
+    font-size: 24px;
+  }
+  .fs-fluid {
+    font-size: 24px;
+  }
+}
+@media only screen and (min-width: 1500px) {
+  .img-descp {
+    font-size: 30px;
+  }
+  .fs-fluid {
+    font-size: 35px;
+  }
 }

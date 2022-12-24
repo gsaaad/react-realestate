@@ -11,7 +11,7 @@ function HousesForSale() {
       <div className="container text-center">
         <div className="row">
           {houses.slice(0, 18).map((house) => {
-            return <House house={house} />;
+            return <House house={house} key={house.address} />;
           })}
         </div>
       </div>
