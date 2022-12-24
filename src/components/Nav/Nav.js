@@ -1,11 +1,19 @@
 import "./Nav.css";
 function Nav() {
   return (
-    <nav className="header">
-      <span className="text-center">Sweet-Home</span>
+    <nav className="header bg-light">
+      <a className="text-center" href="/">
+        Sweet-Home
+      </a>
       <ul className="user-profile text-center">
-        <li className="user-account">Login</li>
-        <li className="user-account">Sign-Up</li>
+        <li className="user-account">
+          <a href="/login">Login</a>
+        </li>
+        <li className="user-account">
+          <a href="/signup" className="bg-primary rounded p-2 text-light">
+            Sign-up
+          </a>
+        </li>
       </ul>
     </nav>
   );

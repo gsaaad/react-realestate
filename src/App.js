@@ -5,7 +5,7 @@ import Clock from "./components/Clock/Clock";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App ">
       <Nav />
       <Clock />
       <HousesForSale />

@@ -1,12 +1,14 @@
 .header {
-  background-color: #282c34;
   min-height: 55px;
   display: flex;
   align-items: center;
   justify-content: space-around;
   font-size: calc(0.5rem + 2vmin);
   font-weight: 400;
-  color: white;
+}
+a {
+  text-decoration: none;
+  color: #535353;
 }
 
 .user-profile {
@@ -16,5 +18,5 @@
   margin: 2px;
 }
 .user-account {
-  margin-left: 19px;
+  margin-left: 12px;
 }

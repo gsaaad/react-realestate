@@ -1,0 +1,28 @@
+.house-property {
+  font-size: 15px;
+}
+
+.house-price {
+  font-size: 17.5px;
+}
+
+.img-descp {
+  font-size: 19px;
+}
+@media only screen and (min-width: 850px) {
+  .img-descp {
+    font-size: 22px;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .img-descp {
+    font-size: 24px;
+  }
+}
+
+@media only screen and (min-width: 1500px) {
+  .img-descp {
+    font-size: 30px;
+  }
+}

@@ -22,7 +22,7 @@ class Clock extends React.Component {
 
   render() {
     return (
-      <div className="bg-light rounded-pill m-4">
+      <div className="bg-light bg-gradient rounded m-4">
         <h2>Date: {this.state.date.toDateString()}.</h2>
         <h2>Time: {this.state.date.toUTCString().split(" ")[4]}</h2>
       </div>
