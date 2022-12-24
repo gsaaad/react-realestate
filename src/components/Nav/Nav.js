@@ -1,7 +1,7 @@
 import "./Nav.css";
 function Nav() {
   return (
-    <nav className="header bg-light">
+    <nav className="header bg-light p-2">
       <a className="text-center" href="/">
         Sweet-Home
       </a>

@@ -1,0 +1,21 @@
+.search-houses {
+  display: flex;
+  justify-content: end;
+  margin-right: 20px;
+  align-items: center;
+}
+
+.form-outline {
+  font-size: 18px;
+  padding: 10px;
+}
+
+.btn-search {
+  font-size: 12px;
+}
+input::placeholder {
+  padding: 5px;
+}
+input {
+  padding: 5px;
+}
