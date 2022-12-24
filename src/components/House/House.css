@@ -1,0 +1,16 @@
+.house {
+  margin: 10px;
+}
+
+.house-property {
+  font-size: 15px;
+}
+.house-price {
+  font-size: 17.5px;
+}
+.house-bb-rooms {
+  display: flex;
+}
+.house-rooms {
+  font-size: 14px;
+}

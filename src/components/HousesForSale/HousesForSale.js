@@ -1,6 +1,7 @@
 import React from "react";
 import data from "./data.json";
 import House from "../House/House";
+
 function HousesForSale() {
   const houses = data.props;
   console.log(houses.slice(0, 18));
