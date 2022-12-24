@@ -4,8 +4,5 @@
 body {
   overflow-x: hidden;
   font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-.App-link {
-  color: #61dafb;
+  background-color: #5e5e5e;
 }

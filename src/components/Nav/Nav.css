@@ -12,8 +12,9 @@
 .user-profile {
   display: flex;
   list-style: none;
+  justify-content: space-around;
+  margin: 2px;
 }
-
 .user-account {
-  margin: 1rem;
+  margin-left: 19px;
 }
