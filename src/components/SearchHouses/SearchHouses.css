@@ -1,6 +1,6 @@
 .search-houses {
   display: flex;
-  justify-content: end;
+  justify-content: start;
   margin-right: 20px;
   align-items: center;
 }
@@ -11,11 +11,13 @@
 }
 
 .btn-search {
-  font-size: 12px;
+  font-size: 17px;
+  margin-left: 5px;
 }
 input::placeholder {
   padding: 5px;
 }
 input {
   padding: 5px;
+  border-radius: 4%;
 }

@@ -1,50 +1,45 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import getHouses from "../../utils/getHouses";
+import HousesForSale from "../../components/HousesForSale/HousesForSale";
 import "./SearchHouses.css";
 
 function SearchHouses() {
   const [location, setLocation] = useState("");
+  const [houses, setHouses] = useState([]);
 
-  useEffect(() => {
-    const req = {
-      method: "GET",
-      url: "https://zillow56.p.rapidapi.com/search",
-      params: {
-        location: "Toronto, ON",
-        sort: "pricea",
-        isSingleFamily: "true",
-      },
-      headers: {
-        "X-RapidAPI-Key": process.env.REACT_API_KEY,
-        "X-RapidAPI-Host": process.env.REACT_API_SEARCH_URL,
-      },
-    };
-
-    axios
-      .request(req)
-      .then(function (response) {
-        console.log(response.data);
-        setLocation(response.data);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
-  });
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    getHouses(location);
+  }
+  function handleFormChange(e) {
+    e.preventDefault();
+    var userValue = e.target.value.toLowerCase();
+    setLocation(userValue);
+  }
 
   return (
-    <div className="search-houses">
-      <div className="form-outline">
-        <input
-          type="search"
-          id="searchByCity"
-          placeholder="City, State/Province"
-        />
+    <div className="search-houses  p-2  m-4">
+      <div className="search-container">
+        <h1 className="text-light p-2 bg-primary rounded-pill">
+          Search Houses FOR SALE
+        </h1>
+        <div className="form-outline">
+          <form onSubmit={handleFormSubmit}>
+            <input
+              type="search"
+              id="searchByCity"
+              placeholder="City, Province"
+              value={location}
+              onChange={handleFormChange}
+            />
+            <button type="submit" className="btn btn-primary btn-search">
+              Search
+            </button>
+          </form>
+        </div>
+        <HousesForSale houses={houses} />
       </div>
-      <button type="button" className="btn btn-primary btn-search">
-        <i class="fas fa-search">SEARCH</i>
-      </button>
     </div>
   );
 }
-
 export default SearchHouses;
