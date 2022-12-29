@@ -12,7 +12,7 @@ function HouseAvatar(props) {
         width={
           document.body.clientWidth > 600
             ? document.body.clientWidth * 0.24
-            : document.body.clientWidth * 0.4
+            : document.body.clientWidth * 0.6
         }
         className="border border-dark rounded shadow-sm"
       />

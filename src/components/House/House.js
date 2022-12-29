@@ -8,10 +8,10 @@ function House(props) {
       <HouseAvatar house={house} />
       <div className="col mt-4">
         <div className="house-bb-rooms rounded-pill p-2 text-center text-light">
-          <h2 className="house-rooms fs-fluid fw-bold">
+          <h2 className="house-rooms fs-fluid fw-bold p-2">
             Bathrooms #{house.bathrooms}
           </h2>
-          <h2 className="house-rooms fs-fluid fw-bold">
+          <h2 className="house-rooms fs-fluid fw-bold p-2">
             Bedrooms #{house.bedrooms}
           </h2>
         </div>
