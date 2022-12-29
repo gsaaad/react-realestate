@@ -19,7 +19,8 @@ function SearchHouses() {
 
   return (
     <div className="search-houses  p-2  m-4">
-      <div className="search-container">
+      {/* mx-auto or add news column / info box to the right */}
+      <div className="search-container mx-auto">
         <h1 className="text-light p-2 bg-primary rounded-pill">
           Search Houses FOR SALE
         </h1>
