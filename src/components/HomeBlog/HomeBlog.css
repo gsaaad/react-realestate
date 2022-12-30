@@ -1,4 +1,19 @@
 .half-width {
-  width: 50%;
+  width: 66%;
   margin: auto;
+}
+
+.article-body {
+  width: 88%;
+  margin: auto;
+}
+.card {
+  height: 300px;
+  overflow: hidden;
+  font-size: 11px;
+  z-index: 2;
+}
+.article-link {
+  z-index: 1;
+  margin: 5px;
 }
