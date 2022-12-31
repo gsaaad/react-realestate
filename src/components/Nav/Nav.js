@@ -3,7 +3,7 @@ import CountryDropDown from "../countryDropDown/CountryDropDown";
 
 function Nav() {
   return (
-    <nav className="header bg-light ">
+    <nav className="header bg-light border-bottom border-3">
       <a className="text-center" href="/">
         Sweet-Home
       </a>

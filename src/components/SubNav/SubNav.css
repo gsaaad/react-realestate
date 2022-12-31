@@ -1,7 +1,11 @@
+.sub-nav {
+  margin-top: 55px;
+}
 .sub-item {
   display: flex;
   justify-content: center;
   list-style: none;
-  padding: 25px;
+  align-items: center;
+  padding: 10px;
   border: 1px solid black;
 }

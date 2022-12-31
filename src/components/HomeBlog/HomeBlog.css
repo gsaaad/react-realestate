@@ -1,14 +1,21 @@
-.half-width {
-  width: 66%;
-  margin: auto;
+.blog-header {
+  padding: 5%;
+}
+.recent-post {
+  margin-top: 35px;
+  margin-bottom: 145px;
+}
+.latest-posts {
+  margin: 10px 0px;
+  padding: 5px;
 }
 
-.article-body {
-  width: 88%;
-  margin: auto;
-}
-.card {
+.article-container {
   height: 300px;
+}
+
+.card {
+  height: 400px;
   overflow: hidden;
   font-size: 11px;
   z-index: 2;
@@ -16,4 +23,33 @@
 .article-link {
   z-index: 1;
   margin: 5px;
+}
+.date-card {
+  position: relative;
+  font-size: 14px;
+  color: blue;
+  font-weight: 600;
+  padding: 35px 2px;
+  top: -60px;
+  border-radius: 20px;
+  left: -150px;
+  height: 75px;
+  width: 45px;
+}
+.latest-date-card {
+  position: relative;
+  font-size: 14px;
+  color: blue;
+  font-weight: 600;
+  padding: 35px 2px;
+  top: -60px;
+  border-radius: 20px;
+  left: -140px;
+  height: 75px;
+  width: 45px;
+}
+.article-details {
+  display: flex;
+  justify-content: space-around;
+  font-size: 18px;
 }
