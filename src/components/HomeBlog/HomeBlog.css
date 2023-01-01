@@ -2,6 +2,9 @@
   padding: 5%;
 }
 
+.recent-post {
+  margin: 4px;
+}
 .latest-posts-container {
   min-width: 70%;
   max-width: 90%;
@@ -27,10 +30,10 @@
   font-size: 14px;
   color: blue;
   font-weight: 600;
-  padding: 35px 2px;
-  bottom: 4.5rem;
+  padding: 30px 2px;
+  bottom: 3.5rem;
   border-radius: 20px;
-  left: -35%;
+  left: -36.5%;
   height: 75px;
   width: 45px;
 }
@@ -39,10 +42,10 @@
   font-size: 14px;
   color: blue;
   font-weight: 600;
-  padding: 35px 2px;
-  bottom: 4.5rem;
+  padding: 30px 2px;
+  bottom: 3.5rem;
   border-radius: 20px;
-  left: -30%;
+  left: -34.5%;
   height: 75px;
   width: 45px;
 }
@@ -50,4 +53,27 @@
   display: flex;
   justify-content: space-around;
   font-size: 18px;
+}
+
+@media only screen and (min-width: 550px) {
+  .latest-date-card,
+  .date-card {
+    margin: 5%;
+    font-size: 18px;
+    bottom: 3rem;
+    left: -36%;
+    padding: 20px 2px;
+  }
+  .date-card {
+    left: -38%;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .latest-date-card,
+  .date-card {
+    font-size: 18px;
+    left: -39%;
+    padding: 10px 2px;
+  }
 }

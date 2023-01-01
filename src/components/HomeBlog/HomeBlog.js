@@ -6,9 +6,9 @@ const HomeBlog = () => {
         <h2 className="border-bottom">Home-Sweet-Home Blog</h2>
       </div>
       {/* most recent post */}
-      <div>
+      <div className="recent-post">
         <a href="/">
-          <section className="article-main">
+          <section>
             <article className=" border-bottom bg-light">
               <img
                 src={process.env.REACT_APP_HOME_ONE}
