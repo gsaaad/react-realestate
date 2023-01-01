@@ -67,6 +67,9 @@
   .date-card {
     left: -38%;
   }
+  .article-details {
+    font-size: 22px;
+  }
 }
 
 @media only screen and (min-width: 800px) {
@@ -75,5 +78,8 @@
     font-size: 18px;
     left: -39%;
     padding: 10px 2px;
+  }
+  .article-details {
+    font-size: 25px;
   }
 }

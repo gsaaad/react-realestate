@@ -1,3 +1,15 @@
 .footer-qlinks {
   font-size: 9px;
 }
+
+@media only screen and (min-width: 600px) {
+  .footer-qlinks {
+    font-size: 13px;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .footer-qlinks {
+    font-size: 14.5px;
+  }
+}
