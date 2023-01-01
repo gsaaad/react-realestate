@@ -1,22 +1,19 @@
 .blog-header {
   padding: 5%;
 }
-.recent-post {
-  margin-top: 35px;
-  margin-bottom: 145px;
+
+.latest-posts-container {
+  min-width: 70%;
+  max-width: 90%;
+  margin: auto;
 }
 .latest-posts {
   margin: 10px 0px;
-  padding: 5px;
-}
-
-.article-container {
-  height: 300px;
+  padding: 5%;
 }
 
 .card {
-  height: 400px;
-  overflow: hidden;
+  height: 1/3vh;
   font-size: 11px;
   z-index: 2;
 }
@@ -24,15 +21,16 @@
   z-index: 1;
   margin: 5px;
 }
+
 .date-card {
   position: relative;
   font-size: 14px;
   color: blue;
   font-weight: 600;
   padding: 35px 2px;
-  top: -60px;
+  bottom: 4.5rem;
   border-radius: 20px;
-  left: -150px;
+  left: -35%;
   height: 75px;
   width: 45px;
 }
@@ -42,9 +40,9 @@
   color: blue;
   font-weight: 600;
   padding: 35px 2px;
-  top: -60px;
+  bottom: 4.5rem;
   border-radius: 20px;
-  left: -140px;
+  left: -30%;
   height: 75px;
   width: 45px;
 }
