@@ -13,10 +13,10 @@ function App() {
     <div className="App ">
       <Nav />
       <SubNav />
-      {/* <SearchHouses /> */}
-      {/* <Clock /> */}
-      {/* <HousesForSale /> */}
-      {/* <HomeBlog /> */}
+      <SearchHouses />
+      <Clock />
+      <HousesForSale />
+      <HomeBlog />
       <PrivacyPolicy />
       <CodeEthics />
       <Footer />
