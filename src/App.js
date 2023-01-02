@@ -7,6 +7,7 @@ import SearchHouses from "./components/SearchHouses/SearchHouses";
 import HomeBlog from "./components/HomeBlog/HomeBlog";
 import Footer from "./components/Footer/Footer";
 import PrivacyPolicy from "./components/PrivacyPolicy/PrivacyPolicy";
+import CodeEthics from "./components/CodeEthics/CodeEthics";
 function App() {
   return (
     <div className="App ">
@@ -17,6 +18,7 @@ function App() {
       {/* <HousesForSale /> */}
       {/* <HomeBlog /> */}
       <PrivacyPolicy />
+      <CodeEthics />
       <Footer />
     </div>
   );
