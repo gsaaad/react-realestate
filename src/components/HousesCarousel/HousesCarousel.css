@@ -1,0 +1,31 @@
+.carousel-title {
+  margin: auto 30%;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.carousel-descp {
+  font-size: 17px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .carousel-title {
+    font-size: 37px;
+  }
+  .carousel-descp {
+    font-size: 22px;
+  }
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+}
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+}

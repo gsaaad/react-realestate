@@ -8,18 +8,20 @@ import HomeBlog from "./components/HomeBlog/HomeBlog";
 import Footer from "./components/Footer/Footer";
 import PrivacyPolicy from "./components/PrivacyPolicy/PrivacyPolicy";
 import CodeEthics from "./components/CodeEthics/CodeEthics";
+import PropertyServices from "./components/PropertyServices/PropertyServices";
 function App() {
   return (
     <div className="App ">
       <Nav />
       <SubNav />
-      <SearchHouses />
+      <PropertyServices />
+      {/* <SearchHouses />
       <Clock />
       <HousesForSale />
       <HomeBlog />
       <PrivacyPolicy />
       <CodeEthics />
-      <Footer />
+      <Footer /> */}
     </div>
   );
 }

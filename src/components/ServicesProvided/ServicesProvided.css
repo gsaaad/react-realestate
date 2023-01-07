@@ -1,0 +1,28 @@
+.services-title {
+  font-size: 24px;
+}
+.services-provided {
+  font-size: 20px;
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .services-title {
+    font-size: 28px;
+  }
+  .services-provided {
+    font-size: 25px;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+}
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+}
