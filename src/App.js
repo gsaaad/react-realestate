@@ -9,19 +9,21 @@ import Footer from "./components/Footer/Footer";
 import PrivacyPolicy from "./components/PrivacyPolicy/PrivacyPolicy";
 import CodeEthics from "./components/CodeEthics/CodeEthics";
 import PropertyServices from "./components/PropertyServices/PropertyServices";
+import Login from "./components/Login/Login";
 function App() {
   return (
     <div className="App ">
       <Nav />
       <SubNav />
+      <Login />
       <PropertyServices />
-      {/* <SearchHouses />
+      {/* {/* <SearchHouses /> */}
       <Clock />
-      <HousesForSale />
+      {/* <HousesForSale /> */}
       <HomeBlog />
       <PrivacyPolicy />
       <CodeEthics />
-      <Footer /> */}
+      <Footer /> */
     </div>
   );
 }
