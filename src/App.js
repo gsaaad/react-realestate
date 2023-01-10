@@ -17,7 +17,7 @@ function App() {
       <Nav />
       <SubNav />
       <Login />
-      {/* <LoginModal /> */}
+      <LoginModal />
       {/* <PropertyServices /> */}
       {/* {/* <SearchHouses /> */}
       {/* <Clock /> */}

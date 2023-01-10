@@ -14,7 +14,7 @@ const LoginModal = () => {
       <div
         style={{
           backgroundImage: `url(${photo_4})`,
-          fontSize: "20px",
+
           padding: "20px",
           backgroundSize: "100% 100%",
           height: "65vh",
