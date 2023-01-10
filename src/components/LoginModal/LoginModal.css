@@ -1,0 +1,53 @@
+.signin-container {
+  display: none;
+  height: 70vh;
+  position: fixed;
+  width: 95%;
+  top: 15%;
+  left: 3%;
+  z-index: 999;
+  background-color: rgb(48, 48, 48);
+}
+.signin-header {
+  margin-left: 6%;
+  font-size: 18px;
+  text-align: center;
+}
+.signin-modal-container {
+  font-size: 18px;
+  position: fixed;
+  top: 40%;
+}
+.signin-btns-container {
+  font-size: 14px;
+  margin-top: 50px;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.signin-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 125px;
+  margin: 1% auto;
+  border-radius: 5%;
+  padding: 2%;
+}
+.register-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 125px;
+  margin: 1% auto;
+  padding: 2%;
+}
+
+@media (min-width: 768px) {
+  .signin-container {
+    margin: auto;
+    height: 75vh;
+  }
+  .signin-header {
+    margin-left: 7.5%;
+  }
+}
