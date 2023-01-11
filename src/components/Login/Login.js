@@ -1,8 +1,24 @@
+import React, { useState } from "react";
 import photo_3 from "../../assets/img/photo_3.jpeg";
 import photo_4 from "../../assets/img/photo_4.jpeg";
 
 import "./Login.css";
 const Login = () => {
+  const [formState, setFormState] = useState({ email: "", password: "" });
+  const handleChange = (e) => {
+    e.preventDefault();
+    const { name, value } = e.target;
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+
+    console.log(formState);
+  };
   return (
     <div className="rounded border-end border-start border-light login-container">
       <h1 className="bg-light pt-4 text-dark fw-semibold">Sign In</h1>
@@ -20,7 +36,7 @@ const Login = () => {
       <div className=" text-light">
         <div className="login-modal-container">
           <h3 className="login-header">Sign in for Sweet Home</h3>
-          <form className="login-form">
+          <form className="login-form" onSubmit={handleFormSubmit}>
             {/* <label htmlFor="user-firstname">First Name</label>
 
             <input
@@ -45,6 +61,7 @@ const Login = () => {
               name="email"
               type="email"
               id="user-email"
+              onChange={handleChange}
             />
             <label htmlFor="user-password">Password</label>
             <input
@@ -53,6 +70,7 @@ const Login = () => {
               name="password"
               type="password"
               id="user-password"
+              onChange={handleChange}
             />
             {/* <label htmlFor="user-repassword">Re-enter Password</label>
             <input
