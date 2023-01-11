@@ -11,13 +11,15 @@ import CodeEthics from "./components/CodeEthics/CodeEthics";
 import PropertyServices from "./components/PropertyServices/PropertyServices";
 import LoginModal from "./components/LoginModal/LoginModal.js";
 import Login from "./components/Login/Login.js";
+import Register from "./components/Register/Register.js";
 function App() {
   return (
     <div className="App ">
       <Nav />
       <SubNav />
-      <Login />
-      <LoginModal />
+      <Register />
+      {/* <Login /> */}
+      {/* <LoginModal /> */}
       {/* <PropertyServices /> */}
       {/* {/* <SearchHouses /> */}
       {/* <Clock /> */}

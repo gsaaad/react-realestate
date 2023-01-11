@@ -1,9 +1,15 @@
 import React, { useState } from "react";
-import photo_3 from "../../assets/img/photo_3.jpeg";
+import photo_4 from "../../assets/img/photo_4.jpeg";
 
-import "./Login.css";
-const Login = () => {
-  const [formState, setFormState] = useState({ email: "", password: "" });
+import "./Register.css";
+const Register = () => {
+  const [formState, setFormState] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
   const handleChange = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
@@ -20,11 +26,10 @@ const Login = () => {
   };
   return (
     <div className="rounded border-end border-start border-light login-container">
-      <h1 className="bg-light pt-4 text-dark fw-semibold">Sign In</h1>
+      <h1 className="bg-light pt-4 text-dark fw-semibold">Register</h1>
       <div
         style={{
-          backgroundImage: `url(${photo_3})`,
-
+          backgroundImage: `url(${photo_4})`,
           padding: "20px",
           backgroundSize: "100% 100%",
           height: "65vh",
@@ -34,24 +39,28 @@ const Login = () => {
       />
       <div className=" text-light">
         <div className="login-modal-container">
-          <h3 className="login-header">Sign in for Sweet Home</h3>
+          <h3 className="login-header">Register for Sweet Home</h3>
           <form className="login-form" onSubmit={handleFormSubmit}>
-            {/* <label htmlFor="user-firstname">First Name</label>
+            <label htmlFor="user-firstname">First Name</label>
 
             <input
               className="form-input"
+              name="firstName"
               placeholder="First Name"
               type="text"
               id="user-firstname"
+              onChange={handleChange}
             />
             <label htmlFor="user-lastname">Last Name</label>
 
             <input
               className="form-input"
+              name="lastName"
               placeholder="Last Name"
               type="text"
               id="user-lastname"
-            /> */}
+              onChange={handleChange}
+            />
             <label htmlFor="user-email">Email</label>
 
             <input
@@ -71,14 +80,15 @@ const Login = () => {
               id="user-password"
               onChange={handleChange}
             />
-            {/* <label htmlFor="user-repassword">Re-enter Password</label>
+            <label htmlFor="user-repassword">Re-enter Password</label>
             <input
               className="form-input"
               placeholder="********"
-              name="password"
+              name="confirmPassword"
               type="password"
-              id="user-repassword"
-            /> */}
+              id="user-confirmPassword"
+              onChange={handleChange}
+            />
             <button
               className="bg-primary rounded p-2 text-light fw-semibold m-2"
               type="submit"
@@ -92,4 +102,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
