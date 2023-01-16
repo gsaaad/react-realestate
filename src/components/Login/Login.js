@@ -4,6 +4,7 @@ import photo_3 from "../../assets/img/photo_3.jpeg";
 import "./Login.css";
 const Login = () => {
   const [formState, setFormState] = useState({ email: "", password: "" });
+
   const handleChange = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
@@ -16,7 +17,12 @@ const Login = () => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    console.log(formState);
+    var userEmail = formState.email;
+    var userPass = formState.password;
+    var storedUser = JSON.parse(localStorage.getItem("LoggedInUser"));
+    if (storedUser.email === userEmail && storedUser.password === userPass) {
+      window.location.assign("/");
+    }
   };
   return (
     <div className="rounded border-end border-start border-light login-container">
@@ -36,22 +42,6 @@ const Login = () => {
         <div className="login-modal-container">
           <h3 className="login-header">Sign in for Sweet Home</h3>
           <form className="login-form" onSubmit={handleFormSubmit}>
-            {/* <label htmlFor="user-firstname">First Name</label>
-
-            <input
-              className="form-input"
-              placeholder="First Name"
-              type="text"
-              id="user-firstname"
-            />
-            <label htmlFor="user-lastname">Last Name</label>
-
-            <input
-              className="form-input"
-              placeholder="Last Name"
-              type="text"
-              id="user-lastname"
-            /> */}
             <label htmlFor="user-email">Email</label>
 
             <input
@@ -71,14 +61,7 @@ const Login = () => {
               id="user-password"
               onChange={handleChange}
             />
-            {/* <label htmlFor="user-repassword">Re-enter Password</label>
-            <input
-              className="form-input"
-              placeholder="********"
-              name="password"
-              type="password"
-              id="user-repassword"
-            /> */}
+
             <button
               className="bg-primary rounded p-2 text-light fw-semibold m-2"
               type="submit"

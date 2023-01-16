@@ -23,9 +23,14 @@ const Register = () => {
     e.preventDefault();
 
     console.log(formState);
+    localStorage.setItem("LoggedInUser", JSON.stringify(formState));
   };
   return (
-    <div className="rounded border-end border-start border-light login-container">
+    <div
+      className="rounded border-end border-start border-light logi
+    
+    n-container"
+    >
       <h1 className="bg-light pt-4 text-dark fw-semibold">Register</h1>
       <div
         style={{

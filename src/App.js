@@ -1,3 +1,5 @@
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Nav from "./components/Nav/Nav";
 import HousesForSale from "./components/HousesForSale/HousesForSale";
@@ -12,23 +14,30 @@ import PropertyServices from "./components/PropertyServices/PropertyServices";
 import LoginModal from "./components/LoginModal/LoginModal.js";
 import Login from "./components/Login/Login.js";
 import Register from "./components/Register/Register.js";
+
 function App() {
   return (
-    <div className="App ">
-      <Nav />
-      <SubNav />
-      <Register />
-      {/* <Login /> */}
-      {/* <LoginModal /> */}
-      {/* <PropertyServices /> */}
-      {/* {/* <SearchHouses /> */}
-      {/* <Clock /> */}
-      {/* <HousesForSale /> */}
-      {/* <HomeBlog /> */}
-      {/* <PrivacyPolicy /> */}
-      {/* <CodeEthics /> */}
-      <Footer /> */
-    </div>
+    <Router>
+      <div className="App ">
+        <Nav />
+        <SubNav />
+        <div className="container">
+          <Routes>
+            <Route path="/signup" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            {/* <LoginModal />
+            <PropertyServices />
+            <SearchHouses />
+            <Clock />
+            <HousesForSale />
+            <HomeBlog />
+            <PrivacyPolicy />
+            <CodeEthics /> */}
+          </Routes>
+        </div>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
