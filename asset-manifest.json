@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/homesweethome/static/css/main.a086c49c.css",
+    "main.js": "/homesweethome/static/js/main.b1a3a4c5.js",
+    "static/media/Photo_1.jpg": "/homesweethome/static/media/Photo_1.f6f00a81ee0716debb9b.jpg",
+    "static/media/photo_4.jpeg": "/homesweethome/static/media/photo_4.10aa28bbca1a80e8d3e4.jpeg",
+    "static/media/photo_3.jpeg": "/homesweethome/static/media/photo_3.b90ce6d4a8eb511e42be.jpeg",
+    "static/media/photo_2.jpeg": "/homesweethome/static/media/photo_2.6ed330cf481b324c133a.jpeg",
+    "static/media/photo_5.jpeg": "/homesweethome/static/media/photo_5.dacf4d059e1a9378b51b.jpeg",
+    "static/media/photo_6.jpeg": "/homesweethome/static/media/photo_6.2d5147380817072ef082.jpeg",
+    "static/media/usa.png": "/homesweethome/static/media/usa.13cf6ab9157ddae1145a.png",
+    "index.html": "/homesweethome/index.html",
+    "main.a086c49c.css.map": "/homesweethome/static/css/main.a086c49c.css.map",
+    "main.b1a3a4c5.js.map": "/homesweethome/static/js/main.b1a3a4c5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a086c49c.css",
+    "static/js/main.b1a3a4c5.js"
+  ]
+}
