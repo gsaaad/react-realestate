@@ -1,5 +1,4 @@
 .signin-container {
-  display: none;
   height: 70vh;
   position: fixed;
   width: 95%;
@@ -7,6 +6,13 @@
   left: 3%;
   z-index: 999;
   background-color: rgb(48, 48, 48);
+}
+.modal-btn {
+  position: fixed;
+  border-radius: 5%;
+
+  top: 16%;
+  right: 5%;
 }
 .signin-header {
   margin-left: 6%;

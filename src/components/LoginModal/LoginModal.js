@@ -8,8 +8,29 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const LoginModal = () => {
+  const handleModalClose = (e) => {
+    e.preventDefault();
+    const loginContainer = document.getElementsByClassName("signin-container");
+    if (loginContainer[0].getAttribute("style") === "display: block;")
+      loginContainer[0].setAttribute("style", "display: none;");
+  };
+
+  const handleGoRegisterPage = (e) => {
+    e.preventDefault();
+    window.location.assign("/signup");
+  };
+  const handleGoLoginPage = (e) => {
+    e.preventDefault();
+    window.location.assign("/login");
+  };
   return (
-    <div className="rounded border-end border-start border-light signin-container">
+    <div
+      className="rounded border-end border-start border-light signin-container"
+      style={{ display: "none" }}
+    >
+      <button className="modal-btn btn btn-danger" onClick={handleModalClose}>
+        X
+      </button>
       <h1 className="bg-light pt-4 text-dark fw-semibold ">Sign In</h1>
       <div
         style={{
@@ -46,11 +67,16 @@ const LoginModal = () => {
               </button>
             </div>
             <div className="row">
-              <button className="col signin-btn">
+              <button className="col signin-btn" onClick={handleGoLoginPage}>
                 <FontAwesomeIcon icon={faMailForward} />
                 Sign in with Email
               </button>
-              <button className="col register-btn">Create an Account</button>
+              <button
+                className="col register-btn"
+                onClick={handleGoRegisterPage}
+              >
+                Create an Account
+              </button>
             </div>
           </div>
         </div>
