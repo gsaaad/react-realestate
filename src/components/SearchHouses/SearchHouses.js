@@ -11,9 +11,11 @@ function SearchHouses() {
     e.preventDefault();
     getHouses(location);
   }
+
   function handleFormChange(e) {
     e.preventDefault();
-    var userValue = e.target.value.toLowerCase();
+    var userValue = e.target.value;
+
     setLocation(userValue);
   }
 

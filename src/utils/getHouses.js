@@ -4,9 +4,10 @@ async function getHouses(location) {
   var city = location.split(",")[0];
   var province = location.split(" ")[1];
   console.log(city, province);
-  console.log(process.env.REACT_APP_SEARCH_HOST);
-  console.log(process.env.REACT_APP_SEARCH_URL);
-  console.log(process.env.REACT_APP_KEY);
+  // console.log(process.env.REACT_APP_SEARCH_HOST_ONE);
+  // console.log(process.env.REACT_APP_SEARCH_URL_ONE);
+  // console.log(process.env.REACT_APP_KEY_ONE);
+
   const options = {
     method: "GET",
     url: process.env.REACT_APP_SEARCH_URL,

@@ -13,7 +13,7 @@ function Nav() {
         </li>
 
         <li className="user-account">
-          <a href="/signup" className="bg-primary rounded p-2 fs-6 text-light">
+          <a href="/login" className="bg-primary rounded p-2 fs-6 text-light">
             Sign in
           </a>
         </li>

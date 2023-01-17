@@ -14,7 +14,8 @@ import PropertyServices from "./components/PropertyServices/PropertyServices";
 import LoginModal from "./components/LoginModal/LoginModal.js";
 import Login from "./components/Login/Login.js";
 import Register from "./components/Register/Register.js";
-
+import Home from "./pages/homes";
+import PNF from "./components/PNF/PNF.js";
 function App() {
   return (
     <Router>
@@ -23,18 +24,19 @@ function App() {
         <SubNav />
         <div className="container">
           <Routes>
+            <Route path="/" element={<Home />} />
             <Route path="/signup" element={<Register />} />
             <Route path="/login" element={<Login />} />
-            {/* <LoginModal />
-            <PropertyServices />
-            <SearchHouses />
-            <Clock />
-            <HousesForSale />
-            <HomeBlog />
-            <PrivacyPolicy />
-            <CodeEthics /> */}
+            {/* <LoginModal /> */}
+            <Route path="/services" element={<PropertyServices />} />
+            <Route path="/sweethomes" element={<SearchHouses />} />
+            <Route path="/blog" element={<HomeBlog />} />
+            <Route path="/policy" element={<PrivacyPolicy />} />
+            <Route path="/ethics" element={<CodeEthics />} />
+            <Route path="*" element={<PNF />} />
           </Routes>
         </div>
+        <LoginModal />
         <Footer />
       </div>
     </Router>
