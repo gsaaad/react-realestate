@@ -3,26 +3,50 @@ import "./FooterLinks.css";
 const FooterLinks = () => {
   return (
     <div className="container footer-qlinks ">
-      <div className="row ">
-        <div className="col">Find a Sweet Home</div>
-        <div className="col">Office Locations</div>
-        <div className="col">Code Of Ethics</div>
-      </div>
-      <div className="row">
-        <div className="col">Find a Sweet Agent</div>
-        <div className="col">Blog</div>
-        <div className="col">Privacy Policy</div>
-      </div>
-      <div className="row">
-        <div className="col">About Home Sweet Home</div>
-        <div className="col">News</div>
-        <div className="col">Terms Of Use</div>
-      </div>
-      <div className="row">
-        <div className="col">Services</div>
-        <div className="col">FAQ</div>
-        <div className="col">Sweet Home Warranty &copy;</div>
-      </div>
+      <ul className="row ">
+        <li className="col">
+          <a href="/">Find a Sweet Home</a>
+        </li>
+        <li className="col">
+          <a href="/">Office Locations</a>
+        </li>
+        <li className="col">
+          <a href="/">Code Of Ethics</a>
+        </li>
+      </ul>
+      <ul className="row">
+        <li className="col">
+          <a href="/">Find a Sweet Agent</a>
+        </li>
+        <li className="col">
+          <a href="/">Blog</a>
+        </li>
+        <li className="col">
+          <a href="/">Privacy Policy</a>
+        </li>
+      </ul>
+      <ul className="row">
+        <li className="col">
+          <a href="/">About Home Sweet Home</a>
+        </li>
+        <li className="col">
+          <a href="/">News</a>
+        </li>
+        <li className="col">
+          <a href="/">Terms Of Use</a>
+        </li>
+      </ul>
+      <ul className="row">
+        <li className="col">
+          <a href="/">Services</a>
+        </li>
+        <li className="col">
+          <a href="/">FAQ</a>
+        </li>
+        <li className="col">
+          <a href="/">Sweet Home Warranty &copy;</a>
+        </li>
+      </ul>
     </div>
   );
 };
