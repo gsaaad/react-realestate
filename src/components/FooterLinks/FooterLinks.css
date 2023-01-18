@@ -1,5 +1,9 @@
-.footer-qlinks {
-  font-size: 9px;
+.footer-container {
+  font-size: 18px;
+}
+.footer-container > ul > li {
+  text-decoration: none;
+  list-style: none;
 }
 
 @media only screen and (min-width: 600px) {

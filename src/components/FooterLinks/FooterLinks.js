@@ -2,49 +2,49 @@ import "./FooterLinks.css";
 
 const FooterLinks = () => {
   return (
-    <div className="container footer-qlinks ">
+    <div className="container footer-container ">
       <ul className="row ">
         <li className="col">
-          <a href="/">Find a Sweet Home</a>
+          <a href="/sweethomes">Find a Sweet Home</a>
         </li>
         <li className="col">
-          <a href="/">Office Locations</a>
+          <a href="/locations">Office Locations</a>
         </li>
         <li className="col">
-          <a href="/">Code Of Ethics</a>
-        </li>
-      </ul>
-      <ul className="row">
-        <li className="col">
-          <a href="/">Find a Sweet Agent</a>
-        </li>
-        <li className="col">
-          <a href="/">Blog</a>
-        </li>
-        <li className="col">
-          <a href="/">Privacy Policy</a>
+          <a href="/ethicscode">Code Of Ethics</a>
         </li>
       </ul>
       <ul className="row">
         <li className="col">
-          <a href="/">About Home Sweet Home</a>
+          <a href="/sweetagent">Find a Sweet Agent</a>
         </li>
         <li className="col">
-          <a href="/">News</a>
+          <a href="/blog">Blog</a>
         </li>
         <li className="col">
-          <a href="/">Terms Of Use</a>
+          <a href="/policy">Privacy Policy</a>
         </li>
       </ul>
       <ul className="row">
         <li className="col">
-          <a href="/">Services</a>
+          <a href="/about">About Home Sweet Home</a>
         </li>
         <li className="col">
-          <a href="/">FAQ</a>
+          <a href="/news">News</a>
         </li>
         <li className="col">
-          <a href="/">Sweet Home Warranty &copy;</a>
+          <a href="/terms">Terms Of Use</a>
+        </li>
+      </ul>
+      <ul className="row">
+        <li className="col">
+          <a href="/services">Services</a>
+        </li>
+        <li className="col">
+          <a href="/frequently-asked-questions">FAQ</a>
+        </li>
+        <li className="col">
+          <a href="/warranty">Sweet Home Warranty &copy;</a>
         </li>
       </ul>
     </div>
