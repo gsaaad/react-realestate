@@ -1,0 +1,33 @@
+.form-calc-container {
+  height: 50vh;
+}
+
+.calc-btn-container {
+  display: flex;
+  margin: -0.5% 0%;
+}
+
+.calc-type-btn {
+  border: none;
+  padding: 7.5px;
+}
+
+.form-calc {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-bottom: 1.5px solid darkgrey;
+  padding: 4%;
+}
+.asking-price-input {
+  margin: 2.5%;
+}
+
+.calc-btn {
+  padding: 4%;
+  border-radius: 10%;
+  font-weight: 600;
+}
+#askingPrice::placeholder {
+  color: rgb(175, 175, 175);
+}
