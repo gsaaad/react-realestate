@@ -18,6 +18,7 @@
   justify-content: space-evenly;
   border-bottom: 1.5px solid darkgrey;
   padding: 4%;
+  font-size: 18px;
 }
 .asking-price-input {
   margin: 2.5%;
@@ -30,4 +31,8 @@
 }
 #askingPrice::placeholder {
   color: rgb(175, 175, 175);
+}
+
+.mortgage-calc {
+  font-size: 15px;
 }
