@@ -110,13 +110,49 @@ const MortgageCalculator = () => {
             </div>
             <div className="bg-light">
               <h2>Land Transfer Tax || Profile</h2>
-              <div className="row land-tax-container">
+              <div className="row land-tax-container ">
+                <div className="col">
+                  <span>Location</span>
+                  <div>
+                    <span className="row">
+                      <span className="col">Province</span>
+                      <select className="col">
+                        <option>Ontario</option>
+                        <option>Manitoba</option>
+                      </select>
+                    </span>
+                    <span className="row">
+                      <span className="col">City</span>
+                      <select className="col">
+                        <option>Toronto</option>
+                        <option>Oakville</option>
+                      </select>
+                    </span>
+                    <div className="first-home-buyer">
+                      <span>First Time Home Buyer</span>
+                      <input type="checkbox" />
+                    </div>
+                  </div>
+                </div>
                 <div className="col">
                   <span className="border-bottom border-1">
                     Total Land Transfer Tax:{" "}
                   </span>
+                  <div>
+                    <span className="row">
+                      <span className="col">Provincial</span>
+                      <span className="col">$10,000</span>
+                    </span>
+                    <span className="row">
+                      <span className="col">Municipal</span>
+                      <span className="col">$5,000</span>
+                    </span>
+                    <span className="row">
+                      <span className="col">Rebate:</span>
+                      <span className="col">$0</span>
+                    </span>
+                  </div>
                 </div>
-                <div className="col">col2</div>
               </div>
             </div>
           </div>

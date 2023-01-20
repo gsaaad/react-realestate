@@ -45,4 +45,10 @@
 
 .land-tax-container {
   height: 20vh;
+  font-size: 15px;
+}
+
+.first-home-buyer {
+  display: flex;
+  justify-content: space-between;
 }
