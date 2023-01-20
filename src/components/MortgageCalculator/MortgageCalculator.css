@@ -1,5 +1,6 @@
 .form-calc-container {
-  height: 50vh;
+  min-height: fit-content;
+  margin: 10px 0px;
 }
 
 .calc-btn-container {
@@ -29,10 +30,19 @@
   border-radius: 10%;
   font-weight: 600;
 }
-#askingPrice::placeholder {
+#askingPrice::placeholder,
+.mortgage-rate::placeholder {
   color: rgb(175, 175, 175);
 }
 
 .mortgage-calc {
   font-size: 15px;
+}
+.mortgage-rate {
+  max-width: 20%;
+  margin: 0px 13px;
+}
+
+.land-tax-container {
+  height: 20vh;
 }

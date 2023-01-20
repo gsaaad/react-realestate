@@ -78,9 +78,46 @@ const MortgageCalculator = () => {
 
             <div className="row border-bottom border-2">
               <div className="col">Mortgage Rate</div>
-              <div className="col">50,000</div>
-              <div className="col">100,000</div>
-              <div className="col">150,000</div>
+              <input
+                type="text"
+                name="mortgage-rate-one"
+                placeholder="1.5"
+                className="col mortgage-rate"
+              />
+              <input
+                type="text"
+                name="mortgage-rate-two"
+                placeholder="1.5"
+                className="col mortgage-rate"
+              />
+              <input
+                type="text"
+                name="mortgage-rate-three"
+                placeholder="1.5"
+                className="col mortgage-rate"
+              />
+            </div>
+            <div className="row border-bottom border-2 bg-primary text-light">
+              <div className="col">TOTAL Mortage Payment</div>
+              <select className="mortgage-frequency">
+                <option>Monthly</option>
+                <option>Bi-Weekly</option>
+                <option>Accelerated Bi-Weekly</option>
+              </select>
+              <span className="col m-3">$-</span>
+              <span className="col m-3">$-</span>
+              <span className="col m-3">$-</span>
+            </div>
+            <div className="bg-light">
+              <h2>Land Transfer Tax || Profile</h2>
+              <div className="row land-tax-container">
+                <div className="col">
+                  <span className="border-bottom border-1">
+                    Total Land Transfer Tax:{" "}
+                  </span>
+                </div>
+                <div className="col">col2</div>
+              </div>
             </div>
           </div>
         </div>
