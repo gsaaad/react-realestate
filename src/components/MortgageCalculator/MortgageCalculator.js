@@ -1,6 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
+import priceFormat from "../../utils/priceFormat";
 import "./MortgageCalculator.css";
 const MortgageCalculator = () => {
+  const [housePrice, setHousePrice] = useState(649999);
+  const [formattedPrice, setFormattedPrice] = useState(priceFormat(housePrice));
+
+  const handleHousePriceForm = (e) => {
+    e.preventDefault();
+    var userHousePrice = priceFormat(housePrice);
+
+    setFormattedPrice(userHousePrice);
+  };
+  const handleHousePrice = (e) => {
+    e.preventDefault();
+    var userInput = e.target.value;
+    console.log(userInput);
+    setHousePrice(userInput);
+  };
+
   return (
     <div>
       <h1 className="text-light bg-secondary border-bottom border-3">
@@ -15,16 +32,19 @@ const MortgageCalculator = () => {
           </button>
         </div>
         <div className="bg-light form-calc-container">
-          <form className="form-calc">
+          <form className="form-calc" onSubmit={handleHousePriceForm}>
             <label>Asking Price:</label>
             <input
               type="text"
               name="askingPrice"
               id="askingPrice"
-              placeholder="649999"
+              value={housePrice}
+              onChange={handleHousePrice}
               className="asking-price-input"
             />
-            <button className="calc-btn bg-primary text-light">Go</button>
+            <button className="calc-btn bg-primary text-light" type="submit">
+              Go
+            </button>
           </form>
           <div className="container mortgage-calc">
             <div className="row">
@@ -41,21 +61,62 @@ const MortgageCalculator = () => {
             </div>
             <div className="row border-bottom border-2">
               <div className="col">Amount:</div>
-              <div className="col">50,000</div>
-              <div className="col">100,000</div>
-              <div className="col">150,000</div>
+              <div className="col">
+                {priceFormat(
+                  Number(formattedPrice.replace(/[^0-9.]+/g, "")) * 0.05
+                )}
+              </div>
+              <div className="col">
+                {priceFormat(
+                  Number(formattedPrice.replace(/[^0-9.]+/g, "")) * 0.1
+                )}
+              </div>
+              <div className="col">
+                {priceFormat(
+                  Number(formattedPrice.replace(/[^0-9.]+/g, "")) * 0.15
+                )}
+              </div>
             </div>
             <div className="row border-bottom border-2">
               <div className="col">Insurance:</div>
-              <div className="col">20,000</div>
-              <div className="col">15,000</div>
-              <div className="col">9,000</div>
+              <div className="col">
+                {priceFormat(
+                  Number(formattedPrice.replace(/[^0-9.]+/g, "")) * 0.03
+                )}
+              </div>
+              <div className="col">
+                {priceFormat(
+                  Number(formattedPrice.replace(/[^0-9.]+/g, "")) * 0.02
+                )}
+              </div>
+              <div className="col">
+                {priceFormat(
+                  Number(formattedPrice.replace(/[^0-9.]+/g, "")) * 0.015
+                )}
+              </div>
             </div>
             <div className="row border-bottom border-2 bg-primary text-light">
               <div className="col">TOTAL Mortage Required</div>
-              <div className="col">50,000</div>
-              <div className="col">100,000</div>
-              <div className="col">150,000</div>
+              <div className="col">
+                {priceFormat(
+                  Number(formattedPrice.replace(/[^0-9.]+/g, "")) * 0.05 +
+                    Number(formattedPrice.replace(/[^0-9.]+/g, "")) * 0.03
+                )}
+              </div>
+              <div className="col">
+                {" "}
+                {priceFormat(
+                  Number(formattedPrice.replace(/[^0-9.]+/g, "")) * 0.1 +
+                    Number(formattedPrice.replace(/[^0-9.]+/g, "")) * 0.02
+                )}
+              </div>
+              <div className="col">
+                {" "}
+                {priceFormat(
+                  Number(formattedPrice.replace(/[^0-9.]+/g, "")) * 0.15 +
+                    Number(formattedPrice.replace(/[^0-9.]+/g, "")) * 0.015
+                )}
+              </div>
             </div>
             <div className="row">
               <div className="col"></div>
@@ -65,7 +126,7 @@ const MortgageCalculator = () => {
             </div>
             <div className="row border-bottom border-3 ">
               <div className="col">Amortization period</div>
-              <input
+              {/* <input
                 type="text"
                 value="15"
                 style={{
@@ -91,7 +152,7 @@ const MortgageCalculator = () => {
                   margin: "0px 12.95px",
                   textAlign: "center",
                 }}
-              />
+              /> */}
             </div>
 
             <div className="row border-bottom border-2">
