@@ -10,7 +10,7 @@
 
 .calc-type-btn {
   border: none;
-  padding: 7.5px;
+  padding: 15px;
 }
 
 .form-calc {
@@ -39,8 +39,9 @@
   font-size: 15px;
 }
 .mortgage-rate {
-  max-width: 20%;
+  max-width: 17.5%;
   margin: 0px 13px;
+  text-align: center;
 }
 
 .land-tax-container {

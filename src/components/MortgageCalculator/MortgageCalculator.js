@@ -63,17 +63,35 @@ const MortgageCalculator = () => {
               <div className="col">Scenario 2</div>
               <div className="col">Scenario 3</div>
             </div>
-            <div className="row border-bottom border-2">
+            <div className="row border-bottom border-3 ">
               <div className="col">Amortization period</div>
-              <div className="col">
-                <span>5 Year </span>
-              </div>
-              <div className="col">
-                <span>15 Year </span>
-              </div>
-              <div className="col">
-                <span>25 Year </span>
-              </div>
+              <input
+                type="text"
+                value="15"
+                style={{
+                  maxWidth: "17.5%",
+                  margin: "0px 12.95px",
+                  textAlign: "center",
+                }}
+              />
+              <input
+                type="text"
+                value="25"
+                style={{
+                  maxWidth: "17.5%",
+                  margin: "0px 12.95px",
+                  textAlign: "center",
+                }}
+              />
+              <input
+                type="text"
+                value="30"
+                style={{
+                  maxWidth: "17.5%",
+                  margin: "0px 12.95px",
+                  textAlign: "center",
+                }}
+              />
             </div>
 
             <div className="row border-bottom border-2">
@@ -141,15 +159,15 @@ const MortgageCalculator = () => {
                   <div>
                     <span className="row">
                       <span className="col">Provincial</span>
-                      <span className="col">$10,000</span>
+                      <span className="col">+ $10,000</span>
                     </span>
                     <span className="row">
                       <span className="col">Municipal</span>
-                      <span className="col">$5,000</span>
+                      <span className="col">+ $5,000</span>
                     </span>
                     <span className="row">
                       <span className="col">Rebate:</span>
-                      <span className="col">$0</span>
+                      <span className="col">- $0</span>
                     </span>
                   </div>
                 </div>
