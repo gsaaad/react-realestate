@@ -5,7 +5,7 @@
 
 .calc-btn-container {
   display: flex;
-  margin: -0.5% 0%;
+  margin: -2.5% 0%;
 }
 
 .calc-type-btn {
@@ -34,6 +34,11 @@
 .mortgage-rate::placeholder {
   color: rgb(175, 175, 175);
 }
+.total-mortgage-container {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
 
 .mortgage-calc {
   font-size: 14px;
@@ -47,6 +52,14 @@
 .land-tax-container {
   height: 20vh;
   font-size: 15px;
+}
+.mortgage-frequency {
+  display: flex;
+  text-align: center;
+  font-size: 22px;
+}
+.monthly-payment {
+  font-size: 19px;
 }
 
 .first-home-buyer {

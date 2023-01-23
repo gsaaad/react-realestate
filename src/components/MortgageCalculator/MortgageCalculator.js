@@ -134,8 +134,8 @@ const MortgageCalculator = () => {
                 )}
               </div>
             </div>
-            <div className="row border-bottom border-2 bg-primary text-light">
-              <div className="col">TOTAL Mortage Required</div>
+            <div className="row border-bottom border-2 bg-primary text-light total-mortgage-container rounded shadow">
+              <div className="col ">TOTAL Mortage Required</div>
               <div className="col">
                 {priceFormat(
                   housePrice -
@@ -242,7 +242,13 @@ const MortgageCalculator = () => {
               />
             </div>
             <div className="bg-light">
-              <h2>Land Transfer Tax || Profile</h2>
+              <h2 className="bg-primary rounded shadow text-light m-2">
+                Land Transfer Tax || Profile
+              </h2>
+              <div className="row ">
+                <h5>Total Land Transfer Tax:</h5>
+                <h5>+$15,000</h5>
+              </div>
               <div className="row land-tax-container ">
                 <div className="col">
                   <span>Location</span>
@@ -269,7 +275,7 @@ const MortgageCalculator = () => {
                 </div>
                 <div className="col">
                   <span className="border-bottom border-1">
-                    Land Transfer Tax:{" "}
+                    Land Transfer Tax:
                   </span>
                   <div>
                     <span className="row">
@@ -287,68 +293,67 @@ const MortgageCalculator = () => {
                   </div>
                 </div>
               </div>
-              <div className="row ">
-                <h5>Total Land Transfer Tax:</h5>
-                <h5>+$15,000</h5>
-              </div>
             </div>
             <div className="row border-bottom border-2 bg-primary text-light">
-              <h4 className="col">TOTAL Mortage Payment</h4>
+              <h4 className="col">TOTAL Mortgage Payment</h4>
               <select className="mortgage-frequency">
                 <option>Monthly</option>
                 <option>Bi-Weekly</option>
                 <option>Accelerated Bi-Weekly</option>
               </select>
-              <span className="col m-3">
-                $
-                {calculateMortgagePayment(
-                  housePrice -
-                    calculateRate(
-                      Number(formattedPrice.replace(/[^0-9.]+/g, "")),
-                      0.05
-                    ) +
-                    calculateRate(
-                      Number(formattedPrice.replace(/[^0-9.]+/g, "")),
-                      0.037
-                    ),
-                  0.025,
-                  15
-                )}{" "}
-                + ${15000 / 12} (property tax) + Bills
-              </span>
-              <span className="col m-3">
-                ${" "}
-                {calculateMortgagePayment(
-                  housePrice -
-                    calculateRate(
-                      Number(formattedPrice.replace(/[^0-9.]+/g, "")),
-                      0.1
-                    ) +
-                    calculateRate(
-                      Number(formattedPrice.replace(/[^0-9.]+/g, "")),
-                      0.02
-                    ),
-                  0.025,
-                  25
+              <span className="col monthly-payment">
+                {priceFormat(
+                  calculateMortgagePayment(
+                    housePrice -
+                      calculateRate(
+                        Number(formattedPrice.replace(/[^0-9.]+/g, "")),
+                        0.05
+                      ) +
+                      calculateRate(
+                        Number(formattedPrice.replace(/[^0-9.]+/g, "")),
+                        0.037
+                      ),
+                    0.025,
+                    15
+                  )
                 )}
-                + ${15000 / 12} (property tax) + Bills
+                + {priceFormat(15000 / 12)} (property tax) + Bills
               </span>
-              <span className="col m-3">
-                ${" "}
-                {calculateMortgagePayment(
-                  housePrice -
-                    calculateRate(
-                      Number(formattedPrice.replace(/[^0-9.]+/g, "")),
-                      0.15
-                    ) +
-                    calculateRate(
-                      Number(formattedPrice.replace(/[^0-9.]+/g, "")),
-                      0.015
-                    ),
-                  0.025,
-                  30
-                )}{" "}
-                + ${15000 / 12} (property tax) + Bills
+              <span className="col monthly-payment">
+                {priceFormat(
+                  calculateMortgagePayment(
+                    housePrice -
+                      calculateRate(
+                        Number(formattedPrice.replace(/[^0-9.]+/g, "")),
+                        0.1
+                      ) +
+                      calculateRate(
+                        Number(formattedPrice.replace(/[^0-9.]+/g, "")),
+                        0.02
+                      ),
+                    0.025,
+                    25
+                  )
+                )}
+                + {priceFormat(15000 / 12)} (property tax) + Bills
+              </span>
+              <span className="col monthly-payment">
+                {priceFormat(
+                  calculateMortgagePayment(
+                    housePrice -
+                      calculateRate(
+                        Number(formattedPrice.replace(/[^0-9.]+/g, "")),
+                        0.15
+                      ) +
+                      calculateRate(
+                        Number(formattedPrice.replace(/[^0-9.]+/g, "")),
+                        0.015
+                      ),
+                    0.025,
+                    30
+                  )
+                )}
+                + {priceFormat(15000 / 12)} (property tax) + Bills
               </span>
             </div>
           </div>
