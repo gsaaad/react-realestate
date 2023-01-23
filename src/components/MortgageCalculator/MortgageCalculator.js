@@ -4,7 +4,9 @@ import "./MortgageCalculator.css";
 const MortgageCalculator = () => {
   const [housePrice, setHousePrice] = useState(649999);
   const [formattedPrice, setFormattedPrice] = useState(priceFormat(housePrice));
-
+  const [rateOne, setRateOne] = useState(2.5);
+  const [rateTwo, setRateTwo] = useState(4.5);
+  const [rateThree, setRateThree] = useState(6.5);
   const handleHousePriceForm = (e) => {
     e.preventDefault();
     var userHousePrice = priceFormat(housePrice);
@@ -16,6 +18,19 @@ const MortgageCalculator = () => {
     var userInput = e.target.value;
     console.log(userInput);
     setHousePrice(userInput);
+  };
+  const calculateDownPayment = (price, percent) => {
+    return (price * percent).toFixed(2);
+  };
+
+  const calculateMortgagePayment = (price, rate, years) => {
+    var numOfMonths = years * 12;
+    var monthlyRate = rate / 12;
+    var topSection = monthlyRate * (1 + monthlyRate * numOfMonths);
+    var botSection = 1 + monthlyRate * numOfMonths - 1;
+
+    // console.log("MONTHLY MORTGAGE:", (price * topSection) / botSection);
+    return ((price * topSection) / botSection).toFixed(2);
   };
 
   return (
@@ -62,34 +77,49 @@ const MortgageCalculator = () => {
             <div className="row border-bottom border-2">
               <div className="col">Amount:</div>
               <div className="col">
+                -
                 {priceFormat(
-                  Number(formattedPrice.replace(/[^0-9.]+/g, "")) * 0.05
+                  calculateDownPayment(
+                    Number(formattedPrice.replace(/[^0-9.]+/g, "")),
+                    0.0615
+                  )
                 )}
               </div>
               <div className="col">
+                -
                 {priceFormat(
-                  Number(formattedPrice.replace(/[^0-9.]+/g, "")) * 0.1
+                  calculateDownPayment(
+                    Number(formattedPrice.replace(/[^0-9.]+/g, "")),
+                    0.1
+                  )
                 )}
               </div>
               <div className="col">
+                -
                 {priceFormat(
-                  Number(formattedPrice.replace(/[^0-9.]+/g, "")) * 0.15
+                  calculateDownPayment(
+                    Number(formattedPrice.replace(/[^0-9.]+/g, "")),
+                    0.15
+                  )
                 )}
               </div>
             </div>
             <div className="row border-bottom border-2">
               <div className="col">Insurance:</div>
               <div className="col">
+                +
                 {priceFormat(
-                  Number(formattedPrice.replace(/[^0-9.]+/g, "")) * 0.03
+                  Number(formattedPrice.replace(/[^0-9.]+/g, "")) * 0.037
                 )}
               </div>
               <div className="col">
+                +
                 {priceFormat(
                   Number(formattedPrice.replace(/[^0-9.]+/g, "")) * 0.02
                 )}
               </div>
               <div className="col">
+                +
                 {priceFormat(
                   Number(formattedPrice.replace(/[^0-9.]+/g, "")) * 0.015
                 )}
@@ -99,21 +129,24 @@ const MortgageCalculator = () => {
               <div className="col">TOTAL Mortage Required</div>
               <div className="col">
                 {priceFormat(
-                  Number(formattedPrice.replace(/[^0-9.]+/g, "")) * 0.05 +
-                    Number(formattedPrice.replace(/[^0-9.]+/g, "")) * 0.03
+                  housePrice -
+                    Number(formattedPrice.replace(/[^0-9.]+/g, "")) * 0.0615 +
+                    Number(formattedPrice.replace(/[^0-9.]+/g, "")) * 0.037
                 )}
               </div>
               <div className="col">
                 {" "}
                 {priceFormat(
-                  Number(formattedPrice.replace(/[^0-9.]+/g, "")) * 0.1 +
+                  housePrice -
+                    Number(formattedPrice.replace(/[^0-9.]+/g, "")) * 0.1 +
                     Number(formattedPrice.replace(/[^0-9.]+/g, "")) * 0.02
                 )}
               </div>
               <div className="col">
                 {" "}
                 {priceFormat(
-                  Number(formattedPrice.replace(/[^0-9.]+/g, "")) * 0.15 +
+                  housePrice -
+                    Number(formattedPrice.replace(/[^0-9.]+/g, "")) * 0.15 +
                     Number(formattedPrice.replace(/[^0-9.]+/g, "")) * 0.015
                 )}
               </div>
@@ -125,10 +158,11 @@ const MortgageCalculator = () => {
               <div className="col">Scenario 3</div>
             </div>
             <div className="row border-bottom border-3 ">
-              <div className="col">Amortization period</div>
-              {/* <input
+              <div className="col">Amortization period (Yrs)</div>
+              <input
                 type="text"
                 value="15"
+                readOnly={true}
                 style={{
                   maxWidth: "17.5%",
                   margin: "0px 12.95px",
@@ -138,6 +172,7 @@ const MortgageCalculator = () => {
               <input
                 type="text"
                 value="25"
+                readOnly={true}
                 style={{
                   maxWidth: "17.5%",
                   margin: "0px 12.95px",
@@ -147,45 +182,35 @@ const MortgageCalculator = () => {
               <input
                 type="text"
                 value="30"
+                readOnly={true}
                 style={{
                   maxWidth: "17.5%",
                   margin: "0px 12.95px",
                   textAlign: "center",
                 }}
-              /> */}
+              />
             </div>
 
             <div className="row border-bottom border-2">
-              <div className="col">Mortgage Rate</div>
+              <div className="col">Mortgage Rate (%)</div>
               <input
                 type="text"
                 name="mortgage-rate-one"
-                placeholder="1.5"
+                value={rateOne}
                 className="col mortgage-rate"
               />
               <input
                 type="text"
                 name="mortgage-rate-two"
-                placeholder="1.5"
+                value={rateTwo}
                 className="col mortgage-rate"
               />
               <input
                 type="text"
                 name="mortgage-rate-three"
-                placeholder="1.5"
+                value={rateThree}
                 className="col mortgage-rate"
               />
-            </div>
-            <div className="row border-bottom border-2 bg-primary text-light">
-              <div className="col">TOTAL Mortage Payment</div>
-              <select className="mortgage-frequency">
-                <option>Monthly</option>
-                <option>Bi-Weekly</option>
-                <option>Accelerated Bi-Weekly</option>
-              </select>
-              <span className="col m-3">$-</span>
-              <span className="col m-3">$-</span>
-              <span className="col m-3">$-</span>
             </div>
             <div className="bg-light">
               <h2>Land Transfer Tax || Profile</h2>
@@ -215,7 +240,7 @@ const MortgageCalculator = () => {
                 </div>
                 <div className="col">
                   <span className="border-bottom border-1">
-                    Total Land Transfer Tax:{" "}
+                    Land Transfer Tax:{" "}
                   </span>
                   <div>
                     <span className="row">
@@ -233,6 +258,23 @@ const MortgageCalculator = () => {
                   </div>
                 </div>
               </div>
+              <div className="row ">
+                <h5>Total Land Transfer Tax:</h5>
+                <h5>+$15,000</h5>
+              </div>
+            </div>
+            <div className="row border-bottom border-2 bg-primary text-light">
+              <h4 className="col">TOTAL Mortage Payment</h4>
+              <select className="mortgage-frequency">
+                <option>Monthly</option>
+                <option>Bi-Weekly</option>
+                <option>Accelerated Bi-Weekly</option>
+              </select>
+              <span className="col m-3">
+                ${calculateMortgagePayment(649999, 0.025, 15)}
+              </span>
+              <span className="col m-3">$-</span>
+              <span className="col m-3">$-</span>
             </div>
           </div>
         </div>
