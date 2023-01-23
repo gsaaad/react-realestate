@@ -19,8 +19,8 @@ const MortgageCalculator = () => {
     console.log(userInput);
     setHousePrice(userInput);
   };
-  const calculateDownPayment = (price, percent) => {
-    return (price * percent).toFixed(2);
+  const calculateRate = (price, percent) => {
+    return price * percent;
   };
 
   const calculateMortgagePayment = (price, rate, years) => {
@@ -79,16 +79,16 @@ const MortgageCalculator = () => {
               <div className="col">
                 -
                 {priceFormat(
-                  calculateDownPayment(
+                  calculateRate(
                     Number(formattedPrice.replace(/[^0-9.]+/g, "")),
-                    0.0615
+                    0.05
                   )
                 )}
               </div>
               <div className="col">
                 -
                 {priceFormat(
-                  calculateDownPayment(
+                  calculateRate(
                     Number(formattedPrice.replace(/[^0-9.]+/g, "")),
                     0.1
                   )
@@ -97,7 +97,7 @@ const MortgageCalculator = () => {
               <div className="col">
                 -
                 {priceFormat(
-                  calculateDownPayment(
+                  calculateRate(
                     Number(formattedPrice.replace(/[^0-9.]+/g, "")),
                     0.15
                   )
@@ -109,19 +109,28 @@ const MortgageCalculator = () => {
               <div className="col">
                 +
                 {priceFormat(
-                  Number(formattedPrice.replace(/[^0-9.]+/g, "")) * 0.037
+                  calculateRate(
+                    Number(formattedPrice.replace(/[^0-9.]+/g, "")),
+                    0.037
+                  )
                 )}
               </div>
               <div className="col">
                 +
                 {priceFormat(
-                  Number(formattedPrice.replace(/[^0-9.]+/g, "")) * 0.02
+                  calculateRate(
+                    Number(formattedPrice.replace(/[^0-9.]+/g, "")),
+                    0.02
+                  )
                 )}
               </div>
               <div className="col">
                 +
                 {priceFormat(
-                  Number(formattedPrice.replace(/[^0-9.]+/g, "")) * 0.015
+                  calculateRate(
+                    Number(formattedPrice.replace(/[^0-9.]+/g, "")),
+                    0.014
+                  )
                 )}
               </div>
             </div>
@@ -130,24 +139,41 @@ const MortgageCalculator = () => {
               <div className="col">
                 {priceFormat(
                   housePrice -
-                    Number(formattedPrice.replace(/[^0-9.]+/g, "")) * 0.0615 +
-                    Number(formattedPrice.replace(/[^0-9.]+/g, "")) * 0.037
+                    calculateRate(
+                      Number(formattedPrice.replace(/[^0-9.]+/g, "")),
+                      0.05
+                    ) +
+                    calculateRate(
+                      Number(formattedPrice.replace(/[^0-9.]+/g, "")),
+                      0.037
+                    )
+                )}
+              </div>
+              <div className="col">
+                {priceFormat(
+                  housePrice -
+                    calculateRate(
+                      Number(formattedPrice.replace(/[^0-9.]+/g, "")),
+                      0.1
+                    ) +
+                    calculateRate(
+                      Number(formattedPrice.replace(/[^0-9.]+/g, "")),
+                      0.02
+                    )
                 )}
               </div>
               <div className="col">
                 {" "}
                 {priceFormat(
                   housePrice -
-                    Number(formattedPrice.replace(/[^0-9.]+/g, "")) * 0.1 +
-                    Number(formattedPrice.replace(/[^0-9.]+/g, "")) * 0.02
-                )}
-              </div>
-              <div className="col">
-                {" "}
-                {priceFormat(
-                  housePrice -
-                    Number(formattedPrice.replace(/[^0-9.]+/g, "")) * 0.15 +
-                    Number(formattedPrice.replace(/[^0-9.]+/g, "")) * 0.015
+                    calculateRate(
+                      Number(formattedPrice.replace(/[^0-9.]+/g, "")),
+                      0.15
+                    ) +
+                    calculateRate(
+                      Number(formattedPrice.replace(/[^0-9.]+/g, "")),
+                      0.015
+                    )
                 )}
               </div>
             </div>
@@ -198,17 +224,20 @@ const MortgageCalculator = () => {
                 name="mortgage-rate-one"
                 value={rateOne}
                 className="col mortgage-rate"
+                readOnly={true}
               />
               <input
                 type="text"
                 name="mortgage-rate-two"
                 value={rateTwo}
+                readOnly={true}
                 className="col mortgage-rate"
               />
               <input
                 type="text"
                 name="mortgage-rate-three"
                 value={rateThree}
+                readOnly={true}
                 className="col mortgage-rate"
               />
             </div>
@@ -271,10 +300,56 @@ const MortgageCalculator = () => {
                 <option>Accelerated Bi-Weekly</option>
               </select>
               <span className="col m-3">
-                ${calculateMortgagePayment(649999, 0.025, 15)}
+                $
+                {calculateMortgagePayment(
+                  housePrice -
+                    calculateRate(
+                      Number(formattedPrice.replace(/[^0-9.]+/g, "")),
+                      0.05
+                    ) +
+                    calculateRate(
+                      Number(formattedPrice.replace(/[^0-9.]+/g, "")),
+                      0.037
+                    ),
+                  0.025,
+                  15
+                )}{" "}
+                + ${15000 / 12} (property tax) + Bills
               </span>
-              <span className="col m-3">$-</span>
-              <span className="col m-3">$-</span>
+              <span className="col m-3">
+                ${" "}
+                {calculateMortgagePayment(
+                  housePrice -
+                    calculateRate(
+                      Number(formattedPrice.replace(/[^0-9.]+/g, "")),
+                      0.1
+                    ) +
+                    calculateRate(
+                      Number(formattedPrice.replace(/[^0-9.]+/g, "")),
+                      0.02
+                    ),
+                  0.025,
+                  25
+                )}
+                + ${15000 / 12} (property tax) + Bills
+              </span>
+              <span className="col m-3">
+                ${" "}
+                {calculateMortgagePayment(
+                  housePrice -
+                    calculateRate(
+                      Number(formattedPrice.replace(/[^0-9.]+/g, "")),
+                      0.15
+                    ) +
+                    calculateRate(
+                      Number(formattedPrice.replace(/[^0-9.]+/g, "")),
+                      0.015
+                    ),
+                  0.025,
+                  30
+                )}{" "}
+                + ${15000 / 12} (property tax) + Bills
+              </span>
             </div>
           </div>
         </div>
