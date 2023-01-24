@@ -41,8 +41,9 @@ const propertySchema = new Schema(
       type: String,
     },
   },
+  // for getters, return in json format
   { toJSON: { getters: true } }
 );
 
 const property = model("Property", propertySchema);
-module.exports = earthquake;
+module.exports = property;
