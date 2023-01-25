@@ -13,4 +13,14 @@ mongoose.connect(
     useUnifiedTopology: true,
   }
 );
+mongoose.connection.on(
+  "error",
+  console.error.bind(console, "Connection error!")
+);
+mongoose.connection.on("connecting", console.log.bind(console, "Connecting!"));
+mongoose.connection.on(
+  "connection",
+  console.log.bind(console, "Connection Established!")
+);
+
 module.exports = mongoose.connection;

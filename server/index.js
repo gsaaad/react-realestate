@@ -1,6 +1,5 @@
 const express = require("express");
 const dbConnection = require("./config/connection");
-const path = require("path");
 
 require("dotenv").config();
 
@@ -9,8 +8,12 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(require("./routes"));
 
-dbConnection.on("Error", console.error.bind(console, "Connection error!"));
+// db Connection MongoDB
 dbConnection.once("open", () => {
-  console.log(`Connectionn good! Server running on ${PORT}`);
+  console.log(`Connection To MongoDB established and open!`);
 });
+app.listen(PORT, () =>
+  console.log(`Connected Backend Server on localhost:${PORT}`)
+);
