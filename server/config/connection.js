@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 require("dotenv").config();
-
 var MONGODB_PASS = process.env.mongoDB;
 
 mongoose.set("strictQuery", true);
@@ -20,6 +19,7 @@ mongoose.connection.on(
 mongoose.connection.on("connecting", console.log.bind(console, "Connecting!"));
 mongoose.connection.on(
   "connection",
+
   console.log.bind(console, "Connection Established!")
 );
 
