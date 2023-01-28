@@ -10,7 +10,9 @@ app.use(require("./routes"));
 
 // db Connection MongoDB
 dbConnection.once("open", () => {
-  console.log("DB Connected.. ");
+  console.log(
+    "Connected to MongoDB Back-end.. Sweet Agrents are available to help your search for Sweet Homes!"
+  );
 });
 app.listen(PORT, () =>
   console.log(`Connected Backend Server on localhost:${PORT}`)

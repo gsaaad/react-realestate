@@ -1,3 +1,4 @@
+const dbConnection = require("../config/connection");
 const { Property } = require("../models");
 
 const propertyController = {
