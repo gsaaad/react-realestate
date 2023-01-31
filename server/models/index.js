@@ -1,3 +1,3 @@
 const Property = require("./Property");
-
-module.exports = { Property };
+const Agent = require("./Agent");
+module.exports = { Property, Agent };

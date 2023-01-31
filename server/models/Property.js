@@ -4,15 +4,22 @@ const propertySchema = new Schema(
   {
     propertyType: {
       type: String,
+      required: true,
     },
     country: {
       type: String,
+      required: true,
     },
-    imgSrc: { type: String },
+    imgSrc: {
+      type: String,
+      required: true,
+    },
     currency: {
       type: String,
     },
-    price: { type: Number },
+    price: {
+      type: Number,
+    },
     propertyArea: {
       type: Number,
     },
@@ -34,11 +41,12 @@ const propertySchema = new Schema(
     longitude: {
       type: Number,
     },
-    lantitude: {
+    latitude: {
       type: Number,
     },
     status: {
       type: String,
+      required: true,
     },
   },
   // for getters, return in json format
