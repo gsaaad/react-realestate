@@ -17,3 +17,5 @@ dbConnection.once("open", () => {
 app.listen(PORT, () =>
   console.log(`Connected Backend Server on localhost:${PORT}`)
 );
+
+module.exports = app;
