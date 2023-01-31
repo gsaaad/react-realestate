@@ -5,7 +5,7 @@ dbConnection.on("open", async () => {
   await Property.deleteMany({});
   const getRandomHouses = () => {
     var listOfHouses = [];
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 30; i++) {
       var randomNum = Math.floor(Math.random() * HouseData.props.length - 1);
       var house = HouseData.props[randomNum];
       listOfHouses.push(house);
