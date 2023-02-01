@@ -44,41 +44,14 @@ describe("Properties", () => {
 // });
 
 describe("POST Properties", () => {
-  // it("Should not POST a property without propertyType", (done) => {
-  //   var propertyType = "SINGLE_HOME";
-  //   var country = "US";
-  //   var imgSrc =
-  //     "https://photos.zillowstatic.com/fp/cff2f4ce6e867ddbb3bace82b3ebca87-p_e.jpg";
-  //   var status = "FOR_SALE";
-  //   const property = new Property({
-  //     // propertyType: propertyType,
-  //     country: country,
-  //     imgSrc: imgSrc,
-  //     status: status,
-  //   });
-  //   requester
-  //     .post("/api/property")
-  //     .send(property)
-  //     .end((error, res) => {
-  //       console.log(
-  //         "Response Text Includes Errors: ",
-  //         res.text.split('"').includes("errors")
-  //       );
-  //       expect(res.text.split('"').includes("errors")).to.equal(true);
-  //       expect(res.status).to.equal(200);
-  //       expect(res.body).to.be.an("object");
-  //       expect(res.body).to.have.property("errors");
-  //       done();
-  //     });
-  // });
-  it("Should  POST a property with status, propertyType, imgSrc and country", (done) => {
+  it("Should not POST a property without propertyType", (done) => {
     var propertyType = "SINGLE_HOME";
     var country = "US";
     var imgSrc =
       "https://photos.zillowstatic.com/fp/cff2f4ce6e867ddbb3bace82b3ebca87-p_e.jpg";
     var status = "FOR_SALE";
     const property = new Property({
-      propertyType: propertyType,
+      // propertyType: propertyType,
       country: country,
       imgSrc: imgSrc,
       status: status,
@@ -87,12 +60,46 @@ describe("POST Properties", () => {
       .post("/api/property")
       .send(property)
       .end((error, res) => {
+        console.log(res.body);
         console.log(
-          "contains version variable",
-          res.text.split('"').includes("__v")
+          "Response Text Includes Errors: ",
+          res.text.split('"').includes("errors")
         );
-        console.log("contains document ID", res.text.split('"').includes("id"));
+        expect(res.status).to.equal(200);
+        expect(res.body).to.be.an("object");
+        expect(res.body).to.have.property("errors");
+        expect(res.body.errors).to.have.property("propertyType");
+        expect(res.body.errors.propertyType).to.have.property("name");
+        expect(res.body.errors.propertyType.name).to.equal("ValidatorError");
+        done();
       });
-    done();
   });
+
+  // it("Should  POST a property with status, propertyType, imgSrc and country", (done) => {
+  //   var propertyType = "SINGLE_HOME";
+  //   var country = "US";
+  //   var imgSrc =
+  //     "https://photos.zillowstatic.com/fp/cff2f4ce6e867ddbb3bace82b3ebca87-p_e.jpg";
+  //   var status = "FOR_SALE";
+  //   const property = new Property({
+  //     propertyType: propertyType,
+  //     country: country,
+  //     imgSrc: imgSrc,
+  //     status: status,
+  //   });
+  //   requester
+  //     .post("/api/property")
+  //     .send(property)
+  //     .end((error, res) => {
+  //       expect(res.status).to.equal(200);
+  //       expect(res.body).to.be.an("object");
+  //       expect(res.body).to.have.property("id");
+  //       expect(res.body).to.have.property("__v");
+  //       expect(res.body).to.have.property("propertyType");
+  //       expect(res.body).to.have.property("status");
+  //       expect(res.body).to.have.property("imgSrc");
+  //       expect(res.body).to.have.property("country");
+  //     });
+  //   done();
+  // });
 });
