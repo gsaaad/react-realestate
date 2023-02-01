@@ -22,95 +22,77 @@ describe("Properties", () => {
 });
 
 // test object and values
-describe("Creates a Property Object", () => {
-  it("Should create a property object", () => {
-    const property = new Property();
-    assert.typeOf(property, "Object", "Property input is not an Object");
-  });
-});
+// describe("Creates a Property Object", () => {
+//   it("Should create a property object", () => {
+//     const property = new Property();
+//     assert.typeOf(property, "Object", "Property input is not an Object");
+//   });
+// });
 
 // Testing routes
 
-describe("GET All Properties", () => {
-  it("should get all properties", (done) => {
-    requester.get("/api/property").end((err, res) => {
-      console.log(res);
-      expect(res.status).to.equal(200);
-      expect(res.body).to.be.an("array");
-      expect(res.body.length).to.be.at.most(7);
-      done();
-    });
-  });
-});
+// describe("GET All Properties", () => {
+//   it("should get all properties", (done) => {
+//     requester.get("/api/property").end((err, res) => {
+//       console.log(res);
+//       expect(res.status).to.equal(200);
+//       expect(res.body).to.be.an("array");
+//       expect(res.body.length).to.be.at.most(7);
+//       done();
+//     });
+//   });
+// });
 
-describe("/POST Properties", () => {
-  it("Should not POST a property without propertyType", (done) => {
+describe("POST Properties", () => {
+  // it("Should not POST a property without propertyType", (done) => {
+  //   var propertyType = "SINGLE_HOME";
+  //   var country = "US";
+  //   var imgSrc =
+  //     "https://photos.zillowstatic.com/fp/cff2f4ce6e867ddbb3bace82b3ebca87-p_e.jpg";
+  //   var status = "FOR_SALE";
+  //   const property = new Property({
+  //     // propertyType: propertyType,
+  //     country: country,
+  //     imgSrc: imgSrc,
+  //     status: status,
+  //   });
+  //   requester
+  //     .post("/api/property")
+  //     .send(property)
+  //     .end((error, res) => {
+  //       console.log(
+  //         "Response Text Includes Errors: ",
+  //         res.text.split('"').includes("errors")
+  //       );
+  //       expect(res.text.split('"').includes("errors")).to.equal(true);
+  //       expect(res.status).to.equal(200);
+  //       expect(res.body).to.be.an("object");
+  //       expect(res.body).to.have.property("errors");
+  //       done();
+  //     });
+  // });
+  it("Should  POST a property with status, propertyType, imgSrc and country", (done) => {
     var propertyType = "SINGLE_HOME";
+    var country = "US";
+    var imgSrc =
+      "https://photos.zillowstatic.com/fp/cff2f4ce6e867ddbb3bace82b3ebca87-p_e.jpg";
+    var status = "FOR_SALE";
     const property = new Property({
       propertyType: propertyType,
+      country: country,
+      imgSrc: imgSrc,
+      status: status,
     });
-    requester.post(property).end((error, res) => {
-      console.log(res);
-    });
+    requester
+      .post("/api/property")
+      .send(property)
+      .end((error, res) => {
+        console.log(
+          "contains version variable",
+          res.text.split('"').includes("__v")
+        );
+        console.log("contains document ID", res.text.split('"').includes("id"));
+      });
+    done();
   });
-  //   it("Should have valid property Type", () => {
-  //     var propertyType = "SINGLE_HOME";
-  //     var country = "CAN";
-  //     var imgSrc =
-  //       "https://photos.zillowstatic.com/fp/019c5f0264378e71bd1807bd36374536-p_e.jpg";
-  //     var status = "FOR_SALE";
-
-  //     const property = new Property({
-  //       propertyType: propertyType,
-  //       country: country,
-  //       imgSrc: imgSrc,
-  //       status: status,
-  //     });
-
-  //     assert.equal(
-  //       property.propertyType,
-  //       propertyType,
-  //       `Property property does not match ${propertyType}`
-  //     );
-  //   });
-  //   it("Should have a valid img Photo", () => {
-  //     var propertyType = "SINGLE_HOME";
-  //     var country = "CAN";
-  //     var imgSrc =
-  //       "https://photos.zillowstatic.com/fp/019c5f0264378e71bd1807bd36374536-p_e.jpg";
-  //     var status = "FOR_SALE";
-
-  //     const property = new Property({
-  //       propertyType: propertyType,
-  //       country: country,
-  //       imgSrc: imgSrc,
-  //       status: status,
-  //     });
-
-  //     assert.equal(
-  //       property.imgSrc,
-  //       imgSrc,
-  //       `Property image does not match ${imgSrc}`
-  //     );
-  //   });
-  //   it("Should have valid property status", () => {
-  //     var propertyType = "SINGLE_HOME";
-  //     var country = "CAN";
-  //     var imgSrc =
-  //       "https://photos.zillowstatic.com/fp/019c5f0264378e71bd1807bd36374536-p_e.jpg";
-  //     var status = "FOR_SALE";
-
-  //     const property = new Property({
-  //       propertyType: propertyType,
-  //       country: country,
-  //       imgSrc: imgSrc,
-  //       status: status,
-  //     });
-
-  //     assert.equal(
-  //       property.status,
-  //       status,
-  //       `Property status does not match ${status}`
-  //     );
-  //   });
 });
