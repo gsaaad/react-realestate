@@ -105,12 +105,36 @@ describe("Creates a Property Object", () => {
 //   // });
 // });
 
-describe("Get Property By Id", () => {
-  it("Should return Property with given ID", (done) => {
+// describe("Get Property By Id", () => {
+//   it("Should return Property with given ID", (done) => {
+//     // given id: 63da2cc6c00c6576010b3d7f
+//     var givenIdProperty = "63da2cc6c00c6576010b3d7f";
+//     requester
+//       .get("/api/property/" + givenIdProperty)
+//       .then((res) => {
+//         console.log("RES BODY", res.body);
+//         expect(res.status).to.equal(200);
+//         expect(res.body).to.be.an("object");
+//         expect(res.body).to.have.property("_id");
+//         expect(res.body).to.have.property("propertyType");
+//         expect(res.body).to.have.property("status");
+//         expect(res.body).to.have.property("country");
+//         expect(res.body).to.have.property("imgSrc");
+//         expect(res.body.id).to.equal(givenIdProperty);
+//         done();
+//         // done();
+//       })
+//       .catch(done);
+//   });
+// });
+
+describe("PUT Property", () => {
+  it("Should UPDATE Property with given ID", (done) => {
     // given id: 63da2cc6c00c6576010b3d7f
     var givenIdProperty = "63da2cc6c00c6576010b3d7f";
     requester
-      .get("/api/property/" + givenIdProperty)
+      .put("/api/property/" + givenIdProperty)
+      .send({ propertyType: "FOR_RENT" })
       .then((res) => {
         console.log("RES BODY", res.body);
         expect(res.status).to.equal(200);
@@ -121,6 +145,7 @@ describe("Get Property By Id", () => {
         expect(res.body).to.have.property("country");
         expect(res.body).to.have.property("imgSrc");
         expect(res.body.id).to.equal(givenIdProperty);
+        expect(res.body.propertyType).to.equal("FOR_RENT");
         done();
         // done();
       })
