@@ -1,11 +1,12 @@
 const axios = require("axios");
 const agents = require("../agents.json");
-
 require("dotenv").config();
 
+console.log(process.env);
 var mirrorToken = process.env.mirrorToken;
 var mirrorHost = process.env.mirrorHost;
 var mirrorKey = process.env.mirrorKey;
+
 console.log("mirrorToken", mirrorToken, mirrorHost, mirrorKey);
 
 function checkURL(url) {
