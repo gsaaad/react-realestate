@@ -1,7 +1,19 @@
 const { Schema, model } = require("mongoose");
 
+// Agent requires parameters:
+// name
+// email
+// imgSrc(ideally 3+ pictures)
+// profileStatement
+// representsRealtor
+// licenseId
+// agentSince
 const agentSchema = new Schema({
   name: {
+    type: String,
+    required: true,
+  },
+  email: {
     type: String,
     required: true,
   },
@@ -14,10 +26,17 @@ const agentSchema = new Schema({
   },
   profileLink: {
     type: String,
-    required: true,
   },
   profileStatement: {
     type: String,
+    required: true,
+  },
+  representsRealtor: {
+    type: String,
+    required: true,
+  },
+  licenseId: {
+    type: Number,
     required: true,
   },
   specialties: {

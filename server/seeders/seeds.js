@@ -1,6 +1,8 @@
 const HouseData = require("../houses.json");
 const dbConnection = require("../config/connection");
 const { Property } = require("../models");
+
+// delete all property, get random set of properies
 dbConnection.on("open", async () => {
   await Property.deleteMany({});
   const getRandomHouses = () => {

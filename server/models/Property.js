@@ -1,5 +1,15 @@
 const { Schema, model } = require("mongoose");
 
+// Property requires parameters:
+// propertyType,
+// country,
+// address,
+// imgSrc(ideally 3+ pictures),
+// status,
+// price,
+// ? sqft = 2200
+// ? lotsize = 3000
+
 const propertySchema = new Schema(
   {
     propertyType: {
@@ -19,6 +29,7 @@ const propertySchema = new Schema(
     },
     price: {
       type: Number,
+      required: true,
     },
     propertyArea: {
       type: Number,
@@ -31,6 +42,7 @@ const propertySchema = new Schema(
     },
     address: {
       type: String,
+      required: true,
     },
     bedrooms: {
       type: Number,
