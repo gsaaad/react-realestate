@@ -17,11 +17,11 @@ dbConnection.on("open", async () => {
         listOfHouses.push(property);
       }
     }
-    // console.log({ listOfHouses });
+    console.log({ listOfHouses });
     return listOfHouses;
   };
   var ArrayHouses = getRandomHouses();
-  console.log("Property Collection", Property.collection);
+  // console.log("Property Collection", Property.collection);
 
   await Property.insertMany(ArrayHouses);
 
