@@ -56,7 +56,7 @@ const propertySchema = new Schema(
     latitude: {
       type: Number,
     },
-    status: {
+    listingStatus: {
       type: String,
       required: true,
     },
