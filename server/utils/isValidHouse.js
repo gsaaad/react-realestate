@@ -5,8 +5,15 @@ const isValidProperty = (property) => {
   var imgSrc = !!property.imgSrc ? property.imgSrc : false;
   var status = !!property.listingStatus ? property.listingStatus : false;
   var price = !!property.price ? property.price : false;
+  var livingArea = !!property.livingArea ? property.livingArea : false;
   const isValidProperty =
-    propertyType && country && address && imgSrc && status && price;
+    propertyType &&
+    country &&
+    address &&
+    imgSrc &&
+    status &&
+    price &&
+    livingArea;
   return isValidProperty;
 };
 
