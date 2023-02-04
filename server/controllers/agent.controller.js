@@ -16,6 +16,16 @@ const agentController = {
         res.sendStatus(400);
       });
   },
+  getAgentById({ params }, res) {
+    Agent.findOne({ _id: [params.id] })
+      .then((agentData) => {
+        res.json(agentData);
+      })
+      .catch((e) => {
+        console.error(e, this.idMessage);
+        res.sendStatus(400);
+      });
+  },
 };
 
 module.exports = agentController;

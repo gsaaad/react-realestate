@@ -17,7 +17,7 @@ const propertyController = {
     Property.findOne({ _id: [params.id] })
       .then((propertyData) => res.json(propertyData))
       .catch((e) => {
-        console.log(this.errorMessage);
+        console.log(e, this.idMessage);
         res.sendStatus(400);
       });
   },
