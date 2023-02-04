@@ -26,6 +26,15 @@ const agentController = {
         res.sendStatus(400);
       });
   },
+  createAgent({ body }, res) {
+    Agent.create(body)
+      .then((agentData) => {
+        res.json(agentData);
+      })
+      .catch((e) => {
+        console.error(e, this.errorMessage);
+      });
+  },
 };
 
 module.exports = agentController;
