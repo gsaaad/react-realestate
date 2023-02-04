@@ -30,14 +30,22 @@ dbConnection.on("open", async () => {
     for (let i = 0; i < 3; i++) {
       var randomNum = Math.floor(Math.random() * agentsData.props.length - 1);
       var agent = agentsData.props[randomNum];
-      var isValid = isValidAgent(agent);
+      var validAgent = isValidAgent(agent);
+      if (validAgent) {
+        listOfAgents.push(validAgent);
+      }
     }
+    // console.log(listOfAgents);
+    return listOfAgents;
   };
   getRandomAgents();
   var ArrayHouses = getRandomHouses();
+  var ArrayAgents = getRandomAgents();
+  console.log(ArrayAgents);
   // console.log("Property Collection", Property.collection);
+  console.log("Seeding Data to mongoDB Collections: Property, Agent");
   // await Property.insertMany(ArrayHouses);
-
+  await Agent.insertMany(ArrayAgents);
   console.log("All Done Seeding.. Enjoy your search for a Home Sweet Home!");
   process.exit(0);
 });

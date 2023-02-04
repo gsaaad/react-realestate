@@ -24,5 +24,8 @@
     "mocha": "^10.2.0",
     "mongoose": "^6.8.4",
     "nodemon": "^2.0.20"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^7.6.0"
   }
 }
