@@ -16,6 +16,7 @@ import Login from "./components/Login/Login.js";
 import Register from "./components/Register/Register.js";
 import Home from "./pages/homes";
 import PNF from "./components/PNF/PNF.js";
+
 function App() {
   return (
     <Router>
