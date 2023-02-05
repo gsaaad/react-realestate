@@ -23,7 +23,7 @@ const propertyController = {
   createProperty: ({ body }, res) => {
     Property.create(body)
       .then((propertData) => res.json(propertData))
-      .catch((err) => res.json(err));
+      .catch((e) => res.json(e));
   },
   updateProperty: ({ params, body }, res) => {
     Property.findOneAndUpdate({ _id: params.id }, body, { new: true })
