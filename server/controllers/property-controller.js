@@ -1,9 +1,8 @@
-const dbConnection = require("../config/connection");
 const { Property } = require("../models");
 
 const propertyController = {
   errorMessage:
-    "There was an error while retrieving all properties... Try again Later",
+    "There was an error while managing your request... Try again Later",
   idMessage: "No Property found with this id..",
   getAllProperties(req, res) {
     Property.find({})
