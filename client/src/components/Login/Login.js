@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import photo_3 from "../../assets/img/photo_3.jpeg";
 
 import "./Login.css";
+//!when user logs in, access route to logging in
 const Login = () => {
   const [formState, setFormState] = useState({ email: "", password: "" });
 

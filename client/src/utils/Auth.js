@@ -1,6 +1,8 @@
 import decode from "jwt-decode";
 import Jwt from "jsonwebtoken";
 
+//? get authentication tool to work with backend when user logins
+
 class AuthenticationTool {
   constructor() {
     super();
