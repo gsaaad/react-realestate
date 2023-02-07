@@ -4,9 +4,9 @@ const {
   getAllAgents,
   getAgentById,
   getAgentByName,
-  getAgentByRating,
   createAgent,
   updateAgent,
+  getAgentByCity,
   deleteAgent,
   getAgentByRealtor,
 } = require("../../controllers/agent.controller");
@@ -14,8 +14,8 @@ const {
 router.route("/").get(getAllAgents).post(createAgent);
 
 router.route("/name/:name").get(getAgentByName);
-// router.route("/rating/:rating").get(getAgentByRating);
 router.route("/realtor/:representsRealtor").get(getAgentByRealtor);
+router.route("/city/:city").get(getAgentByCity);
 router
   .route("/:id")
   .get(getAgentById)

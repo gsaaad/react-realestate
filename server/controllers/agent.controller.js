@@ -33,7 +33,7 @@ const agentController = {
     console.log(" params name for agent " + params.name);
     var agentName = params.name.split("-").join(" ");
     console.log("post name split", agentName);
-    Agent.findOne({ name: agentName })
+    Agent.find({ name: agentName })
       .then((agentData) => {
         console.log("query for agent name in db result", agentData);
 
@@ -51,11 +51,30 @@ const agentController = {
   getAgentByRealtor({ params }, res) {
     console.log(" params realtor business " + params.representsRealtor);
 
-    var agentBusiness = params.representsRealtor.split("-").join(" ");
+    var agentBusiness = params.representsRealtor;
     console.log(" agentBusiness " + agentBusiness);
-    Agent.findOne({ representsRealtor: agentBusiness })
+    Agent.find({ representsRealtor: agentBusiness })
       .then((agentData) => {
         console.log("query for agent Realtor in db result", agentData);
+
+        if (!agentData) {
+          res.status(404).json({ message: this.errorMessage });
+          return false;
+        }
+        res.json(agentData);
+      })
+      .catch((e) => {
+        console.error(e, this.errorMessage);
+        res.sendStatus(400).json({ message: this.errorMessage });
+      });
+  },
+  getAgentByCity({ params }, res) {
+    console.log("agentCity:", params.city);
+    var agentCity = String(params.city) + ":";
+    console.log("agentCity:", agentCity);
+    Agent.find({ city: agentCity })
+      .then((agentData) => {
+        console.log("query for agent's city in db result", agentData);
 
         if (!agentData) {
           res.status(404).json({ message: this.errorMessage });
