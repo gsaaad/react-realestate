@@ -2,19 +2,19 @@
   display: none;
   height: 70vh;
   position: fixed;
-  width: 95%;
+  width: 93%;
   top: 15%;
   left: 3%;
   z-index: 999;
   background-color: rgb(48, 48, 48);
-  animation: fadeIn 6.5s;
+  animation: fadeIn 1.5s;
 }
 .modal-btn {
   position: fixed;
   border-radius: 5%;
 
   top: 16%;
-  right: 5%;
+  right: 6%;
 }
 .signin-header {
   margin-left: 6%;

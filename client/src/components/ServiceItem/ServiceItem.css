@@ -3,6 +3,39 @@
   margin: auto;
 }
 
+.service-desp {
+  font-size: 15px;
+}
+
 .service-btn {
   width: 85%;
+  font-size: 15px;
+}
+
+.service-image {
+  max-height: 250px;
+}
+
+@media only screen and (min-width: 768px) {
+  .service-btn {
+    font-size: 20px;
+  }
+  .service-desp {
+    font-size: 18px;
+  }
+  .service-image {
+    max-height: 375px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .service-btn {
+    font-size: 22px;
+  }
+  .service-desp {
+    font-size: 24px;
+  }
+  .service-image {
+    max-height: 450px;
+  }
 }

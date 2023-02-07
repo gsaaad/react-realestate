@@ -9,7 +9,7 @@ const ServiceItem = ({ id, service, serviceDescription, serviceImage }) => {
   const [showInfo, setShowInfo] = useState(false);
 
   return (
-    <article key={id}>
+    <article key={id} className="bg-dark p-1">
       <div className="service-item">
         <header>
           <button
@@ -28,8 +28,12 @@ const ServiceItem = ({ id, service, serviceDescription, serviceImage }) => {
         </header>
         {showInfo && (
           <div>
-            <p>{serviceDescription}</p>
-            <img src={serviceImage} alt="buying-selling-investing" />
+            <p className="service-desp">{serviceDescription}</p>
+            <img
+              src={serviceImage}
+              alt="buying-selling-investing"
+              className="service-image"
+            />
           </div>
         )}
       </div>

@@ -1,6 +1,9 @@
 import React from "react";
 import b_s_i_img from "../../assets/img/photo_5.jpeg";
 import landlordlease from "../../assets/img/photo_6.jpeg";
+import signNow from "../../assets/img/photo_7.jpeg";
+import soldNow from "../../assets/img/photo_8.jpeg";
+import renovation from "../../assets/img/renovation.jpg";
 import ServiceItem from "../ServiceItem/ServiceItem.js";
 import "./ServicesProvided.css";
 
@@ -25,21 +28,21 @@ const ServicesProvided = () => {
       service: "PROPERTY MANAGEMENT",
       serviceDescription:
         "Our professional team provide expert property management services and solutions across 4 pillars: residential, commerical, association and short term rental management.",
-      serviceImage: b_s_i_img,
-    },
-    {
-      id: 3,
-      service: "INVESTMENT STRATEGY CONSULTING",
-      serviceDescription:
-        "Get a free consultation session when you connect with one of our top tier investment strategies consultants.",
-      serviceImage: b_s_i_img,
+      serviceImage: signNow,
     },
     {
       id: 4,
+      service: "INVESTMENT STRATEGY CONSULTING",
+      serviceDescription:
+        "Get a free consultation session when you connect with one of our top tier investment strategies consultants.",
+      serviceImage: soldNow,
+    },
+    {
+      id: 5,
       service: "RENOVATION EXPERTS",
       serviceDescription:
         "Connect with a trusted expert renovational team to remodel and transform your sweet home into an even sweeter home.",
-      serviceImage: b_s_i_img,
+      serviceImage: renovation,
     },
   ];
 
