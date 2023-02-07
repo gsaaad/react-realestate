@@ -3,6 +3,7 @@ const router = require("express").Router();
 const {
   getAllAgents,
   getAgentById,
+  getAgentByName,
   createAgent,
   updateAgent,
   deleteAgent,
@@ -10,6 +11,7 @@ const {
 
 router.route("/").get(getAllAgents).post(createAgent);
 
+router.route("/name/:name").get(getAgentByName);
 router
   .route("/:id")
   .get(getAgentById)
