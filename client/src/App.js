@@ -20,7 +20,7 @@ import PNF from "./components/PNF/PNF.js";
 function App() {
   return (
     <Router>
-      <div className="App ">
+      <div className="App">
         <Nav />
         <SubNav />
         <div className="container">

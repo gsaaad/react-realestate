@@ -1,0 +1,11 @@
+.background-signin {
+  display: none;
+  position: fixed;
+  top: 5%;
+  left: 2%;
+  border-radius: 1.25%;
+  height: 99.9vh;
+  width: 97vw;
+  background-color: #18181a;
+  opacity: 99.9%;
+}

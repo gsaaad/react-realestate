@@ -11,8 +11,9 @@ const LoginModal = () => {
   const handleModalClose = (e) => {
     e.preventDefault();
     const loginContainer = document.getElementsByClassName("signin-container");
-    if (loginContainer[0].getAttribute("style") === "display: block;")
-      loginContainer[0].setAttribute("style", "display: none;");
+    const background = document.getElementsByClassName("background-signin");
+    loginContainer[0].setAttribute("style", "display: none;");
+    background[0].setAttribute("style", "display: none;");
   };
 
   const handleGoRegisterPage = (e) => {
@@ -24,10 +25,7 @@ const LoginModal = () => {
     window.location.assign("/login");
   };
   return (
-    <div
-      className="rounded border-end border-start border-light signin-container"
-      style={{ display: "none" }}
-    >
+    <div className="rounded border-end border-start border-light signin-container">
       <button className="modal-btn btn btn-danger" onClick={handleModalClose}>
         X
       </button>

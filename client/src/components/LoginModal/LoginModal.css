@@ -1,4 +1,5 @@
 .signin-container {
+  display: none;
   height: 70vh;
   position: fixed;
   width: 95%;
@@ -6,6 +7,7 @@
   left: 3%;
   z-index: 999;
   background-color: rgb(48, 48, 48);
+  animation: fadeIn 6.5s;
 }
 .modal-btn {
   position: fixed;
@@ -55,5 +57,14 @@
   }
   .signin-header {
     margin-left: 7.5%;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
