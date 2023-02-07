@@ -9,13 +9,17 @@ function SearchHouses() {
 
   function handleFormSubmit(e) {
     e.preventDefault();
+    console.log(
+      "submittin form... getting houses for sale with this location",
+      location
+    );
+
     getHouses(location);
   }
 
   function handleFormChange(e) {
     e.preventDefault();
     var userValue = e.target.value;
-
     setLocation(userValue);
   }
 
@@ -40,7 +44,7 @@ function SearchHouses() {
             </button>
           </form>
         </div>
-        <HousesForSale houses={houses} />
+        {/* <HousesForSale houses={houses} /> */}
       </div>
     </div>
   );
