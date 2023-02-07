@@ -48,7 +48,26 @@ const agentController = {
         res.sendStatus(400).json({ message: this.errorMessage });
       });
   },
+  getAgentByRealtor({ params }, res) {
+    console.log(" params realtor business " + params.representsRealtor);
 
+    var agentBusiness = params.representsRealtor.split("-").join(" ");
+    console.log(" agentBusiness " + agentBusiness);
+    Agent.findOne({ representsRealtor: agentBusiness })
+      .then((agentData) => {
+        console.log("query for agent Realtor in db result", agentData);
+
+        if (!agentData) {
+          res.status(404).json({ message: this.errorMessage });
+          return false;
+        }
+        res.json(agentData);
+      })
+      .catch((e) => {
+        console.error(e, this.errorMessage);
+        res.sendStatus(400).json({ message: this.errorMessage });
+      });
+  },
   createAgent({ body }, res) {
     Agent.create(body)
       .then((agentData) => {
