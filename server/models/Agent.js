@@ -46,6 +46,10 @@ const agentSchema = new Schema({
     type: Date,
     required: true,
   },
+  city: {
+    type: String,
+    required: true,
+  },
   reviewStars: {
     type: Number,
   },
