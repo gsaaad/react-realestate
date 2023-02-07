@@ -19,11 +19,15 @@ const isValidAgent = (agent) => {
   var name = agent?.profileLink.text.split(" ").slice(0, 2).join(" ");
   var email =
     name?.split(" ").join("_") + "@" + faker.internet.email().split("@")[1];
-  var imgSrc = agent.contact.graphic.image.src;
+  var imgSrc = agent?.contact.graphic.image.src;
   var profileStatement =
     allStatements[Math.floor(Math.random() * allStatements.length)];
-  var representsRealtor = agent.map.businessName;
+  var representsRealtor = agent?.map.businessName
+    .split(" ")
+    .slice(0, 4)
+    .join("-");
   var licenseId = Math.floor(Math.random() * 900000) + 100000;
+  var agentCity = agent?.map.label.split(" ").slice(1, 3).join(" ");
   var agentSince = faker.date.past();
   // var agentSince = dateFormat(faker.date.past())
   //   .split(" ")
@@ -45,6 +49,7 @@ const isValidAgent = (agent) => {
     imgSrc &&
     profileStatement &&
     licenseId &&
+    agentCity &&
     representsRealtor &&
     agentSince;
   if (isValidAgent) {
@@ -55,6 +60,7 @@ const isValidAgent = (agent) => {
     verifiedAgent.licenseId = licenseId;
     verifiedAgent.agentSince = agentSince;
     verifiedAgent.representsRealtor = representsRealtor;
+    verifiedAgent.city = agentCity;
     return verifiedAgent;
   }
   return isValidAgent;

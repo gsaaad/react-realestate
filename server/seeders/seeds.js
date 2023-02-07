@@ -27,7 +27,7 @@ dbConnection.on("open", async () => {
   };
   const getRandomAgents = () => {
     var listOfAgents = [];
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 20; i++) {
       var randomNum = Math.floor(Math.random() * agentsData.props.length - 1);
       var agent = agentsData.props[randomNum];
       var validAgent = isValidAgent(agent);
