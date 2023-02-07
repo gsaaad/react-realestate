@@ -2,11 +2,11 @@ import axios from "axios";
 import queryHouses from "./queryDB";
 
 function getHouses(location) {
-  var city = location.split(",")[0];
-  var province = location.split(" ")[1];
-  console.log(city, province);
+  // var city = location.split(",")[0];
+  // var province = location.split(" ")[1];
+  // console.log(city, province);
 
-  queryHouses.getallHousesDB();
+  queryHouses.getHousesByCityDB(location);
 
   //? first check Database for this location. if none, make an api call, filter and add to db if match requirements
   // const options = {
