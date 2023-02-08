@@ -14,12 +14,14 @@ const queryHouses = {
       console.error(e);
     }
   },
-  getHousesByCityDB: async (location) => {
+  getHousesByIdDB: async (propertyId) => {
+    console.log(
+      "Searching for home",
+      `//localhost:3001/api/property/${propertyId}`
+    );
     try {
       await axios
-        .get("//localhost:3001/api/property/city/:city", {
-          params: { city: location },
-        })
+        .get(`//localhost:3001/api/property/${propertyId}`)
         .then((propertyData) => {
           console.log(propertyData);
         });
