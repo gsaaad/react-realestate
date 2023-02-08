@@ -1,4 +1,5 @@
 import axios from "axios";
+import HousesArray from "../houses.json";
 
 const queryHouses = {
   errorMessage:
@@ -8,10 +9,14 @@ const queryHouses = {
     console.log("Searching for all houses in db..");
     try {
       await axios.get("//localhost:3001/api/property").then((propertyData) => {
-        console.log(propertyData);
+        console.log("sending data", propertyData);
       });
     } catch (e) {
       console.error(e);
+      // !error in request, send back temp saved data
+      console.log("Sending back TEMP DATA in the meantime..");
+      console.log(HousesArray.props.slice(0, 20));
+      return HousesArray.props.slice(0, 20);
     }
   },
   getHousesByIdDB: async (propertyId) => {
