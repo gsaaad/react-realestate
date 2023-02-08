@@ -8,7 +8,7 @@ const agentsData = require("../agents.json");
 
 dbConnection.on("open", async () => {
   // delete all properties and Agents
-  // await Property.deleteMany({});
+  await Property.deleteMany({});
   await Agent.deleteMany({});
   // get random set of houses (60)
   const getRandomHouses = () => {
@@ -19,6 +19,11 @@ dbConnection.on("open", async () => {
       const isValid = isValidProperty(property);
 
       if (isValid) {
+        console.log("this property is valid", property);
+        var city = property.address.split(",")[1];
+        var state = property.address.split(",")[2].split(" ")[1];
+        var location = city + ", " + state;
+        property.location = location;
         listOfHouses.push(property);
       }
     }
@@ -44,7 +49,7 @@ dbConnection.on("open", async () => {
   console.log(ArrayAgents);
   // console.log("Property Collection", Property.collection);
   console.log("Seeding Data to mongoDB Collections: Property, Agent");
-  // await Property.insertMany(ArrayHouses);
+  await Property.insertMany(ArrayHouses);
   await Agent.insertMany(ArrayAgents);
   console.log("All Done Seeding.. Enjoy your search for a Home Sweet Home!");
   process.exit(0);

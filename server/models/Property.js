@@ -4,6 +4,7 @@ const { Schema, model } = require("mongoose");
 // propertyType,
 // country,
 // address,
+// location (derived from address, will include city and state as STRING)
 // imgSrc(ideally 3+ pictures),
 // status,
 // price,
@@ -41,6 +42,10 @@ const propertySchema = new Schema(
       type: String,
     },
     address: {
+      type: String,
+      required: true,
+    },
+    location: {
       type: String,
       required: true,
     },

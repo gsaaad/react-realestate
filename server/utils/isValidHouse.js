@@ -6,6 +6,7 @@ const isValidProperty = (property) => {
   var status = !!property.listingStatus ? property.listingStatus : false;
   var price = !!property.price ? property.price : false;
   var livingArea = !!property.livingArea ? property.livingArea : false;
+
   const isValidProperty =
     propertyType &&
     country &&
