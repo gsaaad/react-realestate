@@ -28,6 +28,8 @@ const propertyController = {
   },
   getPropertyByCity: ({ params }, res) => {
     // location is "city, state"
+    console.log("looking properties with location....", params.location);
+
     Property.find({ location: params.location })
       .then((propertyData) => {
         console.log(propertyData);
