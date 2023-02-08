@@ -12,12 +12,33 @@ const propertyController = {
         res.sendStatus(400);
       });
   },
-  getPropertyId({ params }, res) {
+  getPropertyById({ params }, res) {
     Property.findOne({ _id: [params.id] })
-      .then((propertyData) => res.json(propertyData))
+      .then((propertyData) => {
+        if (!propertyData) {
+          res.status(404).json({ message: this.errorMessage });
+          return false;
+        }
+        res.json(propertyData);
+      })
       .catch((e) => {
         console.log(e, this.idMessage);
         res.sendStatus(400);
+      });
+  },
+  getPropertyByCity: ({ params }, res) => {
+    // location is "city, state"
+    Property.find({ location: params.location })
+      .then((propertyData) => {
+        console.log(propertyData);
+        if (!propertyData) {
+          res.status(404).json({ message: this.errorMessage });
+          return false;
+        }
+        res.json(propertyData);
+      })
+      .catch((e) => {
+        console.error(e);
       });
   },
   createProperty: ({ body }, res) => {

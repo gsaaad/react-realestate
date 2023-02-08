@@ -22,7 +22,19 @@ dbConnection.on("open", async () => {
         console.log("this property is valid", property);
         var city = property.address.split(",")[1];
         var state = property.address.split(",")[2].split(" ")[1];
-        var location = city + ", " + state;
+        console.log(city.split(" "));
+        city = city.split(" ").join("-");
+        if (city.length <= 2) {
+          console.log("1 worded city");
+          city = city[1];
+        } else {
+          console.log("multi-word city");
+          length_of_city = city.length;
+          city = city.slice(1, length_of_city);
+        }
+
+        var location = city + "-" + state;
+        console.log("city is", city, "location is", location);
         property.location = location;
         listOfHouses.push(property);
       }
