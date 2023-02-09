@@ -11,6 +11,7 @@ function HousesForSale(housesArray) {
   // var randomSliceOne = Math.floor(Math.random() * houses.length);
 
   // houses = houses.slice(randomSliceOne, randomSliceOne + 9);
+  console.log(houses);
 
   return (
     <div className="bg-primary">

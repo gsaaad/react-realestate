@@ -9,10 +9,10 @@ function House(props) {
       <div className="col mt-4">
         <div className="house-bb-rooms rounded-pill p-2 text-center text-light">
           <h2 className="house-rooms fs-fluid fw-bold p-2">
-            Bathrooms #{house.bathrooms}
+            Bathrooms: {house.bathrooms}
           </h2>
           <h2 className="house-rooms fs-fluid fw-bold p-2">
-            Bedrooms #{house.bedrooms}
+            Bedrooms: {house.bedrooms}
           </h2>
         </div>
         <h2 className="text-dark m-2 fs-fluid">
@@ -20,9 +20,10 @@ function House(props) {
           {house.address}
         </h2>
         <h3 className="text-dark m-2 fs-fluid">
-          {Math.floor(house.lotAreaValue) === 0
+          Living Area:
+          {Math.floor(house.livingArea) === 0
             ? "N/A"
-            : Math.floor(house.lotAreaValue)}
+            : Math.floor(house.livingArea)}
           <span className="text-warning fs-fluid"> sqft</span>
         </h3>
       </div>
