@@ -2,12 +2,8 @@ import axios from "axios";
 import queryHouses from "./queryHouses";
 
 function getHouses(location) {
-  var city = location.split(",")[0];
-  var province = location.split(" ")[1];
-  console.log(city, province);
-
   var housesArray = [];
-  queryHouses.getallHousesDB().then((housesData) => {
+  queryHouses.getHousesByLocation(location).then((housesData) => {
     housesArray.push(housesData);
   });
 
