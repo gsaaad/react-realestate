@@ -4,21 +4,24 @@ import HousesForSale from "../../components/HousesForSale/HousesForSale";
 import "./SearchHouses.css";
 import axios from "axios";
 function SearchHouses() {
-  const [location, setLocation] = useState("");
+  const [location, setLocation] = useState("Dallas-TX");
   const [houses, setHouses] = useState([]);
+
+  async function fetchData() {
+    await axios
+      .get(`//localhost:3001/api/property/location/` + location)
+      .then((propertyData) => {
+        setHouses(propertyData.data);
+      });
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   function handleFormSubmit(e) {
     e.preventDefault();
-    console.log(
-      "submittin form... getting houses for sale with this location",
-      location,
-      typeof location
-    );
-    axios
-      .get(`//localhost:3001/api/property/location/` + location)
-      .then((propertyData) => {
-        console.log("we got homes", propertyData.data);
-      });
+    fetchData();
   }
 
   return (

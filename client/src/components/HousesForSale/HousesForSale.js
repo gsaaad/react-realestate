@@ -4,14 +4,13 @@ import House from "../House/House";
 // import data from "../../houses.json";
 
 function HousesForSale(housesArray) {
-  // var houses = data.props;
-  // var houses = housesArray?.houses;
-  var houses = [];
+  var houses = housesArray.houses;
+  // var houses = [];
 
   // grab 9 houses from random parts of data
-  var randomSliceOne = Math.floor(Math.random() * houses.length);
+  // var randomSliceOne = Math.floor(Math.random() * houses.length);
 
-  houses = houses.slice(randomSliceOne, randomSliceOne + 9);
+  // houses = houses.slice(randomSliceOne, randomSliceOne + 9);
 
   return (
     <div className="bg-primary">
