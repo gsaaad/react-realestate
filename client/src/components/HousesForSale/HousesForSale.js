@@ -1,10 +1,12 @@
 import React from "react";
 import "./HousesForSale.css";
 import House from "../House/House";
-import data from "../../houses.json";
+// import data from "../../houses.json";
 
 function HousesForSale(housesArray) {
-  var houses = data.props;
+  // var houses = data.props;
+  var houses = housesArray?.houses;
+  // var houses = [];
 
   // grab 9 houses from random parts of data
   var randomSliceOne = Math.floor(Math.random() * houses.length);

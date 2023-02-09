@@ -1,13 +1,12 @@
-import axios from "axios";
+// import axios from "axios";
 import queryHouses from "./queryHouses";
 
 function getHouses(location) {
-  var housesArray = [];
-  queryHouses.getHousesByLocation(location).then((housesData) => {
-    housesArray.push(housesData);
-  });
+  //? first check Database for this location.
+  return queryHouses.getHousesByLocation(location);
 
-  //? first check Database for this location. if none, make an api call, filter and add to db if match requirements
+  //? if none, make an api call, filter and add to db if match requirements
+
   // const options = {
   //   method: "GET",
   //   url: process.env.REACT_APP_SEARCH_URL,

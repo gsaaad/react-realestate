@@ -46,8 +46,8 @@ const queryHouses = {
       await axios
         .get(`//localhost:3001/api/property/location/${location}`)
         .then((propertyData) => {
-          console.log(propertyData);
-          return propertyData;
+          console.log("we found these homes in DB", propertyData.data);
+          return propertyData.data;
         });
     } catch (e) {
       console.error(e);

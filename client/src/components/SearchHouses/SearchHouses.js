@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import getHouses from "../../utils/getHouses";
 import HousesForSale from "../../components/HousesForSale/HousesForSale";
 import "./SearchHouses.css";
@@ -14,7 +14,9 @@ function SearchHouses() {
       location
     );
 
-    getHouses(location);
+    getHouses(location).then((propertyData) => {
+      console.log("we got", propertyData);
+    });
   }
 
   function handleFormChange(e) {
@@ -44,7 +46,7 @@ function SearchHouses() {
             </button>
           </form>
         </div>
-        {/* <HousesForSale houses={houses} /> */}
+        <HousesForSale houses={houses} />
       </div>
     </div>
   );
