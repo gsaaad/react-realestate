@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import getHouses from "../../utils/getHouses";
 import HousesForSale from "../../components/HousesForSale/HousesForSale";
 import "./SearchHouses.css";
-
+import axios from "axios";
 function SearchHouses() {
   const [location, setLocation] = useState("");
   const [houses, setHouses] = useState([]);
@@ -11,18 +11,14 @@ function SearchHouses() {
     e.preventDefault();
     console.log(
       "submittin form... getting houses for sale with this location",
-      location
+      location,
+      typeof location
     );
-
-    getHouses(location).then((propertyData) => {
-      console.log("we got", propertyData);
-    });
-  }
-
-  function handleFormChange(e) {
-    e.preventDefault();
-    var userValue = e.target.value;
-    setLocation(userValue);
+    axios
+      .get(`//localhost:3001/api/property/location/` + location)
+      .then((propertyData) => {
+        console.log("we got homes", propertyData.data);
+      });
   }
 
   return (
@@ -39,7 +35,7 @@ function SearchHouses() {
               id="searchByCity"
               placeholder="City, Province"
               value={location}
-              onChange={handleFormChange}
+              onChange={(e) => setLocation(e.target.value)}
             />
             <button type="submit" className="btn btn-primary btn-search">
               Search

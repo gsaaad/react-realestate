@@ -5,8 +5,8 @@ import House from "../House/House";
 
 function HousesForSale(housesArray) {
   // var houses = data.props;
-  var houses = housesArray?.houses;
-  // var houses = [];
+  // var houses = housesArray?.houses;
+  var houses = [];
 
   // grab 9 houses from random parts of data
   var randomSliceOne = Math.floor(Math.random() * houses.length);
