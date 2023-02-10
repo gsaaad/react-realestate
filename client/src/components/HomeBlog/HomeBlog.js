@@ -1,4 +1,5 @@
 import "./HomeBlog.css";
+
 const HomeBlog = () => {
   return (
     <div className="bg-primary mt-3 border bg-gradient">
@@ -11,7 +12,7 @@ const HomeBlog = () => {
           <section>
             <article className=" border-bottom bg-light">
               <img
-                src={process.env.REACT_APP_HOME_ONE}
+                src="https://images.pexels.com/photos/667838/pexels-photo-667838.jpeg?auto=compress&cs=tinysrgb&w=500&h=750&dpr=1"
                 style={{ width: "95%", borderRadius: "10px" }}
                 alt="home real estate sweet home blog article"
               />
@@ -35,7 +36,7 @@ const HomeBlog = () => {
             <section className="article-main">
               <article className=" my-2">
                 <img
-                  src={process.env.REACT_APP_HOME_ONE}
+                  src="https://images.pexels.com/photos/5998051/pexels-photo-5998051.jpeg?auto=compress&cs=tinysrgb&w=500&h=750&dpr=1"
                   style={{ width: "95%", borderRadius: "10px" }}
                   alt="home real estate sweet home blog article"
                 />
@@ -59,7 +60,7 @@ const HomeBlog = () => {
             <section className="article-main">
               <article className=" my-2">
                 <img
-                  src={process.env.REACT_APP_HOME_ONE}
+                  src="https://images.pexels.com/photos/12119320/pexels-photo-12119320.jpeg?auto=compress&cs=tinysrgb&w=500&h=750&dpr=1"
                   style={{ width: "95%", borderRadius: "10px" }}
                   alt="home real estate sweet home blog article"
                 />
@@ -82,7 +83,7 @@ const HomeBlog = () => {
             <section className="article-main">
               <article className=" my-2">
                 <img
-                  src={process.env.REACT_APP_HOME_ONE}
+                  src="https://images.pexels.com/photos/3782317/pexels-photo-3782317.jpeg?auto=compress&cs=tinysrgb&w=500&h=750&dpr=1"
                   style={{ width: "95%", borderRadius: "10px" }}
                   alt="home real estate sweet home blog article"
                 />
@@ -105,7 +106,7 @@ const HomeBlog = () => {
             <section className="article-main">
               <article className=" my-2">
                 <img
-                  src={process.env.REACT_APP_HOME_ONE}
+                  src="https://images.pexels.com/photos/6289026/pexels-photo-6289026.jpeg?auto=compress&cs=tinysrgb&w=500&h=750&dpr=1"
                   style={{ width: "95%", borderRadius: "10px" }}
                   alt="home real estate sweet home blog article"
                 />
