@@ -17,7 +17,7 @@ function SubNav() {
           <a href="/services">Services</a>
         </li>
         <li className="col sub-item bg-light bg-gradient">
-          Mortgage Calculators
+          <a href="/mortgagecalculators">Mortgage Calculators</a>
         </li>
         <li className="col sub-item bg-light bg-gradient">
           <a href="/blog">Home Sweet Home Blog</a>

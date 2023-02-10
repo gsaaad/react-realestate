@@ -33,6 +33,7 @@ function App() {
             <Route path="/blog" element={<HomeBlog />} />
             <Route path="/policy" element={<PrivacyPolicy />} />
             <Route path="/ethics" element={<CodeEthics />} />
+            {/* <Route path="/mortgagecalculators" element={<m}/> */}
             <Route path="*" element={<PNF />} />
           </Routes>
         </div>
