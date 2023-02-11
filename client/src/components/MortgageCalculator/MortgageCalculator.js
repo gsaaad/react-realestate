@@ -4,7 +4,7 @@ import "./MortgageCalculator.css";
 const MortgageCalculator = () => {
   const [housePrice, setHousePrice] = useState(649999);
   const [formattedPrice, setFormattedPrice] = useState(priceFormat(housePrice));
-
+  const stringPrice = String(housePrice);
   const handleHousePriceForm = (e) => {
     e.preventDefault();
     var userHousePrice = priceFormat(housePrice);
@@ -21,18 +21,20 @@ const MortgageCalculator = () => {
     return priceFormat(priceFormat(price) * percent);
   };
   const calculateLoan = (price, downpaymentRate) => {
+    const tempPrice = priceFormat(price);
+
     if (downpaymentRate >= 20) {
-      return priceFormat(price - (price * downpaymentRate) / 100);
+      return priceFormat(tempPrice - (tempPrice * downpaymentRate) / 100);
     } else if (downpaymentRate > 5 && downpaymentRate < 10) {
       // downpayment is reduced, and PMI is applied at rate 2.8% in the loan total
       return priceFormat(
-        price - ((price * downpaymentRate) / 100 + price * 0.028)
+        tempPrice - ((tempPrice * downpaymentRate) / 100 + tempPrice * 0.028)
       );
     } else {
       // downpayment is reduced, and PMI is applied at rate 3.7% in the loan total
 
       return priceFormat(
-        price - ((price * downpaymentRate) / 100 + price * 0.037)
+        tempPrice - ((tempPrice * downpaymentRate) / 100 + tempPrice * 0.037)
       );
     }
   };
@@ -102,9 +104,9 @@ const MortgageCalculator = () => {
             </div>
             <div className="row border-bottom border-2 bg-primary text-light total-mortgage-container rounded shadow">
               <div className="col ">TOTAL Mortage Required</div>
-              <div className="col">{calculateLoan(housePrice, 5)}</div>
-              <div className="col">{calculateLoan(housePrice, 10)}</div>
-              <div className="col"> {calculateLoan(housePrice, 20)}</div>
+              <div className="col">{calculateLoan(formattedPrice, 5)}</div>
+              <div className="col">{calculateLoan(formattedPrice, 10)}</div>
+              <div className="col"> {calculateLoan(formattedPrice, 20)}</div>
             </div>
             <div className="row">
               <div className="col"></div>
@@ -115,64 +117,86 @@ const MortgageCalculator = () => {
             </div>
             <div className="row border-bottom border-3 ">
               <div className="col">Amortization period (Yrs)</div>
-              <input
-                type="text"
-                value="10"
-                readOnly={true}
-                style={{
-                  maxWidth: "17.5%",
-                  margin: "0px 12.95px",
-                  textAlign: "center",
-                }}
-              />
-              <input
-                type="text"
-                value="15"
-                readOnly={true}
-                style={{
-                  maxWidth: "17.5%",
-                  margin: "0px 12.95px",
-                  textAlign: "center",
-                }}
-              />
-              <input
-                type="text"
-                value="30"
-                readOnly={true}
-                style={{
-                  maxWidth: "17.5%",
-                  margin: "0px 12.95px",
-                  textAlign: "center",
-                }}
-              />
+
+              <select
+                className="amortization-period-options"
+                id="scenario-1-amor-period"
+              >
+                <option>5</option>
+                <option>10</option>
+                <option>15</option>
+                <option>20</option>
+                <option>25</option>
+                <option>30</option>
+              </select>
+              <select
+                className="amortization-period-options"
+                id="scenario-2-amor-period"
+              >
+                <option>5</option>
+                <option>10</option>
+                <option>15</option>
+                <option>20</option>
+                <option>25</option>
+                <option>30</option>
+              </select>
+              <select
+                className="amortization-period-options"
+                id="scenario-3-amor-period"
+              >
+                <option>5</option>
+                <option>10</option>
+                <option>15</option>
+                <option>20</option>
+                <option>25</option>
+                <option>30</option>
+              </select>
             </div>
 
             <div className="row border-bottom border-2">
               <div className="col">Mortgage Rate (%)</div>
-              <input
-                type="text"
-                name="mortgage-rate-one"
-                value="2.5%"
+              <select
                 className="col mortgage-rate"
-                readOnly={true}
-              />
-              <input
-                type="text"
-                name="mortgage-rate-two"
-                value="5%"
-                readOnly={true}
+                id="scenario-1-mortgage-rate"
+              >
+                <option>2.25</option>
+                <option>3.00</option>
+                <option>3.75</option>
+                <option>4.50</option>
+                <option>5.25</option>
+                <option>6.00</option>
+                <option>8.00</option>
+                <option>10.00</option>
+              </select>
+              <select
                 className="col mortgage-rate"
-              />
-              <input
-                type="text"
-                name="mortgage-rate-three"
-                value="7%"
-                readOnly={true}
+                id="scenario-2-mortgage-rate"
+              >
+                <option>2.25</option>
+                <option>3.00</option>
+                <option>3.75</option>
+                <option>4.50</option>
+                <option>5.25</option>
+                <option>6.00</option>
+                <option>8.00</option>
+                <option>10.00</option>
+              </select>
+              <select
                 className="col mortgage-rate"
-              />
+                id="scenario-3-mortgage-rate"
+              >
+                <option>2.25</option>
+                <option>3.00</option>
+                <option>3.75</option>
+                <option>4.50</option>
+                <option>5.25</option>
+                <option>6.00</option>
+                <option>8.00</option>
+                <option>10.00</option>
+              </select>
             </div>
             <div className="bg-light">
-              <h2 className="bg-primary rounded shadow text-light">
+              <h2 className="bg-primary rounded shadow text-light mt-4">
                 Land Transfer Tax || Profile
               </h2>
               <div className="row ">

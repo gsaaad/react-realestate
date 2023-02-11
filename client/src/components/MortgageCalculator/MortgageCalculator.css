@@ -43,9 +43,14 @@
 .mortgage-calc {
   font-size: 14px;
 }
+.amortization-period-options {
+  max-width: 19%;
+  margin: 0px 10px;
+  text-align: center;
+}
 .mortgage-rate {
-  max-width: 17.5%;
-  margin: 0px 13px;
+  max-width: 19%;
+  margin: 0px 10px;
   text-align: center;
 }
 
