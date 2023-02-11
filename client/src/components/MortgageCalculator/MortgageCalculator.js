@@ -4,7 +4,13 @@ import "./MortgageCalculator.css";
 const MortgageCalculator = () => {
   const [housePrice, setHousePrice] = useState(649999);
   const [formattedPrice, setFormattedPrice] = useState(priceFormat(housePrice));
-  const stringPrice = String(housePrice);
+  const [s1MortgageRate, setS1MortgageRate] = useState(2.25);
+  const [s2MortgageRate, setS2MortgageRate] = useState(2.25);
+  const [s3MortgageRate, setS3MortgageRate] = useState(2.25);
+  const [s1AmorPeriod, setS1AmorPeriod] = useState(5);
+  const [s2AmorPeriod, setS2AmorPeriod] = useState(5);
+  const [s3AmorPeriod, setS3AmorPeriod] = useState(5);
+
   const handleHousePriceForm = (e) => {
     e.preventDefault();
     var userHousePrice = priceFormat(housePrice);
@@ -39,13 +45,15 @@ const MortgageCalculator = () => {
     }
   };
   const calculateMortgagePayment = (loanPrincipal, rate, years) => {
+    var principal = loanPrincipal;
+    principal = priceFormat(principal);
     var numOfMonths = years * 12;
-    var monthlyRate = rate / 12;
-    var topSection = monthlyRate * (1 + monthlyRate ** numOfMonths);
-    var botSection = 1 + monthlyRate ** numOfMonths - 1;
-
+    var monthlyRate = rate / 100 / 12;
+    var topSection = principal * monthlyRate * (1 + monthlyRate ** numOfMonths);
+    var botSection = (1 + monthlyRate) ** numOfMonths - 1;
+    console.log(principal, topSection, botSection, rate, years);
     // console.log("MONTHLY MORTGAGE:", (price * topSection) / botSection);
-    return ((loanPrincipal * topSection) / botSection).toFixed(2);
+    return priceFormat((topSection / botSection).toFixed(2));
   };
 
   return (
@@ -121,6 +129,7 @@ const MortgageCalculator = () => {
               <select
                 className="amortization-period-options"
                 id="scenario-1-amor-period"
+                onChange={(e) => setS1AmorPeriod(e.target.value)}
               >
                 <option>5</option>
                 <option>10</option>
@@ -132,6 +141,7 @@ const MortgageCalculator = () => {
               <select
                 className="amortization-period-options"
                 id="scenario-2-amor-period"
+                onChange={(e) => setS2AmorPeriod(e.target.value)}
               >
                 <option>5</option>
                 <option>10</option>
@@ -143,6 +153,7 @@ const MortgageCalculator = () => {
               <select
                 className="amortization-period-options"
                 id="scenario-3-amor-period"
+                onChange={(e) => setS3AmorPeriod(e.target.value)}
               >
                 <option>5</option>
                 <option>10</option>
@@ -158,6 +169,9 @@ const MortgageCalculator = () => {
               <select
                 className="col mortgage-rate"
                 id="scenario-1-mortgage-rate"
+                onChange={(e) => {
+                  setS1MortgageRate(e.target.value);
+                }}
               >
                 <option>2.25</option>
                 <option>3.00</option>
@@ -171,6 +185,9 @@ const MortgageCalculator = () => {
               <select
                 className="col mortgage-rate"
                 id="scenario-2-mortgage-rate"
+                onChange={(e) => {
+                  setS2MortgageRate(e.target.value);
+                }}
               >
                 <option>2.25</option>
                 <option>3.00</option>
@@ -184,6 +201,9 @@ const MortgageCalculator = () => {
               <select
                 className="col mortgage-rate"
                 id="scenario-3-mortgage-rate"
+                onChange={(e) => {
+                  setS3MortgageRate(e.target.value);
+                }}
               >
                 <option>2.25</option>
                 <option>3.00</option>
@@ -209,18 +229,12 @@ const MortgageCalculator = () => {
                   <div>
                     <span className="row">
                       <span className="col">Province</span>
-                      <select className="col">
+                      <select className="col" id="state-property-tax">
                         <option>Ontario</option>
                         <option>Manitoba</option>
                       </select>
                     </span>
-                    <span className="row">
-                      <span className="col">City</span>
-                      <select className="col">
-                        <option>Toronto</option>
-                        <option>Oakville</option>
-                      </select>
-                    </span>
+
                     <div className="first-home-buyer">
                       <span>First Time Home Buyer</span>
                       <input type="checkbox" />
@@ -235,10 +249,6 @@ const MortgageCalculator = () => {
                     <span className="row">
                       <span className="col">Provincial</span>
                       <span className="col">+ $10,000</span>
-                    </span>
-                    <span className="row">
-                      <span className="col">Municipal</span>
-                      <span className="col">+ $5,000</span>
                     </span>
                     <span className="row">
                       <span className="col">Rebate:</span>
@@ -256,44 +266,28 @@ const MortgageCalculator = () => {
                 <option>Accelerated Bi-Weekly</option>
               </select>
               <span className="col monthly-payment">
-                {calculateMortgagePayment()}+ {priceFormat(15000 / 12)}{" "}
-                (property tax) + Unique Lifestyle Bills
+                {calculateMortgagePayment(
+                  formattedPrice,
+                  s1MortgageRate,
+                  s1AmorPeriod
+                )}{" "}
+                +{priceFormat(15000 / 12)} (property tax) + Unique Lifestyle
               </span>
               <span className="col monthly-payment">
-                {priceFormat(
-                  calculateMortgagePayment(
-                    housePrice -
-                      calculateRate(
-                        Number(formattedPrice.replace(/[^0-9.]+/g, "")),
-                        0.1
-                      ) +
-                      calculateRate(
-                        Number(formattedPrice.replace(/[^0-9.]+/g, "")),
-                        0.02
-                      ),
-                    0.025,
-                    25
-                  )
+                {calculateMortgagePayment(
+                  formattedPrice,
+                  s2MortgageRate,
+                  s2AmorPeriod
                 )}
-                + {priceFormat(15000 / 12)} (property tax) + Bills
+                + {priceFormat(15000 / 12)} (property tax) + Unique Lifestyle
               </span>
               <span className="col monthly-payment">
-                {priceFormat(
-                  calculateMortgagePayment(
-                    housePrice -
-                      calculateRate(
-                        Number(formattedPrice.replace(/[^0-9.]+/g, "")),
-                        0.15
-                      ) +
-                      calculateRate(
-                        Number(formattedPrice.replace(/[^0-9.]+/g, "")),
-                        0.015
-                      ),
-                    0.025,
-                    30
-                  )
+                {calculateMortgagePayment(
+                  formattedPrice,
+                  s3MortgageRate,
+                  s3AmorPeriod
                 )}
-                + {priceFormat(15000 / 12)} (property tax) + Bills
+                + {priceFormat(15000 / 12)} (property tax) + Unique Lifestyle
               </span>
             </div>
           </div>
