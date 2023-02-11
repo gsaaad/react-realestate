@@ -4,9 +4,7 @@ import "./MortgageCalculator.css";
 const MortgageCalculator = () => {
   const [housePrice, setHousePrice] = useState(649999);
   const [formattedPrice, setFormattedPrice] = useState(priceFormat(housePrice));
-  const [rateOne, setRateOne] = useState(2.5);
-  const [rateTwo, setRateTwo] = useState(4.5);
-  const [rateThree, setRateThree] = useState(6.5);
+
   const handleHousePriceForm = (e) => {
     e.preventDefault();
     var userHousePrice = priceFormat(housePrice);
@@ -20,17 +18,32 @@ const MortgageCalculator = () => {
     setHousePrice(userInput);
   };
   const calculateRate = (price, percent) => {
-    return price * percent;
+    return priceFormat(priceFormat(price) * percent);
   };
+  const calculateLoan = (price, downpaymentRate) => {
+    if (downpaymentRate >= 20) {
+      return priceFormat(price - (price * downpaymentRate) / 100);
+    } else if (downpaymentRate > 5 && downpaymentRate < 10) {
+      // downpayment is reduced, and PMI is applied at rate 2.8% in the loan total
+      return priceFormat(
+        price - ((price * downpaymentRate) / 100 + price * 0.028)
+      );
+    } else {
+      // downpayment is reduced, and PMI is applied at rate 3.7% in the loan total
 
-  const calculateMortgagePayment = (price, rate, years) => {
+      return priceFormat(
+        price - ((price * downpaymentRate) / 100 + price * 0.037)
+      );
+    }
+  };
+  const calculateMortgagePayment = (loanPrincipal, rate, years) => {
     var numOfMonths = years * 12;
     var monthlyRate = rate / 12;
-    var topSection = monthlyRate * (1 + monthlyRate * numOfMonths);
-    var botSection = 1 + monthlyRate * numOfMonths - 1;
+    var topSection = monthlyRate * (1 + monthlyRate ** numOfMonths);
+    var botSection = 1 + monthlyRate ** numOfMonths - 1;
 
     // console.log("MONTHLY MORTGAGE:", (price * topSection) / botSection);
-    return ((price * topSection) / botSection).toFixed(2);
+    return ((loanPrincipal * topSection) / botSection).toFixed(2);
   };
 
   return (
@@ -47,6 +60,7 @@ const MortgageCalculator = () => {
           </button>
         </div>
         <div className="bg-light form-calc-container">
+          <h2>Standard Fixed-Rate Loan</h2>
           <form className="form-calc" onSubmit={handleHousePriceForm}>
             <label>Asking Price:</label>
             <input
@@ -69,116 +83,32 @@ const MortgageCalculator = () => {
               <div className="col">Scenario 3</div>
             </div>
             <div className="row border-bottom border-2">
-              <div className="col">Down Payment</div>
+              <div className="col">Down Payment Rate</div>
               <div className="col">5%</div>
               <div className="col">10%</div>
-              <div className="col">15%</div>
+              <div className="col">20%</div>
             </div>
             <div className="row border-bottom border-2">
-              <div className="col">Amount:</div>
-              <div className="col">
-                -
-                {priceFormat(
-                  calculateRate(
-                    Number(formattedPrice.replace(/[^0-9.]+/g, "")),
-                    0.05
-                  )
-                )}
-              </div>
-              <div className="col">
-                -
-                {priceFormat(
-                  calculateRate(
-                    Number(formattedPrice.replace(/[^0-9.]+/g, "")),
-                    0.1
-                  )
-                )}
-              </div>
-              <div className="col">
-                -
-                {priceFormat(
-                  calculateRate(
-                    Number(formattedPrice.replace(/[^0-9.]+/g, "")),
-                    0.15
-                  )
-                )}
-              </div>
+              <div className="col">Down-Payment:</div>
+              <div className="col">-{calculateRate(formattedPrice, 0.05)}</div>
+              <div className="col">-{calculateRate(formattedPrice, 0.1)}</div>
+              <div className="col">-{calculateRate(formattedPrice, 0.2)}</div>
             </div>
             <div className="row border-bottom border-2">
               <div className="col">Insurance:</div>
-              <div className="col">
-                +
-                {priceFormat(
-                  calculateRate(
-                    Number(formattedPrice.replace(/[^0-9.]+/g, "")),
-                    0.037
-                  )
-                )}
-              </div>
-              <div className="col">
-                +
-                {priceFormat(
-                  calculateRate(
-                    Number(formattedPrice.replace(/[^0-9.]+/g, "")),
-                    0.02
-                  )
-                )}
-              </div>
-              <div className="col">
-                +
-                {priceFormat(
-                  calculateRate(
-                    Number(formattedPrice.replace(/[^0-9.]+/g, "")),
-                    0.014
-                  )
-                )}
-              </div>
+              <div className="col">+{calculateRate(formattedPrice, 0.037)}</div>
+              <div className="col">+{calculateRate(formattedPrice, 0.028)}</div>
+              <div className="col">+{calculateRate(formattedPrice, 0)}</div>
             </div>
             <div className="row border-bottom border-2 bg-primary text-light total-mortgage-container rounded shadow">
               <div className="col ">TOTAL Mortage Required</div>
-              <div className="col">
-                {priceFormat(
-                  housePrice -
-                    calculateRate(
-                      Number(formattedPrice.replace(/[^0-9.]+/g, "")),
-                      0.05
-                    ) +
-                    calculateRate(
-                      Number(formattedPrice.replace(/[^0-9.]+/g, "")),
-                      0.037
-                    )
-                )}
-              </div>
-              <div className="col">
-                {priceFormat(
-                  housePrice -
-                    calculateRate(
-                      Number(formattedPrice.replace(/[^0-9.]+/g, "")),
-                      0.1
-                    ) +
-                    calculateRate(
-                      Number(formattedPrice.replace(/[^0-9.]+/g, "")),
-                      0.02
-                    )
-                )}
-              </div>
-              <div className="col">
-                {" "}
-                {priceFormat(
-                  housePrice -
-                    calculateRate(
-                      Number(formattedPrice.replace(/[^0-9.]+/g, "")),
-                      0.15
-                    ) +
-                    calculateRate(
-                      Number(formattedPrice.replace(/[^0-9.]+/g, "")),
-                      0.015
-                    )
-                )}
-              </div>
+              <div className="col">{calculateLoan(housePrice, 5)}</div>
+              <div className="col">{calculateLoan(housePrice, 10)}</div>
+              <div className="col"> {calculateLoan(housePrice, 20)}</div>
             </div>
             <div className="row">
               <div className="col"></div>
+              {/* ? abiltiy to show different rates for each amortization rate? combos */}
               <div className="col">Scenario 1</div>
               <div className="col">Scenario 2</div>
               <div className="col">Scenario 3</div>
@@ -187,7 +117,7 @@ const MortgageCalculator = () => {
               <div className="col">Amortization period (Yrs)</div>
               <input
                 type="text"
-                value="15"
+                value="10"
                 readOnly={true}
                 style={{
                   maxWidth: "17.5%",
@@ -197,7 +127,7 @@ const MortgageCalculator = () => {
               />
               <input
                 type="text"
-                value="25"
+                value="15"
                 readOnly={true}
                 style={{
                   maxWidth: "17.5%",
@@ -222,27 +152,27 @@ const MortgageCalculator = () => {
               <input
                 type="text"
                 name="mortgage-rate-one"
-                value={rateOne}
+                value="2.5%"
                 className="col mortgage-rate"
                 readOnly={true}
               />
               <input
                 type="text"
                 name="mortgage-rate-two"
-                value={rateTwo}
+                value="5%"
                 readOnly={true}
                 className="col mortgage-rate"
               />
               <input
                 type="text"
                 name="mortgage-rate-three"
-                value={rateThree}
+                value="7%"
                 readOnly={true}
                 className="col mortgage-rate"
               />
             </div>
             <div className="bg-light">
-              <h2 className="bg-primary rounded shadow text-light m-2">
+              <h2 className="bg-primary rounded shadow text-light">
                 Land Transfer Tax || Profile
               </h2>
               <div className="row ">
@@ -302,22 +232,8 @@ const MortgageCalculator = () => {
                 <option>Accelerated Bi-Weekly</option>
               </select>
               <span className="col monthly-payment">
-                {priceFormat(
-                  calculateMortgagePayment(
-                    housePrice -
-                      calculateRate(
-                        Number(formattedPrice.replace(/[^0-9.]+/g, "")),
-                        0.05
-                      ) +
-                      calculateRate(
-                        Number(formattedPrice.replace(/[^0-9.]+/g, "")),
-                        0.037
-                      ),
-                    0.025,
-                    15
-                  )
-                )}
-                + {priceFormat(15000 / 12)} (property tax) + Bills
+                {calculateMortgagePayment()}+ {priceFormat(15000 / 12)}{" "}
+                (property tax) + Unique Lifestyle Bills
               </span>
               <span className="col monthly-payment">
                 {priceFormat(

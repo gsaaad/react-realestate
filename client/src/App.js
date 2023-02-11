@@ -16,7 +16,7 @@ import Login from "./components/Login/Login.js";
 import Register from "./components/Register/Register.js";
 import Home from "./pages/homes";
 import PNF from "./components/PNF/PNF.js";
-import MortgageCalculator from "./components/";
+import MortgageCalculator from "./components/MortgageCalculator/MortgageCalculator";
 
 function App() {
   return (
@@ -35,7 +35,7 @@ function App() {
             <Route path="/policy" element={<PrivacyPolicy />} />
             <Route path="/ethics" element={<CodeEthics />} />
             <Route path="*" element={<PNF />} />
-            {/* <Route path="/calculator" element={<MortgageCalculator />} /> */}
+            <Route path="/calculator" element={<MortgageCalculator />} />
           </Routes>
         </div>
         <LoginModal />
