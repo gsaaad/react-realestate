@@ -12,6 +12,7 @@ const MortgageCalculator = () => {
   const [s2AmorPeriod, setS2AmorPeriod] = useState(5);
   const [s3AmorPeriod, setS3AmorPeriod] = useState(5);
   const [propertyState, setPropertyState] = useState("ON");
+  const [paymentFrequency, setPaymentFrequency] = useState(12);
 
   const handleHousePriceForm = (e) => {
     e.preventDefault();
@@ -65,6 +66,16 @@ const MortgageCalculator = () => {
   const calculatePropertyTaxRate = () => {
     const result = getPropertyTaxRate() / 100;
     return priceFormat((result * housePrice).toFixed(2));
+  };
+
+  const handlePaymentFrequency = (e) => {
+    e.preventDefault();
+    const frequency = e.target.value;
+    frequency === "Monthly"
+      ? setPaymentFrequency(12)
+      : frequency === "Bi-Weekly"
+      ? setPaymentFrequency(24)
+      : setPaymentFrequency(26);
   };
 
   return (
@@ -281,7 +292,10 @@ const MortgageCalculator = () => {
             </div>
             <div className="row border-bottom border-2 bg-primary text-light">
               <h4 className="col">TOTAL Mortgage Payment</h4>
-              <select className="mortgage-frequency">
+              <select
+                className="mortgage-frequency"
+                onChange={(e) => handlePaymentFrequency(e)}
+              >
                 <option>Monthly</option>
                 <option>Bi-Weekly</option>
                 <option>Accelerated Bi-Weekly</option>
@@ -292,7 +306,10 @@ const MortgageCalculator = () => {
                   s1MortgageRate,
                   s1AmorPeriod
                 )}{" "}
-                +{priceFormat(priceFormat(calculatePropertyTaxRate()) / 12)}{" "}
+                +
+                {priceFormat(
+                  priceFormat(calculatePropertyTaxRate()) / paymentFrequency
+                )}{" "}
                 (property tax) + Unique Lifestyle
               </span>
               <span className="col monthly-payment">
@@ -301,7 +318,10 @@ const MortgageCalculator = () => {
                   s2MortgageRate,
                   s2AmorPeriod
                 )}{" "}
-                +{priceFormat(priceFormat(calculatePropertyTaxRate()) / 12)}{" "}
+                +
+                {priceFormat(
+                  priceFormat(calculatePropertyTaxRate()) / paymentFrequency
+                )}{" "}
                 (property tax) + Unique Lifestyle
               </span>
               <span className="col monthly-payment">
@@ -310,7 +330,10 @@ const MortgageCalculator = () => {
                   s3MortgageRate,
                   s3AmorPeriod
                 )}{" "}
-                +{priceFormat(priceFormat(calculatePropertyTaxRate()) / 12)}{" "}
+                +
+                {priceFormat(
+                  priceFormat(calculatePropertyTaxRate()) / paymentFrequency
+                )}{" "}
                 (property tax) + Unique Lifestyle
               </span>
             </div>
