@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import priceFormat from "../../utils/priceFormat";
 import "./MortgageCalculator.css";
+import propertyTaxRates from "../../propertyTax.json";
 const MortgageCalculator = () => {
   const [housePrice, setHousePrice] = useState(649999);
   const [formattedPrice, setFormattedPrice] = useState(priceFormat(housePrice));
@@ -10,6 +11,7 @@ const MortgageCalculator = () => {
   const [s1AmorPeriod, setS1AmorPeriod] = useState(5);
   const [s2AmorPeriod, setS2AmorPeriod] = useState(5);
   const [s3AmorPeriod, setS3AmorPeriod] = useState(5);
+  const [propertyState, setPropertyState] = useState("ON");
 
   const handleHousePriceForm = (e) => {
     e.preventDefault();
@@ -20,7 +22,6 @@ const MortgageCalculator = () => {
   const handleHousePrice = (e) => {
     e.preventDefault();
     var userInput = e.target.value;
-    console.log(userInput);
     setHousePrice(userInput);
   };
   const calculateRate = (price, percent) => {
@@ -51,9 +52,19 @@ const MortgageCalculator = () => {
     var monthlyRate = rate / 100 / 12;
     var topSection = principal * monthlyRate * (1 + monthlyRate ** numOfMonths);
     var botSection = (1 + monthlyRate) ** numOfMonths - 1;
-    console.log(principal, topSection, botSection, rate, years);
-    // console.log("MONTHLY MORTGAGE:", (price * topSection) / botSection);
     return priceFormat((topSection / botSection).toFixed(2));
+  };
+  const getPropertyTaxRate = () => {
+    const pronvinces = propertyTaxRates.provincePropertyTax;
+    const result = pronvinces.filter(
+      (province) => province.name === propertyState
+    );
+    const propertyRate = result[0].rate;
+    return propertyRate;
+  };
+  const calculatePropertyTaxRate = () => {
+    const result = getPropertyTaxRate() / 100;
+    return priceFormat((result * housePrice).toFixed(2));
   };
 
   return (
@@ -221,7 +232,7 @@ const MortgageCalculator = () => {
               </h2>
               <div className="row ">
                 <h5>Total Land Transfer Tax:</h5>
-                <h5>+$15,000</h5>
+                <h5>+{calculatePropertyTaxRate()}</h5>
               </div>
               <div className="row land-tax-container ">
                 <div className="col">
@@ -229,9 +240,19 @@ const MortgageCalculator = () => {
                   <div>
                     <span className="row">
                       <span className="col">Province</span>
-                      <select className="col" id="state-property-tax">
-                        <option>Ontario</option>
-                        <option>Manitoba</option>
+                      <select
+                        className="col"
+                        id="state-property-tax"
+                        onChange={(e) => setPropertyState(e.target.value)}
+                      >
+                        <option>ON</option>
+                        <option>MN</option>
+                        <option>BC</option>
+                        <option>AB</option>
+                        <option>NB</option>
+                        <option>SK</option>
+                        <option>NL</option>
+                        <option>NS</option>
                       </select>
                     </span>
 
@@ -247,11 +268,11 @@ const MortgageCalculator = () => {
                   </span>
                   <div>
                     <span className="row">
-                      <span className="col">Provincial</span>
-                      <span className="col">+ $10,000</span>
+                      <span className="col">Provincial Rate(%)</span>
+                      <span className="col">{getPropertyTaxRate()}</span>
                     </span>
                     <span className="row">
-                      <span className="col">Rebate:</span>
+                      <span className="col">Rebate($):</span>
                       <span className="col">- $0</span>
                     </span>
                   </div>
@@ -271,23 +292,26 @@ const MortgageCalculator = () => {
                   s1MortgageRate,
                   s1AmorPeriod
                 )}{" "}
-                +{priceFormat(15000 / 12)} (property tax) + Unique Lifestyle
+                +{priceFormat(priceFormat(calculatePropertyTaxRate()) / 12)}{" "}
+                (property tax) + Unique Lifestyle
               </span>
               <span className="col monthly-payment">
                 {calculateMortgagePayment(
                   formattedPrice,
                   s2MortgageRate,
                   s2AmorPeriod
-                )}
-                + {priceFormat(15000 / 12)} (property tax) + Unique Lifestyle
+                )}{" "}
+                +{priceFormat(priceFormat(calculatePropertyTaxRate()) / 12)}{" "}
+                (property tax) + Unique Lifestyle
               </span>
               <span className="col monthly-payment">
                 {calculateMortgagePayment(
                   formattedPrice,
                   s3MortgageRate,
                   s3AmorPeriod
-                )}
-                + {priceFormat(15000 / 12)} (property tax) + Unique Lifestyle
+                )}{" "}
+                +{priceFormat(priceFormat(calculatePropertyTaxRate()) / 12)}{" "}
+                (property tax) + Unique Lifestyle
               </span>
             </div>
           </div>
