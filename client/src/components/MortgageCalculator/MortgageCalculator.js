@@ -13,6 +13,7 @@ const MortgageCalculator = () => {
   const [s3AmorPeriod, setS3AmorPeriod] = useState(5);
   const [propertyState, setPropertyState] = useState("ON");
   const [paymentFrequency, setPaymentFrequency] = useState(12);
+  const [rebateMoney, setRebateMoney] = useState(0);
 
   const handleHousePriceForm = (e) => {
     e.preventDefault();
@@ -70,7 +71,6 @@ const MortgageCalculator = () => {
     const result = getPropertyTaxRate() / 100;
     return priceFormat((result * housePrice).toFixed(2));
   };
-
   const handlePaymentFrequency = (e) => {
     e.preventDefault();
     const frequency = e.target.value;
@@ -79,6 +79,16 @@ const MortgageCalculator = () => {
       : frequency === "Bi-Weekly"
       ? setPaymentFrequency(24)
       : setPaymentFrequency(26);
+  };
+  const handleRebate = (e) => {
+    console.log(e.target.checked);
+    var propertyTax = priceFormat(calculatePropertyTaxRate());
+    var totalRebate = propertyTax * (2 / 3);
+    console.log(totalRebate);
+    console.log(e.target.checked === true);
+
+    e.target.checked === true ? setRebateMoney(totalRebate) : setRebateMoney(0);
+    console.log(rebateMoney);
   };
 
   return (
@@ -272,7 +282,10 @@ const MortgageCalculator = () => {
 
                     <div className="first-home-buyer">
                       <span>First Time Home Buyer</span>
-                      <input type="checkbox" />
+                      <input
+                        type="checkbox"
+                        onChange={(e) => handleRebate(e)}
+                      />
                     </div>
                   </div>
                 </div>
@@ -287,7 +300,7 @@ const MortgageCalculator = () => {
                     </span>
                     <span className="row">
                       <span className="col">Rebate($):</span>
-                      <span className="col">- $0</span>
+                      <span className="col">- ${rebateMoney}</span>
                     </span>
                   </div>
                 </div>
