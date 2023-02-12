@@ -69,7 +69,10 @@ const MortgageCalculator = () => {
   };
   const calculatePropertyTaxRate = () => {
     const result = getPropertyTaxRate() / 100;
-    return priceFormat((result * housePrice).toFixed(2));
+    const propertTaxAmount = priceFormat(
+      (result * housePrice - rebateMoney).toFixed(2)
+    );
+    return propertTaxAmount;
   };
   const handlePaymentFrequency = (e) => {
     e.preventDefault();
