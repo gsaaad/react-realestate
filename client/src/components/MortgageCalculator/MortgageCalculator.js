@@ -53,7 +53,10 @@ const MortgageCalculator = () => {
     var monthlyRate = rate / 100 / 12;
     var topSection = principal * monthlyRate * (1 + monthlyRate ** numOfMonths);
     var botSection = (1 + monthlyRate) ** numOfMonths - 1;
-    return priceFormat((topSection / botSection).toFixed(2));
+    var mortgagePayment = priceFormat(
+      (((topSection / botSection) * 12) / paymentFrequency).toFixed(2)
+    );
+    return mortgagePayment;
   };
   const getPropertyTaxRate = () => {
     const pronvinces = propertyTaxRates.provincePropertyTax;
