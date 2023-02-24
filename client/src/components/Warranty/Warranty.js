@@ -3,7 +3,7 @@ import "./Warranty.css";
 
 const Warranty = () => {
   var screen_width = window.innerWidth;
-  var imgSize = screen_width > 700 ? screen_width / 2 : screen_width - 50;
+  var imgSize = screen_width > 700 ? screen_width / 2 : screen_width - 120;
   return (
     <div>
       <div className="bg-dark rounded warranty-img">
