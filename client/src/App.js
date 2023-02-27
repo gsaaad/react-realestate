@@ -17,6 +17,7 @@ import Home from "./pages/homes";
 import PNF from "./components/PNF/PNF.js";
 import MortgageCalculator from "./components/MortgageCalculator/MortgageCalculator";
 import Warranty from "./components/Warranty/Warranty";
+import SearchAgents from "./components/SearchAgents/SearchAgents";
 
 function App() {
   return (
@@ -31,12 +32,13 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/services" element={<PropertyServices />} />
             <Route path="/sweethomes" element={<SearchHouses />} />
+            <Route path="/sweetagents" element={<SearchAgents />} />
             <Route path="/blog" element={<HomeBlog />} />
             <Route path="/policy" element={<PrivacyPolicy />} />
             <Route path="/ethics" element={<CodeEthics />} />
-            <Route path="*" element={<PNF />} />
             <Route path="/calculator" element={<MortgageCalculator />} />
             <Route path="/warranty" element={<Warranty />} />
+            <Route path="*" element={<PNF />} />
           </Routes>
         </div>
         <LoginModal />
