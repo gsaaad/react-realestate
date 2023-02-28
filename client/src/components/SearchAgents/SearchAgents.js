@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 
 function SearchAgents() {
+  // first name and last name form state
+  const [nameData, setNameData] = useState({
+    firstName: "",
+    lastName: "",
+  });
+
+  const [location, setLocation] = useState("Toronto-ON");
+  const [realtor, setRealtor] = useState("Camelot-Realty-Group");
+
   const handleAgentCriteria = (e) => {
     e.preventDefault();
 
@@ -23,6 +32,11 @@ function SearchAgents() {
     document.getElementById(userSelected).className =
       "agent-category-btn bg-light";
     document.getElementById(mainForm).style = "display: block";
+  };
+
+  const handleAgentNameForm = (e) => {
+    e.preventDefault();
+    console.log(nameData);
   };
   return (
     <div>
@@ -53,10 +67,25 @@ function SearchAgents() {
         </button>
       </div>
       <div className="bg-light form-calc-container">
-        <form id="search-agent-Name-form">
+        <form id="search-agent-Name-form" onSubmit={handleAgentNameForm}>
           <h2>Search By Realtor Name</h2>
-          <input type="text" name="firstName" placeholder="first name" />
-          <input type="text" name="lastName" placeholder="last name" />
+          <input
+            type="text"
+            name="firstName"
+            placeholder="first name"
+            value={FormData.firstName}
+            onChange={(e) =>
+              setNameData({ ...nameData, firstName: e.target.value })
+            }
+          />
+          <input
+            type="text"
+            name="lastName"
+            placeholder="last name"
+            onChange={(e) =>
+              setNameData({ ...nameData, lastName: e.target.value })
+            }
+          />
           <br />
           <button>Search By Name</button>
         </form>
