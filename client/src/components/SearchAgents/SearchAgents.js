@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import axios from "axios";
+import capitalizeName from "../../utils/capitalizeName";
 
 function SearchAgents() {
   // first name and last name form state
@@ -7,8 +9,10 @@ function SearchAgents() {
     lastName: "",
   });
 
-  const [locationData, setLocationData] = useState({ location: "Toronto-ON" });
-  const [realtor, setRealtor] = useState("Camelot-Realty-Group");
+  const [locationData, setLocationData] = useState({ location: "Toronto" });
+  const [realtorData, setRealtorData] = useState({
+    realtor: "Camelot-Realty-Group",
+  });
 
   const handleAgentCriteria = (e) => {
     e.preventDefault();
@@ -36,11 +40,32 @@ function SearchAgents() {
 
   const handleAgentNameForm = (e) => {
     e.preventDefault();
-    console.log(nameData);
+    var agentFirstName = nameData.firstName;
+    var agentLastName = nameData.lastName;
+    // added hyphen between capitalized first and last name to match backend syntax
+    var agentFullName = agentFirstName + "-" + agentLastName;
+    console.log("LOOKING FOR AGENT WITH NAME: " + agentFullName);
+    fetchAgentData(agentFullName);
   };
   const handleAgentLocationForm = (e) => {
     e.preventDefault();
     console.log(locationData);
+  };
+  async function fetchAgentData(agentName) {
+    // fetch agent data from backend
+
+    const agents = await axios
+      .get(`//localhost:3001/api/agent/name/` + agentName)
+      .then((agentData) => {
+        const listOfAgents = agentData.data;
+
+        console.log("We found agents with the name", agentName);
+        console.log(listOfAgents);
+      });
+  }
+  const handleAgentRealtorForm = (e) => {
+    e.preventDefault();
+    console.log(realtorData);
   };
   return (
     <div>
@@ -78,16 +103,24 @@ function SearchAgents() {
             name="firstName"
             placeholder="first name"
             value={FormData.firstName}
+            minLength="4"
             onChange={(e) =>
-              setNameData({ ...nameData, firstName: e.target.value })
+              setNameData({
+                ...nameData,
+                firstName: capitalizeName(e.target.value),
+              })
             }
           />
           <input
             type="text"
             name="lastName"
             placeholder="last name"
+            minLength="4"
             onChange={(e) =>
-              setNameData({ ...nameData, lastName: e.target.value })
+              setNameData({
+                ...nameData,
+                lastName: capitalizeName(e.target.value),
+              })
             }
           />
           <br />
@@ -112,10 +145,22 @@ function SearchAgents() {
           <br />
           <button>Search By Location</button>
         </form>
-        <form id="search-agent-Realtor-form" style={{ display: "none" }}>
+        <form
+          id="search-agent-Realtor-form"
+          style={{ display: "none" }}
+          onSubmit={handleAgentRealtorForm}
+        >
           <h2>Search By Realtor</h2>
 
-          <input type="text" name="realtor name" placeholder="realtor name" />
+          <input
+            type="text"
+            name="realtor name"
+            placeholder="realtor name"
+            value={realtorData.realtor}
+            onChange={(e) => {
+              setRealtorData({ realtor: e.target.value });
+            }}
+          />
           <br />
           <button>Search By Realtor</button>
         </form>
