@@ -7,7 +7,7 @@ function SearchAgents() {
     lastName: "",
   });
 
-  const [location, setLocation] = useState("Toronto-ON");
+  const [locationData, setLocationData] = useState({ location: "Toronto-ON" });
   const [realtor, setRealtor] = useState("Camelot-Realty-Group");
 
   const handleAgentCriteria = (e) => {
@@ -37,6 +37,10 @@ function SearchAgents() {
   const handleAgentNameForm = (e) => {
     e.preventDefault();
     console.log(nameData);
+  };
+  const handleAgentLocationForm = (e) => {
+    e.preventDefault();
+    console.log(locationData);
   };
   return (
     <div>
@@ -89,10 +93,22 @@ function SearchAgents() {
           <br />
           <button>Search By Name</button>
         </form>
-        <form id="search-agent-Location-form" style={{ display: "none" }}>
+        <form
+          id="search-agent-Location-form"
+          style={{ display: "none" }}
+          onSubmit={handleAgentLocationForm}
+        >
           <h2>Search By Location</h2>
 
-          <input type="text" name="Location" placeholder="Location" />
+          <input
+            type="text"
+            name="Location"
+            placeholder="Location"
+            value={locationData.location}
+            onChange={(e) => {
+              setLocationData({ location: e.target.value });
+            }}
+          />
           <br />
           <button>Search By Location</button>
         </form>
