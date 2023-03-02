@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import capitalizeName from "../../utils/capitalizeName";
-
+import capitalizeRealtor from "../../utils/capitalizeRealtor";
 function SearchAgents() {
   // first name and last name form state
   const [nameData, setNameData] = useState({
@@ -11,7 +11,7 @@ function SearchAgents() {
 
   const [locationData, setLocationData] = useState({ location: "Toronto" });
   const [realtorData, setRealtorData] = useState({
-    realtor: "Camelot-Realty-Group",
+    realtor: "CB Realty",
   });
 
   const handleAgentCriteria = (e) => {
@@ -45,14 +45,14 @@ function SearchAgents() {
     // added hyphen between capitalized first and last name to match backend syntax
     var agentFullName = agentFirstName + "-" + agentLastName;
     console.log("LOOKING FOR AGENT WITH NAME: " + agentFullName);
-    fetchAgentData(agentFullName);
+    fetchAgentName(agentFullName);
   };
   const handleAgentLocationForm = (e) => {
     e.preventDefault();
     console.log(locationData);
   };
-  async function fetchAgentData(agentName) {
-    // fetch agent data from backend
+  async function fetchAgentName(agentName) {
+    // fetch agent data from backend with associated name
 
     const agents = await axios
       .get(`//localhost:3001/api/agent/name/` + agentName)
@@ -63,9 +63,23 @@ function SearchAgents() {
         console.log(listOfAgents);
       });
   }
+  async function fetchAgentRealtor(agentRealtor) {
+    // fetch agent data from backend with associated realtor
+    const agents = await axios
+      .get(`//localhost:3001/api/agent/realtor/` + agentRealtor)
+      .then((agentData) => {
+        const listOfAgents = agentData.data;
+
+        console.log("We found agents with associated realtor", agentRealtor);
+        console.log(listOfAgents);
+      });
+  }
   const handleAgentRealtorForm = (e) => {
+    // turn realtor company to match syntax in backend
+    var agentRealtor = capitalizeRealtor(realtorData.realtor);
+    console.log("agent realtor: " + agentRealtor);
+    fetchAgentRealtor(agentRealtor);
     e.preventDefault();
-    console.log(realtorData);
   };
   return (
     <div>
