@@ -52,7 +52,18 @@ function SearchAgents() {
   };
   const handleAgentLocationForm = (e) => {
     e.preventDefault();
-    console.log(locationData);
+    // todo fix backend syntax to match naturally
+    // addition of semi colon to match backend syntax
+    const agentLocation = locationData.location;
+    console.log(agentLocation);
+    fetchAgentLocation(agentLocation);
+  };
+  const handleAgentRealtorForm = (e) => {
+    // turn realtor company to match syntax in backend
+    var agentRealtor = capitalizeRealtor(realtorData.realtor);
+    console.log("agent realtor: " + agentRealtor);
+    fetchAgentRealtor(agentRealtor);
+    e.preventDefault();
   };
   async function fetchAgentName(agentName) {
     // fetch agent data from backend with associated name
@@ -83,13 +94,19 @@ function SearchAgents() {
         }
       });
   }
-  const handleAgentRealtorForm = (e) => {
-    // turn realtor company to match syntax in backend
-    var agentRealtor = capitalizeRealtor(realtorData.realtor);
-    console.log("agent realtor: " + agentRealtor);
-    fetchAgentRealtor(agentRealtor);
-    e.preventDefault();
-  };
+  async function fetchAgentLocation(agentLocation) {
+    const agents = await axios
+      .get("//localhost:3001/api/agent/city/" + agentLocation)
+      .then((agentData) => {
+        const listOfAgents = agentData.data;
+        console.log("We found agents in this city", agentLocation);
+        console.log(listOfAgents);
+        if (listOfAgents.length > 0) {
+          setSweetAgents(listOfAgents);
+        }
+      });
+  }
+
   return (
     <div>
       <h1 className="text-light my-3">
