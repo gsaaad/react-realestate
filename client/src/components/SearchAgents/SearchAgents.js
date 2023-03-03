@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import capitalizeName from "../../utils/capitalizeName";
 import capitalizeRealtor from "../../utils/capitalizeRealtor";
+import AgentsAvailable from "../AgentsAvailable/AgentsAvailable";
 function SearchAgents() {
   // first name and last name form state
   const [nameData, setNameData] = useState({
@@ -13,6 +14,8 @@ function SearchAgents() {
   const [realtorData, setRealtorData] = useState({
     realtor: "CB Realty",
   });
+
+  const [sweetAgents, setSweetAgents] = useState([]);
 
   const handleAgentCriteria = (e) => {
     e.preventDefault();
@@ -61,6 +64,9 @@ function SearchAgents() {
 
         console.log("We found agents with the name", agentName);
         console.log(listOfAgents);
+        if (listOfAgents.length > 0) {
+          setSweetAgents(listOfAgents);
+        }
       });
   }
   async function fetchAgentRealtor(agentRealtor) {
@@ -72,6 +78,9 @@ function SearchAgents() {
 
         console.log("We found agents with associated realtor", agentRealtor);
         console.log(listOfAgents);
+        if (listOfAgents.length > 0) {
+          setSweetAgents(listOfAgents);
+        }
       });
   }
   const handleAgentRealtorForm = (e) => {
@@ -178,6 +187,7 @@ function SearchAgents() {
           <br />
           <button>Search By Realtor</button>
         </form>
+        <AgentsAvailable agents={sweetAgents} />
       </div>
     </div>
   );

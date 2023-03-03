@@ -17,8 +17,6 @@ function HousesForSale(housesArray) {
     <div className="bg-primary">
       <h1 className="bg-gradient text-light text-center  rounded">
         Sweet Homes On The Market
-        {/* Houses For Sale in{" "} */}
-        {/* {houses.length > 0 && houses[5].address.split(" ").slice(3, 5)} */}
       </h1>
       <div className="container text-center">
         <div className="row">
