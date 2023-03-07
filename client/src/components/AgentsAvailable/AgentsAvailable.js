@@ -5,7 +5,7 @@ import "./AgentsAvailable.css";
 // import Agent
 
 function AgentsAvailable(agentsArray) {
-  var agents = agentsArray.agents;
+  var agents = agentsArray.agents || agentsArray;
   console.log("Agents available are:", agents);
 
   return (

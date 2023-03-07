@@ -3,7 +3,12 @@ import axios from "axios";
 import capitalizeName from "../../utils/capitalizeName";
 import capitalizeRealtor from "../../utils/capitalizeRealtor";
 import AgentsAvailable from "../AgentsAvailable/AgentsAvailable";
+import data from "../../agents.json";
+
 function SearchAgents() {
+  const agentsData = data.props;
+  var randomSliceOne = agentsData.slice(0, 7);
+
   // first name and last name form state
   const [nameData, setNameData] = useState({
     firstName: "",
@@ -15,7 +20,7 @@ function SearchAgents() {
     realtor: "CB Realty",
   });
 
-  const [sweetAgents, setSweetAgents] = useState([]);
+  const [sweetAgents, setSweetAgents] = useState(randomSliceOne);
 
   const handleAgentCriteria = (e) => {
     e.preventDefault();
