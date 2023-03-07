@@ -4,6 +4,7 @@ import capitalizeName from "../../utils/capitalizeName";
 import capitalizeRealtor from "../../utils/capitalizeRealtor";
 import AgentsAvailable from "../AgentsAvailable/AgentsAvailable";
 import data from "../../agents.json";
+import capitalizeLocation from "../../utils/capitalizeLocation";
 
 function SearchAgents() {
   const agentsData = data.props;
@@ -21,8 +22,6 @@ function SearchAgents() {
   });
 
   const [sweetAgents, setSweetAgents] = useState(randomSliceOne);
-
-  console.log("LOCATION LOCATION", locationData.location);
 
   const handleAgentCriteria = (e) => {
     e.preventDefault();
@@ -187,9 +186,7 @@ function SearchAgents() {
             value={locationData.location}
             onChange={(e) => {
               setLocationData({
-                location:
-                  e.target.value.charAt(0).toUpperCase() +
-                  e.target.value.slice(1, e.target.value.length),
+                location: capitalizeLocation(e.target.value),
               });
             }}
           />
