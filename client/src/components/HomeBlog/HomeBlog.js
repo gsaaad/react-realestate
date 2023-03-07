@@ -8,7 +8,11 @@ const HomeBlog = () => {
       </div>
       {/* most recent post */}
       <div className="recent-post">
-        <a href="/">
+        <a
+          href="https://www.bhg.com/decorating/color/paint/color-of-the-year-2023/"
+          target="_blank"
+          rel="noreferrer"
+        >
           <section>
             <article className=" border-bottom bg-light">
               <img
@@ -23,7 +27,7 @@ const HomeBlog = () => {
                 Top Paint Colors for 2023
               </h3>
               <div className="text-dark article-details bg-gradient ">
-                <span>Interior Design</span>|<span>By: John Doe</span>
+                <span>Interior Design</span>|<span>By: Caitlin Sole</span>
               </div>
             </article>
           </section>
@@ -32,7 +36,11 @@ const HomeBlog = () => {
       <div className="latest-posts-container">
         <h1 className="bg-light rounded-pill ">Latest Posts</h1>
         <div className="card latest-posts">
-          <a href="/">
+          <a
+            href="https://www.sfgate.com/realestate/article/should-i-sell-my-house-now-or-wait-2023-17640466.php"
+            target="_blank"
+            rel="noreferrer"
+          >
             <section className="article-main">
               <article className=" my-2">
                 <img
@@ -48,7 +56,7 @@ const HomeBlog = () => {
                   Should you sell your home in 2023?
                 </h3>
                 <div className="text-dark article-details bg-gradient ">
-                  <span>Buying & Selling</span>|<span>By: Michelle Gwen</span>
+                  <span>Buying & Selling</span>|<span>By: Lindsay Frankel</span>
                 </div>
               </article>
             </section>
@@ -56,7 +64,11 @@ const HomeBlog = () => {
         </div>
 
         <div className="card latest-posts">
-          <a href="/">
+          <a
+            href="https://hermoney.com/invest/real-estate/2019s-5-most-profitable-home-improvements-you-should-make-before-selling-your-home/"
+            target="_blank"
+            rel="noreferrer"
+          >
             <section className="article-main">
               <article className=" my-2">
                 <img
@@ -72,18 +84,22 @@ const HomeBlog = () => {
                   5 Home Improvements You need To Try
                 </h3>
                 <div className="text-dark article-details bg-gradient ">
-                  <span>Home Improvements</span>|<span>By: Mike Smith</span>
+                  <span>Home Improvements</span>|<span>By: Rebecca Jones</span>
                 </div>
               </article>
             </section>
           </a>
         </div>
         <div className="card latest-posts">
-          <a href="/">
+          <a
+            href="https://www.washingtonpost.com/lifestyle/home/10-ways-to-save-on-home-energy-costs/2020/04/21/5bb283bc-7e6f-11ea-a3ee-13e1ae0a3571_story.html"
+            target="_blank"
+            rel="noreferrer"
+          >
             <section className="article-main">
               <article className=" my-2">
                 <img
-                  src="https://images.pexels.com/photos/3782317/pexels-photo-3782317.jpeg?auto=compress&cs=tinysrgb&w=500&h=750&dpr=1"
+                  src="https://images.pexels.com/photos/3782317/pexels-photo-3782317.jpeg?auto=compress&cs=tinysrgb&w=500&h=750&dpr=1 "
                   style={{ width: "95%", borderRadius: "10px" }}
                   alt="home real estate sweet home blog article"
                 />
@@ -95,14 +111,18 @@ const HomeBlog = () => {
                   Top 10 Ways To Save On Your Home Bills
                 </h3>
                 <div className="text-dark article-details bg-gradient ">
-                  <span>Sweet Savings</span>|<span>By: Daniel Rowler</span>
+                  <span>Sweet Savings</span>|<span>By: Lindset Roberts</span>
                 </div>
               </article>
             </section>
           </a>
         </div>
         <div className="card latest-posts">
-          <a href="/">
+          <a
+            href="https://blog.remax.ca/how-will-higher-interest-rates-affect-me/"
+            target="_blank"
+            rel="noreferrer"
+          >
             <section className="article-main">
               <article className=" my-2">
                 <img
@@ -118,7 +138,8 @@ const HomeBlog = () => {
                   How Does Rising Interest Rates Affect My Mortgage?
                 </h3>
                 <div className="text-dark article-details bg-gradient ">
-                  <span>Financial E-Learning</span>|<span>By: Megan Cadet</span>
+                  <span>Financial E-Learning</span>|
+                  <span>By: Lydia McNutt</span>
                 </div>
               </article>
             </section>
