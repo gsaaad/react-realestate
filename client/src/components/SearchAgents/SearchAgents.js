@@ -22,6 +22,8 @@ function SearchAgents() {
 
   const [sweetAgents, setSweetAgents] = useState(randomSliceOne);
 
+  console.log("LOCATION LOCATION", locationData.location);
+
   const handleAgentCriteria = (e) => {
     e.preventDefault();
 
@@ -184,7 +186,11 @@ function SearchAgents() {
             placeholder="Location"
             value={locationData.location}
             onChange={(e) => {
-              setLocationData({ location: e.target.value });
+              setLocationData({
+                location:
+                  e.target.value.charAt(0).toUpperCase() +
+                  e.target.value.slice(1, e.target.value.length),
+              });
             }}
           />
           <br />
