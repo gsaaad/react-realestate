@@ -2,14 +2,17 @@ const HouseData = require("../houses.json");
 const dbConnection = require("../config/connection");
 const { Property } = require("../models");
 const { Agent } = require("../models");
+const { User } = require("../models");
 const isValidProperty = require("../utils/isValidHouse");
 const isValidAgent = require("../utils/isValidAgent");
+const validUser = require("../utils/isValidUser");
 const agentsData = require("../agents.json");
 
 dbConnection.on("open", async () => {
   // delete all properties and Agents
-  await Property.deleteMany({});
-  await Agent.deleteMany({});
+  // await Property.deleteMany({});
+  // await Agent.deleteMany({});
+  await User.deleteMany({});
   // get random set of houses (60)
   const getRandomHouses = () => {
     var listOfHouses = [];
@@ -55,14 +58,27 @@ dbConnection.on("open", async () => {
     // console.log(listOfAgents);
     return listOfAgents;
   };
+  const getRandomUsers = async () => {
+    var listOfUsers = [];
+    for (let i = 0; i < 20; i++) {
+      const user = await validUser();
+      // console.log("user is", user);
+      if (user) {
+        listOfUsers.push(user);
+      }
+    }
+    console.log("listOfUsers is", listOfUsers);
+    return listOfUsers;
+  };
   getRandomAgents();
-  var ArrayHouses = getRandomHouses();
+  // var ArrayHouses = getRandomHouses();
   var ArrayAgents = getRandomAgents();
-  console.log(ArrayAgents);
-  // console.log("Property Collection", Property.collection);
-  console.log("Seeding Data to mongoDB Collections: Property, Agent");
-  await Property.insertMany(ArrayHouses);
+  var ArrayUsers = await getRandomUsers();
+
+  // console.log("Seeding Data to mongoDB Collections: Property, Agent, Users");
+  // await Property.insertMany(ArrayHouses);
   await Agent.insertMany(ArrayAgents);
+  await User.insertMany(ArrayUsers);
   console.log("All Done Seeding.. Enjoy your search for a Home Sweet Home!");
   process.exit(0);
 });

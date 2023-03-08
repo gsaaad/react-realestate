@@ -29,19 +29,7 @@ const isValidAgent = (agent) => {
   var licenseId = Math.floor(Math.random() * 900000) + 100000;
   var agentCity = agent?.map.label.split(" ").slice(1, 3).join(" ");
   var agentSince = faker.date.past();
-  // var agentSince = dateFormat(faker.date.past())
-  //   .split(" ")
-  //   .slice(0, 3)
-  //   .join(" ");
-  // console.log(
-  //   name,
-  //   email,
-  //   imgSrc,
-  //   profileStatement,
-  //   representsRealtor,
-  //   licenseId,
-  //   agentSince
-  // );
+
   var verifiedAgent = {};
   var isValidAgent =
     name &&
