@@ -10,10 +10,6 @@
     "seed": "cd server && npm run seed",
     "build": "cd client && npm run build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gsaaad/react-realestate.git"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
