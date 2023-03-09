@@ -75,7 +75,7 @@ function SearchAgents() {
     // fetch agent data from backend with associated name
 
     const agents = await axios
-      .get(`//localhost:3001/api/agent/name/` + agentName)
+      .get(`/api/agent/name/` + agentName)
       .then((agentData) => {
         const listOfAgents = agentData.data;
 
@@ -89,7 +89,7 @@ function SearchAgents() {
   async function fetchAgentRealtor(agentRealtor) {
     // fetch agent data from backend with associated realtor
     const agents = await axios
-      .get(`//localhost:3001/api/agent/realtor/` + agentRealtor)
+      .get(`/api/agent/realtor/` + agentRealtor)
       .then((agentData) => {
         const listOfAgents = agentData.data;
 
@@ -102,7 +102,7 @@ function SearchAgents() {
   }
   async function fetchAgentLocation(agentLocation) {
     const agents = await axios
-      .get("//localhost:3001/api/agent/city/" + agentLocation)
+      .get("/api/agent/city/" + agentLocation)
       .then((agentData) => {
         const listOfAgents = agentData.data;
         console.log("We found agents in this city", agentLocation);
