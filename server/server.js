@@ -2,6 +2,7 @@ const express = require("express");
 const dbConnection = require("./config/connection");
 const cors = require("cors");
 const path = require("path");
+const https = require("https");
 require("dotenv").config();
 
 const PORT = process.env.PORT || 3001;
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use(require("./routes"));
 
 // for deployment
+// if production
 if (process.env.NODE_ENV == "production") {
   app.use(express.static(path.join(__dirname, "../", "client", "build")));
   app.get("*", (req, res) => {
@@ -26,8 +28,16 @@ dbConnection.once("open", () => {
     "Connected to MongoDB Back-end.. Sweet Agrents are available to help your search for Sweet Homes!"
   );
 });
-app.listen(PORT, () =>
-  console.log(`Connected Backend Server on localhost:${PORT}`)
-);
+
+// if production use https
+if (process.env.NODE_ENV == "production") {
+  https.createServer(app).listen(PORT, () => {
+    console.log(`Connected Sercured Backend Server on https localhost:${PORT}`);
+  });
+} else {
+  app.listen(PORT, () =>
+    console.log(`Connected Backend Server on localhost:${PORT}`)
+  );
+}
 
 module.exports = app;
