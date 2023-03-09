@@ -30,14 +30,14 @@ dbConnection.once("open", () => {
 });
 
 // if production use https
-if (process.env.NODE_ENV == "production") {
-  https.createServer(app).listen(PORT, () => {
-    console.log(`Connected Sercured Backend Server on https localhost:${PORT}`);
-  });
-} else {
-  app.listen(PORT, () =>
-    console.log(`Connected Backend Server on localhost:${PORT}`)
-  );
-}
+// if (process.env.NODE_ENV == "production") {
+https.createServer(app).listen(PORT, () => {
+  console.log(`Connected Sercured Backend Server on https localhost:${PORT}`);
+});
+// } else {
+//   app.listen(PORT, () =>
+//     console.log(`Connected Backend Server on localhost:${PORT}`)
+//   );
+// }
 
 module.exports = app;
