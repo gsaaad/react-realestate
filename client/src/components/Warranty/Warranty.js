@@ -3,10 +3,15 @@ import "./Warranty.css";
 
 const Warranty = () => {
   var screen_width = window.innerWidth;
-  var imgSize = screen_width > 700 ? screen_width / 2 : screen_width - 120;
+  console.log(screen_width);
+  var imgSize = screen_width > 1200 ? 700 : screen_width > 700 ? 450 : 300;
+  console.log({ imgSize });
   return (
     <div>
-      <div className="bg-dark rounded warranty-img">
+      <div
+        className="bg-dark rounded warranty-img"
+        style={{ height: `${imgSize - 50}px` }}
+      >
         <img
           src={`https://images.pexels.com/photos/268941/pexels-photo-268941.jpeg?auto=compress&cs=tinysrgb&w=${imgSize}&h=850&dpr=1`}
           alt="We got you covered"

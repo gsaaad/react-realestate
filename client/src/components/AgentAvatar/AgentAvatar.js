@@ -14,7 +14,7 @@ function AgentAvatar(props) {
         alt={agentAvatar.email}
         width={
           document.body.clientWidth > 600
-            ? document.body.clientWidth * 0.24
+            ? document.body.clientWidth * 0.25
             : document.body.clientWidth * 0.6
         }
         className="border border-dark rounded"
@@ -31,8 +31,6 @@ function AgentAvatar(props) {
       </div>
     </div>
   );
-
-  return;
 }
 
 export default AgentAvatar;
