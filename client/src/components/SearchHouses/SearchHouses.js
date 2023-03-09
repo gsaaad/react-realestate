@@ -10,7 +10,7 @@ function SearchHouses() {
 
   async function addHousesDB(house) {
     await axios
-      .post("http://localhost:3001/api/property/", house)
+      .post("http://localhost:5000/api/property/", house)
       .then((response) => {
         console.log("response is", response);
       });
@@ -37,7 +37,7 @@ function SearchHouses() {
       },
     };
     const houses = await axios
-      .get(`//localhost:3001/api/property/location/` + location)
+      .get(`//localhost:5000/api/property/location/` + location)
       .then((propertyData) => {
         const listOfProperties = propertyData.data;
         // if length of houses returned is more than 0 set houses from backend
