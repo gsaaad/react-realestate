@@ -9,7 +9,6 @@
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "seed": "cd server && npm run seed",
     "heroku-postbuild": "npm run install && npm run build",
-    "server": "cd server && nodemon server.js",
     "start": "concurrently --kill-others-on-fail \"cd server && npm run watch\" \"cd client && npm start\""
   },
   "keywords": [],
