@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 require("dotenv").config();
-var MONGODB_PASS = process.env.mongoDB;
+var MONGODB_PASS = process.env.MONGODB;
 
 mongoose.set("strictQuery", true);
 
