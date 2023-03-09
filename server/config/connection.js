@@ -6,7 +6,7 @@ mongoose.set("strictQuery", true);
 
 mongoose.connect(
   process.env.MONGODB_URI ||
-    `mongodb+srv://gsaad:mongoDB@cluster0.h2arlfo.mongodb.net/?retryWrites=true&w=majority`,
+    `mongodb+srv://gsaad:${MONGODB_PASS}@cluster0.h2arlfo.mongodb.net/?retryWrites=true&w=majority`,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
