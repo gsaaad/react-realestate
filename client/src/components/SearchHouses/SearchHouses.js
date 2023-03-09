@@ -37,7 +37,7 @@ function SearchHouses() {
       },
     };
     const houses = await axios
-      .get(`http://localhost:5000/api/property/location/${location}`)
+      .get(`/api/property/location/${location}`)
       .then((propertyData) => {
         const listOfProperties = propertyData.data;
         // if length of houses returned is more than 0 set houses from backend
