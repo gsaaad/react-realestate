@@ -9,11 +9,9 @@ function SearchHouses() {
   const [houses, setHouses] = useState([]);
   console.log("location set to..", location);
   async function addHousesDB(house) {
-    await axios
-      .post("http://localhost:5000/api/property/", house)
-      .then((response) => {
-        console.log("response is", response);
-      });
+    await axios.post("/api/property/", house).then((response) => {
+      console.log("response is", response);
+    });
   }
 
   async function fetchData() {
