@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "homepage": "https://gsaaad.github.io/",
   "private": true,
-  "proxy": "http://localhost:3000",
+  "proxy": "http://localhost:5000",
   "dependencies": {
     "@fortawesome/free-regular-svg-icons": "^6.2.1",
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
