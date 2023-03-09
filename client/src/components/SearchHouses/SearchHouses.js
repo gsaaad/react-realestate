@@ -7,7 +7,7 @@ import axios from "axios";
 function SearchHouses() {
   const [location, setLocation] = useState("Dallas-TX");
   const [houses, setHouses] = useState([]);
-
+  console.log("location set to..", location);
   async function addHousesDB(house) {
     await axios
       .post("http://localhost:5000/api/property/", house)
@@ -20,6 +20,7 @@ function SearchHouses() {
     // fetch Data from backend first, if not, then call API
 
     // Houses that are for sale, sorted lowest to highest, min living area = 2200, min lot = 3000
+    console.log("fetching data from backend..");
     const housesOptions = {
       method: "GET",
       url: process.env.REACT_APP_SEARCH_URL,
@@ -46,19 +47,10 @@ function SearchHouses() {
         }
         return listOfProperties;
       });
-    // const houses = await axios
-    //   .get(`//localhost:5000/api/property/location/` + location)
-    //   .then((propertyData) => {
-    //     const listOfProperties = propertyData.data;
-    //     // if length of houses returned is more than 0 set houses from backend
-    //     if (listOfProperties.length > 0) {
-    //       setHouses(listOfProperties);
-    //     }
-    //     return listOfProperties;
-    //   });
 
     // no houses in backend with that city? use API call
     if (!houses.length > 0) {
+      console.log("Making API request..");
       await axios.request(housesOptions).then((propertyData) => {
         // console.log("this is the data from api call", propertyData.data.props);
         var houses = propertyData.data.props;
