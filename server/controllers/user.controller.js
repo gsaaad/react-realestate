@@ -60,5 +60,38 @@ const userController = {
         res.sendStatus(400).json({ message: this.errorMessage });
       });
   },
+  getUserByEmail({ params }, res) {
+    const userEmail = params.email;
+
+    console.log("Params email for User", userEmail);
+
+    User.find({ email: userEmail })
+      .then((userData) => {
+        if (!userData) {
+          res.status(404).json({ message: this.errorMessage });
+        }
+        res.json(userData);
+      })
+      .catch((e) => {
+        console.error(e);
+        res.sendStatus(400).json({ message: this.errorMessage });
+      });
+  },
+  getUserByLocation({ params }, res) {
+    const userLocation = params.location;
+    console.log("Params location for User", userLocation);
+
+    User.find({ location: userLocation })
+      .then((userData) => {
+        if (!userData) {
+          res.status(404).json({ message: this.errorMessage });
+        }
+        res.json(userData);
+      })
+      .catch((e) => {
+        console.error(e);
+        res.sendStatus(404).json({ message: this.errorMessage });
+      });
+  },
 };
 module.exports = userController;
