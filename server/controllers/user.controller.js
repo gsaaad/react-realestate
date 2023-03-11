@@ -93,5 +93,38 @@ const userController = {
         res.sendStatus(404).json({ message: this.errorMessage });
       });
   },
+  createUser({ body }, res) {
+    User.create(body)
+      .then((userData) => {
+        res.json(userData);
+      })
+      .catch((e) => {
+        console.error(e);
+        res.status(400).json({ message: this.errorMessage });
+      });
+  },
+  updateUser({ body }, res) {
+    User.findOneAndUpdate({ _id: params.id }, body, { new: true })
+      .then((userData) => {
+        if (!userData) {
+          res.status(404).json({ message: this.idMessage });
+          return false;
+        }
+        return res.json(userData);
+      })
+      .catch((e) => {
+        console.error(e);
+        res.status(400).json({ message: this.idMessage });
+      });
+  },
+  deleteUser({ params }, res) {
+    User.findOneAndDelete({ _id: params.id }).then((userData) => {
+      if (!userData) {
+        res.status(404).json({ message: this.idMessage });
+        return false;
+      }
+      res.json(userData);
+    });
+  },
 };
 module.exports = userController;
