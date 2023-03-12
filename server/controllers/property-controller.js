@@ -55,6 +55,7 @@ const propertyController = {
           res.status(404).json({ message: this.idMessage });
           return false;
         }
+
         res.json(propertyData);
       })
       .catch((e) => {
