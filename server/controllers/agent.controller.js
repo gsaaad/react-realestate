@@ -87,7 +87,8 @@ const agentController = {
         res.sendStatus(400).json({ message: this.errorMessage });
       });
   },
-  createAgent({ body }, res) {
+  createAgent: ({ body }, res) => {
+    console.log("AGENT BODY TO CREATE IS", body);
     Agent.create(body)
       .then((agentData) => {
         res.json(agentData);
@@ -97,7 +98,7 @@ const agentController = {
         res.status(400).json({ message: this.errorMessage });
       });
   },
-  updateAgent({ body }, res) {
+  updateAgent({ params, body }, res) {
     Agent.findOneAndUpdate({ _id: params.id }, body, { new: true })
       .then((agentData) => {
         if (!agentData) {

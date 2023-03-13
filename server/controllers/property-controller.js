@@ -44,6 +44,7 @@ const propertyController = {
       });
   },
   createProperty: ({ body }, res) => {
+    console.log("PROPERTY TO CREATE", body);
     Property.create(body)
       .then((propertData) => res.json(propertData))
       .catch((e) => res.json(e));

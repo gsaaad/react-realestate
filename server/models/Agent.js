@@ -6,6 +6,7 @@ const { Schema, model } = require("mongoose");
 // imgSrc(ideally 3+ pictures)
 // profileStatement
 // representsRealtor
+// city
 // licenseId
 // agentSince
 const agentSchema = new Schema({
