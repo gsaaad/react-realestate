@@ -8,6 +8,7 @@ const {
   getUserByEmail,
   getUserByLocation,
   createUser,
+  loginUser,
   updateUser,
   deleteUser,
 } = require("../../controllers/user.controller");
@@ -17,6 +18,7 @@ router.route("/").get(getAllUsers).post(createUser);
 router.route("/firstName/:firstname").get(getUserByFirstName);
 router.route("/lastName/:lastname").get(getUserByLastName);
 router.route("/email/:email").get(getUserByEmail);
+router.route("/login").post(loginUser);
 // todo: should extract city/state from location, save that to its own definition for UserModel, then use
 // todo: location (city-state) as params!
 // router.route("/location/:location").get(getUserByLocation);

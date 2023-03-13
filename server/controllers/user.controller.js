@@ -1,5 +1,8 @@
 const { User } = require("../models");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+
+const token_secret = process.env.TOKEN_SECRET;
 
 const userController = {
   errorMessage:
@@ -120,6 +123,44 @@ const userController = {
         console.error(e);
         res.status(400).json({ message: this.errorMessage });
       });
+  },
+  async loginUser({ body }, res) {
+    const userInfo = body;
+    console.log("User is logging in with", userInfo);
+
+    // find user by email
+    const user = await User.findOne({ email: userInfo.email });
+
+    if (!user) {
+      res.status(404).json({ message: this.errorMessage });
+      return false;
+    } else {
+      console.log("backend password", user.password);
+      console.log("userinfo password", userInfo.password);
+
+      try {
+        bcrypt.compare(
+          userInfo.password,
+          user.password,
+          function (err, result) {
+            if (result) {
+              console.log("Matched result", result);
+              res.json({
+                access_token: jwt.sign({ user: userInfo.email }, token_secret),
+              });
+            } else {
+              console.log(
+                "Mismatched result... different password try again",
+                result
+              );
+              res.status(404).json({ message: this.errorMessage });
+            }
+          }
+        );
+      } catch (e) {
+        console.error(e, this.errorMessage);
+      }
+    }
   },
   updateUser({ params, body }, res) {
     User.findOneAndUpdate({ _id: params.id }, body, { new: true })
