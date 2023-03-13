@@ -1,4 +1,5 @@
 const { User } = require("../models");
+const bcrypt = require("bcrypt");
 
 const userController = {
   errorMessage:
@@ -95,8 +96,23 @@ const userController = {
   //       res.sendStatus(404).json({ message: this.errorMessage });
   //     });
   // },
-  createUser({ body }, res) {
-    User.create(body)
+  async createUser({ body }, res) {
+    const numSaltRounds = 10;
+    // when creating user, we want to bCrypt the password!
+    var userInfo = body;
+    console.log("User info before bCrpyt", userInfo);
+    var userPassword = userInfo.password;
+    const hashedPassword = await new Promise((resolve, reject) => {
+      bcrypt.hash(userPassword, numSaltRounds, function (err, hash) {
+        if (err) reject(err);
+        resolve(hash);
+      });
+    });
+    console.log("Bcrypt password after bCrpyt", hashedPassword);
+    userInfo.password = hashedPassword;
+    userInfo.confirmedPassword = hashedPassword;
+
+    User.create(userInfo)
       .then((userData) => {
         res.json(userData);
       })
