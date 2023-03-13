@@ -14,10 +14,12 @@ const {
 
 router.route("/").get(getAllUsers).post(createUser);
 
-// router.route("/name/:firstname").get(getUserByFirstName);
-router.route("/name/:lastname").get(getUserByLastName);
+router.route("/firstName/:firstname").get(getUserByFirstName);
+router.route("/lastName/:lastname").get(getUserByLastName);
 router.route("/email/:email").get(getUserByEmail);
-router.route("/location/:location").get(getUserByLocation);
+// todo: should extract city/state from location, save that to its own definition for UserModel, then use
+// todo: location (city-state) as params!
+// router.route("/location/:location").get(getUserByLocation);
 
 router.route("/:id").get(getUserById).put(updateUser).delete(deleteUser);
 
