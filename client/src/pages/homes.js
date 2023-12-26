@@ -1,6 +1,7 @@
 import React from "react";
 import Clock from "../components/Clock/Clock";
 import HousesForSale from "../components/HousesForSale/HousesForSale";
+// import json data
 import data from "../houses.json";
 
 const Home = () => {
