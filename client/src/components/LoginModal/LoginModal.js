@@ -14,6 +14,8 @@ const LoginModal = () => {
     const background = document.getElementsByClassName("background-signin");
     loginContainer[0].setAttribute("style", "display: none;");
     background[0].setAttribute("style", "display: none;");
+    // enable scroll
+    document.body.style.overflow = "auto";
   };
 
   const handleGoRegisterPage = (e) => {
