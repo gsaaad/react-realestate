@@ -10,7 +10,7 @@ const Home = () => {
 
   houses = houses.slice(randomSliceOne, randomSliceOne + 9);
   return (
-    <div className="container home-page">
+    <div>
       <Clock />
       <HousesForSale houses={houses} />
     </div>

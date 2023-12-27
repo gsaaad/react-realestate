@@ -3,7 +3,10 @@
 }
 
 .house-price {
+  width: 45%;
+  margin: auto;
   font-size: 17.5px;
+  border-bottom: 2px solid black;
 }
 
 .img-descp {
