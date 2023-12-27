@@ -29,24 +29,23 @@ function HouseAvatar(props) {
           {house.listingStatus.split("_").join(" ")}
         </span>
       </h2> */}
-      <h2 className="house-price">
-        <span className="text-warning img-descp">Price: $ </span>
+      <div>
+        <h2 className="house-price">
+          <span className="text-warning img-descp">$ </span>
 
-        <span className="img-descp">
-          {house.price < 5 ? "Ask For Price" : formatPrice(house.price)}
-        </span>
-      </h2>
-      <h2 className="text-dark m-2 fs-fluid">
-        <span className="text-warning fs-fluid">Address: </span>
-        {house.address}
-      </h2>
-      <h3 className="text-dark m-2 fs-fluid">
-        <span className="text-warning fs-fluid">SqFt:</span>
-        {Math.floor(house.livingArea) === 0
-          ? "N/A"
-          : Math.floor(house.livingArea)}
-        <span>sqft</span>
-      </h3>
+          <span className="img-descp">
+            {house.price < 5 ? "Ask For Price" : formatPrice(house.price)}
+          </span>
+        </h2>
+        <h2 className="text-dark m-2 fs-fluid home-desc">🏠:{house.address}</h2>
+        <h3 className="text-dark m-2 fs-fluid home-desc">
+          🏠:
+          {Math.floor(house.livingArea) === 0
+            ? "N/A"
+            : Math.floor(house.livingArea)}
+          <span> sqft</span>
+        </h3>
+      </div>
     </div>
   );
 }

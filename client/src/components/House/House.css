@@ -8,8 +8,11 @@
 }
 .house-bb-rooms {
   display: flex;
-  justify-content: space-between;
-  background-color: #535658;
+  justify-content: space-around;
+  background-color: #b6b6b6;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  margin-bottom: 5%;
 }
 
 .house-rooms {

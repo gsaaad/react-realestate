@@ -7,12 +7,12 @@ function House(props) {
     <div className="bg-gradient house rounded mt-4">
       <HouseAvatar house={house} />
       <div className="col mt-4">
-        <div className="house-bb-rooms rounded-pill p-2 text-center text-light">
+        <div className="house-bb-rooms text-center text-light">
           <h2 className="house-rooms fs-fluid fw-bold p-2">
-            Bathrooms: {house.bathrooms}
+            🚽: {house.bathrooms}
           </h2>
           <h2 className="house-rooms fs-fluid fw-bold p-2">
-            Bedrooms: {house.bedrooms}
+            🛏️: {house.bedrooms}
           </h2>
         </div>
         {/* <h2 className="text-dark m-2 fs-fluid">
