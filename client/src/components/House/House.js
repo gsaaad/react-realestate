@@ -4,7 +4,7 @@ import HouseAvatar from "../HouseAvatar/HouseAvatar";
 function House(props) {
   var house = props.house;
   return (
-    <div className="row  bg-gradient house mt-4 rounded">
+    <div className="row  bg-gradient house rounded">
       <HouseAvatar house={house} />
       <div className="col mt-4">
         <div className="house-bb-rooms rounded-pill p-2 text-center text-light">

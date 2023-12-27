@@ -1,7 +1,6 @@
 .house {
   margin: auto;
-  display: flex;
-  justify-content: center;
+
   background-color: #e3e3e3;
 }
 

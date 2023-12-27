@@ -5,18 +5,18 @@ function HouseAvatar(props) {
   var house = props.house;
 
   return (
-    <div className="col text-right mt-4 text-dark">
+    <div className="col text-dark">
       <img
         src={house.imgSrc}
         alt={house.address}
         width={
           document.body.clientWidth > 600
             ? document.body.clientWidth * 0.24
-            : document.body.clientWidth * 0.6
+            : document.body.clientWidth * 0.8
         }
         className="border border-dark rounded shadow-sm"
       />
-      <h2 className="house-property mt-2 ">
+      <h2 className="house-property ">
         <span className="text-warning img-descp border-bottom  border-dark">
           Status:{" "}
         </span>

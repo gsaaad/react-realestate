@@ -5,10 +5,6 @@ import CountryDropDown from "../countryDropDown/CountryDropDown";
 function Nav() {
   const handleLogin = (e) => {
     e.preventDefault();
-    const loginContainer = document.getElementsByClassName("signin-container");
-    const background = document.getElementsByClassName("background-signin");
-    loginContainer[0].setAttribute("style", "display: block;");
-    background[0].setAttribute("style", "display: block;");
   };
   return (
     <nav className="header bg-light border-bottom border-3">

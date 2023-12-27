@@ -8,6 +8,19 @@ class Clock extends React.Component {
 
   componentDidMount() {
     this.timerID = setInterval(() => this.tick(), 1000);
+    console.log(
+      "this.state.date: ",
+      this.state.date.toUTCString().split(" ")[4]
+    );
+  }
+  formatTime(date) {
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    let ampm = hours >= 12 ? "pm" : "am";
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    return hours + ":" + minutes + " " + ampm;
   }
 
   componentWillUnmount() {
@@ -24,7 +37,7 @@ class Clock extends React.Component {
     return (
       <div className="bg-light bg-gradient rounded m-4">
         <h2>Date: {this.state.date.toDateString()}.</h2>
-        <h2>Time: {this.state.date.toUTCString().split(" ")[4]}</h2>
+        <h2>Time: {this.formatTime(this.state.date)}</h2>
       </div>
     );
   }
