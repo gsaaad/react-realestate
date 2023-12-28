@@ -9,7 +9,8 @@
 .house-bb-rooms {
   display: flex;
   justify-content: space-around;
-  background-color: #b6b6b6;
+  background: linear-gradient(to bottom, #4d4d4d, #919191, #e3e3e3);
+  height: 50px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   margin-bottom: 5%;
@@ -17,6 +18,7 @@
 
 .house-rooms {
   display: flex;
+  font-size: 30px;
 }
 
 @media only screen and (min-width: 850px) {
