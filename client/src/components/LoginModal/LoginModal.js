@@ -6,14 +6,17 @@ import {
   faAppleWhole,
   faMailForward,
 } from "@fortawesome/free-solid-svg-icons";
+import { useLoginModal } from "../../context/LoginModalProvier";
 
-const LoginModal = ({ isLoginVisible, setIsLoginVisible }) => {
+const LoginModal = () => {
+  const { isLoginVisible, setIsLoginVisible } = useLoginModal();
   const handleModalClose = (e) => {
     e.preventDefault();
     setIsLoginVisible(false);
     // enable scroll
     document.body.style.overflow = "auto";
   };
+
   if (!isLoginVisible) return null;
 
   const handleGoRegisterPage = (e) => {

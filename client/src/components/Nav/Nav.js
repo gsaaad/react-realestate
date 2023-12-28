@@ -1,13 +1,16 @@
 import "./Nav.css";
-import { useState } from "react";
 import CountryDropDown from "../countryDropDown/CountryDropDown";
 import LoginModal from "../LoginModal/LoginModal";
-
-function Nav({ isLoginVisible, setIsLoginVisible }) {
+import { useLoginModal } from "../../context/LoginModalProvier";
+function Nav() {
+  const { isLoginVisible, setIsLoginVisible } = useLoginModal();
   const handleLogin = (e) => {
     e.preventDefault();
+    console.log("clicked");
+    console.log("setIsLoginVisible", isLoginVisible);
     setIsLoginVisible(true);
-    document.body.style.overflow = isLoginVisible ? "auto" : "hidden";
+    // disable scroll
+    document.body.style.overflow = "hidden";
   };
   return (
     <nav className="header bg-light border-bottom border-3">
