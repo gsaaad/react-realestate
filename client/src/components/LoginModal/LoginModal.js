@@ -29,8 +29,6 @@ const LoginModal = () => {
   };
   return (
     <div>
-      <div className="background-signin"></div>
-
       <div className="rounded border-end border-start border-light signin-container">
         <button className="modal-btn btn btn-danger" onClick={handleModalClose}>
           X
