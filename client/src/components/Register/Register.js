@@ -43,8 +43,8 @@ const Register = () => {
         }}
       />
       <div className=" text-light">
-        <div className="login-modal-container">
-          <h3 className="login-header">Register for Sweet Home</h3>
+        <div>
+          <h3>Register for Sweet Home</h3>
           <form className="login-form" onSubmit={handleFormSubmit}>
             <label htmlFor="user-firstname">First Name</label>
 
