@@ -1,0 +1,18 @@
+.register-modal-container {
+  border: 4px solid lime;
+  background-color: #b4cbd4;
+  height: 55vh;
+}
+.form-input {
+  width: 75%;
+  margin: auto;
+}
+.form-input::placeholder {
+  color: #cecece;
+}
+
+.form-label {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 1%;
+}

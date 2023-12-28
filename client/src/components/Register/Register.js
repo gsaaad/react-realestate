@@ -26,81 +26,78 @@ const Register = () => {
     localStorage.setItem("LoggedInUser", JSON.stringify(formState));
   };
   return (
-    <div
-      className="rounded border-end border-start border-light logi
-    
-    n-container"
-    >
-      <h1 className="bg-light pt-4 text-dark fw-semibold">Register</h1>
-      <div
-        style={{
-          backgroundImage: `url(${photo_4})`,
-          padding: "20px",
-          backgroundSize: "100% 100%",
-          height: "65vh",
-          opacity: "0.2",
-          backgroundRepeat: "no-repeat",
-        }}
-      />
-      <div className=" text-light">
-        <div>
-          <h3>Register for Sweet Home</h3>
-          <form className="login-form" onSubmit={handleFormSubmit}>
-            <label htmlFor="user-firstname">First Name</label>
+    <div className="rounded border-end border-start border-light">
+      <h1 className="bg-light pt-2 text-dark fw-semibold">Register</h1>
+      <div style={{ position: "relative", height: "65vh" }}>
+        <div className=" text-light">
+          <div className="register-modal-container">
+            <form className="login-form" onSubmit={handleFormSubmit}>
+              <label htmlFor="user-firstname" className="form-label">
+                First Name
+              </label>
 
-            <input
-              className="form-input"
-              name="firstName"
-              placeholder="First Name"
-              type="text"
-              id="user-firstname"
-              onChange={handleChange}
-            />
-            <label htmlFor="user-lastname">Last Name</label>
+              <input
+                className="form-input"
+                name="firstName"
+                placeholder="First Name"
+                type="text"
+                id="user-firstname"
+                onChange={handleChange}
+              />
+              <label htmlFor="user-lastname" className="form-label">
+                Last Name
+              </label>
 
-            <input
-              className="form-input"
-              name="lastName"
-              placeholder="Last Name"
-              type="text"
-              id="user-lastname"
-              onChange={handleChange}
-            />
-            <label htmlFor="user-email">Email</label>
+              <input
+                className="form-input"
+                name="lastName"
+                placeholder="Last Name"
+                type="text"
+                id="user-lastname"
+                onChange={handleChange}
+              />
+              <label htmlFor="user-email" className="form-label">
+                Email
+              </label>
 
-            <input
-              className="form-input"
-              placeholder="Email"
-              name="email"
-              type="email"
-              id="user-email"
-              onChange={handleChange}
-            />
-            <label htmlFor="user-password">Password</label>
-            <input
-              className="form-input"
-              placeholder="********"
-              name="password"
-              type="password"
-              id="user-password"
-              onChange={handleChange}
-            />
-            <label htmlFor="user-repassword">Re-enter Password</label>
-            <input
-              className="form-input"
-              placeholder="********"
-              name="confirmPassword"
-              type="password"
-              id="user-confirmPassword"
-              onChange={handleChange}
-            />
-            <button
-              className="bg-primary rounded p-2 text-light fw-semibold m-2"
-              type="submit"
-            >
-              Submit
-            </button>
-          </form>
+              <input
+                className="form-input"
+                placeholder="Email"
+                name="email"
+                type="email"
+                id="user-email"
+                onChange={handleChange}
+              />
+              <label htmlFor="user-password" className="form-label">
+                Password
+              </label>
+              <input
+                className="form-input"
+                placeholder="********"
+                name="password"
+                type="password"
+                id="user-password"
+                onChange={handleChange}
+              />
+              <label htmlFor="user-repassword" className="form-label">
+                Re-enter Password
+              </label>
+              <input
+                className="form-input"
+                placeholder="********"
+                name="confirmPassword"
+                type="password"
+                id="user-confirmPassword"
+                onChange={handleChange}
+              />
+              <button
+                className="bg-primary rounded p-2 text-light fw-semibold m-4"
+                type="submit"
+              >
+                Submit
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
