@@ -41,7 +41,6 @@ function App() {
             <Route path="*" element={<PNF />} />
           </Routes>
         </div>
-        <LoginModal />
         <Footer />
       </div>
     </Router>

@@ -3,8 +3,7 @@ import { useState } from "react";
 import CountryDropDown from "../countryDropDown/CountryDropDown";
 import LoginModal from "../LoginModal/LoginModal";
 
-function Nav() {
-  const [isLoginVisible, setIsLoginVisible] = useState(false);
+function Nav({ isLoginVisible, setIsLoginVisible }) {
   const handleLogin = (e) => {
     e.preventDefault();
     setIsLoginVisible(true);

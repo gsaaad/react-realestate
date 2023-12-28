@@ -7,16 +7,14 @@ import {
   faMailForward,
 } from "@fortawesome/free-solid-svg-icons";
 
-const LoginModal = () => {
+const LoginModal = ({ isLoginVisible, setIsLoginVisible }) => {
   const handleModalClose = (e) => {
     e.preventDefault();
-    const loginContainer = document.getElementsByClassName("signin-container");
-    const background = document.getElementsByClassName("background-signin");
-    loginContainer[0].setAttribute("style", "display: none;");
-    background[0].setAttribute("style", "display: none;");
+    setIsLoginVisible(false);
     // enable scroll
     document.body.style.overflow = "auto";
   };
+  if (!isLoginVisible) return null;
 
   const handleGoRegisterPage = (e) => {
     e.preventDefault();
