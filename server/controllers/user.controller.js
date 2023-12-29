@@ -9,8 +9,8 @@ const userController = {
     "There was an error while managing your request for a User.. Try again Later",
   idMessage: "No User found with this id...",
 
-  getAllUsers(req, res) {
-    User.find({})
+  async getAllUsers(req, res) {
+    await User.find({})
       .then((userData) => {
         res.json(userData);
       })
@@ -19,9 +19,9 @@ const userController = {
         res.sendStatus(400).json({ message: this.errorMessage });
       });
   },
-  getUserById({ params }, res) {
+  async getUserById({ params }, res) {
     console.log("Looking for user with this ID", params.id);
-    User.findOne({ _id: [params.id] })
+    await User.findOne({ _id: [params.id] })
       .then((userData) => {
         if (!userData) {
           res.status(404).json({ message: this.idMessage });
@@ -34,11 +34,11 @@ const userController = {
         res.sendStatus(400).json({ message: this.errorMessage });
       });
   },
-  getUserByFirstName({ params }, res) {
+  async getUserByFirstName({ params }, res) {
     const firstName = params.firstname;
     console.log("Params first Name for User: " + firstName);
 
-    User.find({ firstName: firstName })
+    await User.find({ firstName: firstName })
       .then((userData) => {
         if (!userData) {
           res.status(404).json({ message: this.errorMessage });
@@ -50,11 +50,11 @@ const userController = {
         res.sendStatus(400).json({ message: this.errorMessage });
       });
   },
-  getUserByLastName({ params }, res) {
+  async getUserByLastName({ params }, res) {
     const lastName = params.lastname;
     console.log("Params last Name for User: " + lastName);
 
-    User.find({ lastName: lastName })
+    await User.find({ lastName: lastName })
       .then((userData) => {
         if (!userData) {
           res.status(404).json({ message: this.errorMessage });
@@ -66,12 +66,12 @@ const userController = {
         res.sendStatus(400).json({ message: this.errorMessage });
       });
   },
-  getUserByEmail({ params }, res) {
+  async getUserByEmail({ params }, res) {
     const userEmail = params.email;
 
     console.log("Params email for User", userEmail);
 
-    User.find({ email: userEmail })
+    await User.find({ email: userEmail })
       .then((userData) => {
         if (!userData) {
           res.status(404).json({ message: this.errorMessage });
@@ -100,6 +100,18 @@ const userController = {
   //     });
   // },
   async createUser({ body }, res) {
+    // first check if this user name is already taken
+    const email = body.email;
+
+    const isAlreadyUser = await User.find({ email: email });
+    if (isAlreadyUser.length > 0) {
+      res.status(400).json({
+        message:
+          "This email is already in use... Did you forget your password...",
+      });
+      return false;
+    }
+
     const numSaltRounds = 10;
     // when creating user, we want to bCrypt the password!
     var userInfo = body;
@@ -162,8 +174,8 @@ const userController = {
       }
     }
   },
-  updateUser({ params, body }, res) {
-    User.findOneAndUpdate({ _id: params.id }, body, { new: true })
+  async updateUser({ params, body }, res) {
+    await User.findOneAndUpdate({ _id: params.id }, body, { new: true })
       .then((userData) => {
         if (!userData) {
           res.status(404).json({ message: this.idMessage });
@@ -176,8 +188,8 @@ const userController = {
         res.status(400).json({ message: this.idMessage });
       });
   },
-  deleteUser({ params }, res) {
-    User.findOneAndDelete({ _id: params.id }).then((userData) => {
+  async deleteUser({ params }, res) {
+    await User.findOneAndDelete({ _id: params.id }).then((userData) => {
       if (!userData) {
         res.status(404).json({ message: this.idMessage });
         return false;
