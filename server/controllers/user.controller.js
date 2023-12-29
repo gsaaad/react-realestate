@@ -136,6 +136,7 @@ const userController = {
         res.status(400).json({ message: this.errorMessage });
       });
   },
+  // login user already returns token... include refresh token and in user model
   async loginUser({ body }, res) {
     const userInfo = body;
     console.log("User is logging in with", userInfo);
