@@ -9,6 +9,20 @@ const userController = {
     "There was an error while managing your request for a User.. Try again Later",
   idMessage: "No User found with this id...",
 
+  async generateRefreshToken(user) {
+    const refreshToken = jwt.sign({ user: user.email }, token_secret, {
+      expiresIn: "7d",
+    });
+    try {
+      user.tokens.push({ refreshToken });
+      await user.save();
+      return refreshToken;
+    } catch (err) {
+      console.error("Error saving refresh token:", err);
+      throw new Error("Error in generating refresh token");
+    }
+  },
+
   async getAllUsers(req, res) {
     await User.find({})
       .then((userData) => {
@@ -155,12 +169,18 @@ const userController = {
         bcrypt.compare(
           userInfo.password,
           user.password,
-          function (err, result) {
+          async function (err, result) {
             if (result) {
               console.log("Matched result", result);
-              res.json({
-                access_token: jwt.sign({ user: userInfo.email }, token_secret),
-              });
+              const accessToken = jwt.sign(
+                { user: userInfo.email },
+                token_secret,
+                { expiresIn: "7d" }
+              );
+              const refreshToken = await userController.generateRefreshToken(
+                user
+              );
+              res.json({ accessToken, refreshToken });
             } else {
               console.log(
                 "Mismatched result... different password try again",
@@ -175,6 +195,7 @@ const userController = {
       }
     }
   },
+
   async updateUser({ params, body }, res) {
     await User.findOneAndUpdate({ _id: params.id }, body, { new: true })
       .then((userData) => {

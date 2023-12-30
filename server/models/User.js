@@ -33,6 +33,22 @@ const userSchema = new Schema({
     type: String,
     required: [true, "Location is required"],
   },
+  // introduction of tokens for authentication
+  tokens: [
+    {
+      refreshToken: {
+        type: String,
+        required: true,
+      },
+    },
+  ],
+});
+
+userSchema.pre("save", async function (next) {
+  if (this.isModified("password")) {
+    this.password = await bcrypt.hash(this.password, 10);
+  }
+  next();
 });
 
 const user = model("User", userSchema);
