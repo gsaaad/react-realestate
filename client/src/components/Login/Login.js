@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import photo_3 from "../../assets/img/photo_3.jpeg";
+import apiCall from "../../api/api";
 
 import "./Login.css";
 //!when user logs in, access route to logging in
@@ -21,26 +22,36 @@ const Login = () => {
     var userEmail = formState.email;
     var userPass = formState.password;
 
-    try {
-      const response = await fetch("URL_TO_YOUR_LOGIN_ENDPOINT", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email: userEmail, password: userPass }),
-      });
+    // ! first validate email and password html + some regex
 
-      if (response.ok) {
-        const data = await response.json();
-        localStorage.setItem("accessToken", data.accessToken);
-        localStorage.setItem("refreshToken", data.refreshToken);
-        // Redirect user or update UI
-      } else {
-        // Handle login failure
-        console.log("Login failed");
+    console.log("User is logging in", userEmail, userPass);
+
+    try {
+      const data = await apiCall("/api/user/login", {
+        method: "POST",
+        body: JSON.stringify({
+          email: userEmail,
+          password: userPass,
+        }),
+      });
+      if (!data) {
+        console.log("No data returned from server", data);
       }
+      const { accessToken, refreshToken } = data;
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("refreshToken", refreshToken);
+      // wait few seconds and show notification with a success message
+
+      setTimeout(() => {
+        // show notification
+        // redirect to home page
+        window.location.assign("/");
+      }, 4000);
+
+      // redirect to home page
+      window.location.assign("/");
     } catch (error) {
-      console.error("There was an error!", error);
+      console.error(error);
     }
   };
 
