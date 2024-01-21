@@ -10,7 +10,6 @@ import Footer from "./components/Footer/Footer";
 import PrivacyPolicy from "./components/PrivacyPolicy/PrivacyPolicy";
 import CodeEthics from "./components/CodeEthics/CodeEthics";
 import PropertyServices from "./components/PropertyServices/PropertyServices";
-import LoginModal from "./components/LoginModal/LoginModal.js";
 import Login from "./components/Login/Login.js";
 import Register from "./components/Register/Register.js";
 import Home from "./pages/homes";
