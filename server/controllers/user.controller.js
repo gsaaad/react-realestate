@@ -1,5 +1,5 @@
-const { User } = require("../models");
 const bcrypt = require("bcrypt");
+const { User } = require("../models");
 const jwt = require("jsonwebtoken");
 
 const token_secret = process.env.TOKEN_SECRET;
@@ -20,6 +20,14 @@ const userController = {
     } catch (err) {
       console.error("Error saving refresh token:", err);
       throw new Error("Error in generating refresh token");
+    }
+  },
+  async hashPassword(password) {
+    try {
+      const hashedPassword = await bcrypt.hash(password, 10);
+      return hashedPassword;
+    } catch (error) {
+      throw new Error(error.message);
     }
   },
 
@@ -114,41 +122,29 @@ const userController = {
   //     });
   // },
   async createUser({ body }, res) {
-    // first check if this user name is already taken
-    const email = body.email;
+    try {
+      const isAlreadyUser = await User.find({ email: body.email });
 
-    const isAlreadyUser = await User.find({ email: email });
-    if (isAlreadyUser.length > 0) {
-      res.status(400).json({
-        message:
-          "This email is already in use... Did you forget your password...",
+      if (isAlreadyUser.length > 0) {
+        res.status(400).json({ message: "User already exists" });
+        return false;
+      }
+
+      // Create the user object
+      const user = new User(body);
+
+      // Save the user object to the database
+      const savedUser = await user.save();
+
+      // Send response
+      res.json({
+        message: "User created successfully",
+        user: savedUser,
       });
-      return false;
+    } catch (e) {
+      console.error(e, this.errorMessage);
+      res.status(400).json({ message: this.errorMessage });
     }
-
-    const numSaltRounds = 10;
-    // when creating user, we want to bCrypt the password!
-    var userInfo = body;
-    console.log("User info before bCrpyt", userInfo);
-    var userPassword = userInfo.password;
-    const hashedPassword = await new Promise((resolve, reject) => {
-      bcrypt.hash(userPassword, numSaltRounds, function (err, hash) {
-        if (err) reject(err);
-        resolve(hash);
-      });
-    });
-    console.log("Bcrypt password after bCrpyt", hashedPassword);
-    userInfo.password = hashedPassword;
-    userInfo.confirmedPassword = hashedPassword;
-
-    User.create(userInfo)
-      .then((userData) => {
-        res.json(userData);
-      })
-      .catch((e) => {
-        console.error(e);
-        res.status(400).json({ message: this.errorMessage });
-      });
   },
   // login user already returns token... include refresh token and in user model
   async loginUser({ body }, res) {

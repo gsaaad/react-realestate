@@ -1,3 +1,4 @@
+const bcrypt = require("bcrypt");
 const { Schema, model } = require("mongoose");
 const jwt = require("jsonwebtoken");
 // User will have parameters:
